@@ -24,37 +24,112 @@
     <script>
       var map;
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat:44.554, lng:-69.646},
           zoom: 13
         });
 
         var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
         
+        var mainStLatLng = {lat: 44.550999, lng: -69.632022};
+        var gilmanStLatLng = {lat: 44.553764, lng: -69.637188};
+        var diamondLatLng = {lat: 44.562241, lng: -69.659671};
+        var davisLatLng = {lat: 44.564428, lng: -69.658850};
+        
         var mainStMarker = new google.maps.Marker({
-          position: {lat: 44.550999, lng: -69.632022},
+          position: mainStLatLng,
           map: map,
           icon: image
         });
 
         var gilmanStMarker = new google.maps.Marker({
-          position: {lat: 44.553764, lng: -69.637188},
+          position: gilmanStLatLng,
           map: map,
           icon: image
         });
 
         var diamondStMarker = new google.maps.Marker({
-          position: {lat: 44.562241, lng: -69.659671},
+          position: diamondLatLng,
           map: map,
           icon: image
         });
 
         var davisStMarker = new google.maps.Marker({
-          position: {lat: 44.564428, lng: -69.658850},
+          position: davisLatLng,
           map: map,
           icon: image
         });
         
+        var shuttleSymbol = {
+            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+            scale: 3,
+            strokeColor: '#5500FF'
+        };
+        
+        var ddLatLng_001 = {lat: 44.564518, lng: -69.658531};
+        var ddLatLng_002 = {lat: 44.564701, lng: -69.658627};
+        var ddLatLng_003 = {lat: 44.564955, lng: -69.659012};
+        var ddLatLng_004 = {lat: 44.565225, lng: -69.659534};
+        var ddLatLng_005 = {lat: 44.564460, lng: -69.660065};
+        var ddLatLng_006 = {lat: 44.564047, lng: -69.660254};
+        var ddLatLng_007 = {lat: 44.563372, lng: -69.660422};
+        var ddLatLng_008 = {lat: 44.562982, lng: -69.660462};
+        var ddLatLng_009 = {lat: 44.562531, lng: -69.660461};
+        var ddLatLng_010 = {lat: 44.561905, lng: -69.660318};
+        var ddLatLng_011 = {lat: 44.561992, lng: -69.659597};
+        var ddLatLng_012 = {lat: 44.562113, lng: -69.659626};
+        var ddLatLng_013 = {lat: 44.562267, lng: -69.659589};
+        
+        var shuttleCoords = [
+            mainStLatLng,
+            davisLatLng,
+            ddLatLng_001,
+            ddLatLng_002,
+            ddLatLng_003,
+            ddLatLng_004,
+            ddLatLng_005,
+            ddLatLng_006,
+            ddLatLng_007,
+            ddLatLng_008,
+            ddLatLng_009,
+            ddLatLng_010,
+            ddLatLng_011,
+            ddLatLng_012,
+            ddLatLng_013,
+            diamondLatLng,
+            gilmanStLatLng,
+            mainStLatLng
+        ];
+        
+        var shuttlePath = new google.maps.Polyline({
+            path: shuttleCoords,
+            icons: [{
+                icon: shuttleSymbol,
+                offset: '100%'
+            }],
+            geodesic: true,
+            strokeColor: '#00FF00',
+            strokeOpacity: 0.5,
+            strokeWeight: 5
+        });
+        
+        shuttlePath.setMap(map);
+        animateCircle(shuttlePath);
+        
+      }
+      
+      // animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
+      // To change speed: mess up with the var "speed" and "200" in the last few lines.
+      function animateCircle(line) {
+      	var count = 0;
+      	var speed = 5;
+      	window.setInterval(function() {
+      	    count = (count+1)%(speed*100);
+      	    
+      	    var icons = line.get('icons');
+      	    icons[0].offset = (count/speed) + '%';
+      	    line.set('icons', icons);
+      	}, 200);
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
