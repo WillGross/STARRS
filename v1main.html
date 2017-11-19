@@ -34,6 +34,33 @@
             map: map,
             title: 'Hello World!'
         });
+
+        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        
+        var mainStMarker = new google.maps.Marker({
+          position: {lat: 44.550999, lng: -69.632022},
+          map: map,
+          icon: image
+        });
+
+        var gilmanStMarker = new google.maps.Marker({
+          position: {lat: 44.553764, lng: -69.637188},
+          map: map,
+          icon: image
+        });
+
+        var diamondStMarker = new google.maps.Marker({
+          position: {lat: 44.562241, lng: -69.659671},
+          map: map,
+          icon: image
+        });
+
+        var davisStMarker = new google.maps.Marker({
+          position: {lat: 44.564428, lng: -69.658850},
+          map: map,
+          icon: image
+        });
+        
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
