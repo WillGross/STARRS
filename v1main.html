@@ -26,44 +26,113 @@
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat:44.554, lng:-69.646},
-          zoom: 13
+          zoom: 14
         });
 
+        var mainStString = '<div>173 Main St. & Appleton St.</div>';
+        var gilmanStString = '<div>Gilman St.</div>';
+        var diamondString = '<div>Diamond building</div>';
+        var davisString = '<div>Davis Science Building</div>';
+        
+        var mainStWindow = new google.maps.InfoWindow({
+            content: mainStString
+        });
+        
+        var gilmanStWindow = new google.maps.InfoWindow({
+            content: gilmanStString
+        });
+        
+        var diamondWindow = new google.maps.InfoWindow({
+            content: diamondString
+        });
+        
+        var davisWindow = new google.maps.InfoWindow({
+            content: davisString
+        });
+        
         var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        var imageAnchorPt = new google.maps.Point(10, 10);
         
         var mainStLatLng = {lat: 44.550999, lng: -69.632022};
         var gilmanStLatLng = {lat: 44.553764, lng: -69.637188};
         var diamondLatLng = {lat: 44.562241, lng: -69.659671};
         var davisLatLng = {lat: 44.564428, lng: -69.658850};
         
+        var markerIcon = {
+            url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+            labelOrigin: imageAnchorPt,
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0)
+        };
+        
         var mainStMarker = new google.maps.Marker({
-          position: mainStLatLng,
-          map: map,
-          icon: image
+            position: mainStLatLng,
+            map: map,
+            icon: markerIcon,
+            label: {
+                text: 'M',
+                color: '#0000FF',
+                fontWeight: 'bold'
+            }
         });
 
         var gilmanStMarker = new google.maps.Marker({
           position: gilmanStLatLng,
           map: map,
-          icon: image
+            icon: markerIcon,
+            label: {
+                text: 'G',
+                color: '#0000FF',
+                fontWeight: 'bold'
+            }
         });
 
         var diamondStMarker = new google.maps.Marker({
           position: diamondLatLng,
           map: map,
-          icon: image
+            icon: markerIcon,
+            label: {
+                text: 'D',
+                color: '#0000FF',
+                fontWeight: 'bold'
+            }
         });
 
         var davisStMarker = new google.maps.Marker({
           position: davisLatLng,
           map: map,
-          icon: image
+            icon: markerIcon,
+            label: {
+                text: 'D',
+                color: '#0000FF',
+                fontWeight: 'bold'
+            }
+        });
+        
+        mainStMarker.addListener('click', function() {
+            mainStWindow.open(map, mainStMarker);
+        });
+        
+        gilmanStMarker.addListener('click', function() {
+            gilmanStWindow.open(map, gilmanStMarker);
+        });
+        
+        diamondStMarker.addListener('click', function() {
+            diamondWindow.open(map, diamondStMarker);
+        });
+        
+        davisStMarker.addListener('click', function() {
+            davisWindow.open(map, davisStMarker);
         });
         
         var shuttleSymbol = {
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            scale: 3,
-            strokeColor: '#5500FF'
+            scale: 4,
+            fillColor: '#5555FF',
+            fillOpacity: 0.7,
+            strokeWeight: 2,
+            strokeColor: '#000000',
+            strokeOpacity: 1
         };
         
         var ddLatLng_001 = {lat: 44.564518, lng: -69.658531};
