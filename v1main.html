@@ -7,9 +7,14 @@
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+      /* Ref: https://stackoverflow.com/questions/953918/how-to-align-a-div-to-the-middle-horizontally-width-of-the-page */
       #map {
         height: 50%;
-        width: 50%
+        width: 50%;
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        background-color: grey;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -201,5 +206,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
     async defer></script>
+    <a href="https://www.colby.edu/securitydept/colby-transportation-services/">
+        Colby Transportation Services (security office webpage)</a>
   </body>
 </html>
