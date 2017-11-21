@@ -5,11 +5,17 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
+      #header {
+        
+        border: 0;
+        margin: 0;
+      }
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 50%;
-        width: 50%
+        border: 10 px solid blue;
+        margin: 20 px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -20,6 +26,18 @@
     </style>
   </head>
   <body>
+
+   <! <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&q=Space+Needle,Seattle+WA" allowfullscreen>
+<!/iframe>
+
+    
+    <div id="header"><image src="https://alumni.colby.edu/s/1470/images/editor/original/colby.jpg" ALT="image"></div>
+
+
     <div id="map"></div>
     <script>
       var map;
