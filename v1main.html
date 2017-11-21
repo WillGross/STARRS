@@ -143,6 +143,24 @@
             strokeOpacity: 1
         };
         
+        //once full route is determined, reverse the order of all mdLatLong (for sake of naming convention) and modify shuttleCoords to reflect this name change
+        //left off at intersection of north street and west street(mdLatLng_013). continue to trace back to main street stop
+        //add points closer to mainstreet to the top, closer to davis to the bottom
+        var mdLatLng_013 = {lat: 44.555473, lng: -69.636668};
+        var mdLatLng_012 = {lat: 44.555925, lng: -69.637208};
+        var mdLatLng_011 = {lat: 44.557130, lng: -69.638587};
+        var mdLatLng_010 = {lat: 44.559904, lng: -69.642017};
+        var mdLatLng_009 = {lat: 44.566237, lng: -69.649635};
+        var mdLatLng_008 = {lat: 44.566873, lng: -69.650748};
+        var mdLatLng_007 = {lat: 44.567625, lng: -69.654226};
+        var mdLatLng_006 = {lat: 44.567412, lng: -69.656007};
+        var mdLatLng_005 = {lat: 44.566998, lng: -69.657077};
+        var mdLatLng_004 = {lat: 44.565952, lng: -69.658743};
+        var mdLatLng_003 = {lat: 44.565225, lng: -69.659534};
+        var mdLatLng_002 = {lat: 44.564955, lng: -69.659012};
+        var mdLatLng_001 = {lat: 44.564604, lng: -69.659196};
+        //stop reversing numbers here
+
         var ddLatLng_001 = {lat: 44.564518, lng: -69.658531};
         var ddLatLng_002 = {lat: 44.564701, lng: -69.658627};
         var ddLatLng_003 = {lat: 44.564955, lng: -69.659012};
@@ -156,18 +174,36 @@
         var ddLatLng_011 = {lat: 44.561975, lng: -69.659549};
         var ddLatLng_012 = {lat: 44.562118, lng: -69.659593};
         var ddLatLng_013 = {lat: 44.562267, lng: -69.659589};
+
         var dgLatLng_001 = {lat: 44.562064, lng: -69.659634};
         var dgLatLng_002 = {lat: 44.561983, lng: -69.659704};
         var dgLatLng_003 = {lat: 44.561908, lng: -69.660352};
         var dgLatLng_004 = {lat: 44.561336, lng: -69.660115};
         var dgLatLng_005 = {lat: 44.557957, lng: -69.658622};
-        var dgLatLng_006 = {lat: 44.557197, lng: -69.657624};
-        var dgLatLng_007 = {lat: 44.556345, lng: -69.654988};
+        var dgLatLng_006 = {lat: 44.557434, lng: -69.658141};
+        var dgLatLng_007 = {lat: 44.557197, lng: -69.657624};
+        var dgLatLng_008 = {lat: 44.556345, lng: -69.654988};
+        
 
 
         
         var shuttleCoords = [
             mainStLatLng,
+            //reverse the order once all points have been determined
+            mdLatLng_013,
+            mdLatLng_012,
+            mdLatLng_011,
+            mdLatLng_010,
+            mdLatLng_009,
+            mdLatLng_008,
+            mdLatLng_007,
+            mdLatLng_006,
+            mdLatLng_005,
+            mdLatLng_004,
+            mdLatLng_003,
+            mdLatLng_002,
+            mdLatLng_001,
+            //stop reverseing order here
             davisLatLng,
             ddLatLng_001,
             ddLatLng_002,
@@ -190,6 +226,7 @@
             dgLatLng_005,
             dgLatLng_006,
             dgLatLng_007,
+            dgLatLng_008,
             gilmanStLatLng,
             mainStLatLng
         ];
