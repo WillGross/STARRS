@@ -254,8 +254,14 @@
         });
         
         shuttlePath.setMap(map);
-        animateCircle(shuttlePath);
         
+        /* Only display the shuttle if it's a weekday, and it's during operation time
+           (7:45 am -- 6:00 pm) */
+        var d = new Date();
+        if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() >= 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
+        } else {
+	        animateCircle(shuttlePath);
+        }
       }
       
       // animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
@@ -280,7 +286,8 @@
         Colby Transportation Services (security office webpage)</a>
     <br>
     <a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
-        Colby Shuttle Schedule and Map</a>
+        Colby Shuttle Schedule and Map</a><br>
+    *The shuttle only runs from Monday to Friday during school sessions.
     </div>
     
   </body>
