@@ -14,7 +14,199 @@
         </style>
     </head>
     <body>
+    <script>
+    alert("Testing");
+	var fileDisplayArea = document.getElementById('ScheduleTable');
+	function readTextFile(file)
+	{
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		alert("File acquired");
+		rawFile.onreadystatechange = function ()
+		{
+			if(rawFile.readyState == 4 || rawFile.readyState == 1)
+			{
+				if(rawFile.status == 200 || rawFile.status == 0)
+				{
+					alert("Status checked");
+					var allText = rawFile.responseText;
+					alert(allText);
+					fileDisplayArea.innerText = allText 
+				} else {
+					alert("Status not good");
+				}
+			} else {
+				alert(rawFile.readyState+"");
+			}
+		}
+		alert("Still alive");
+		rawFile.onreadystatechange();
+		rawFile.send(null);
+	}
+
+	readTextFile("driver_shift_file.txt");
+	</script>
     
+    <!--
+    Source: https://stackoverflow.com/questions/29882108/getting-data-from-text-file-and-display-it-in-html-table
+    <?php 
+
+		$lines = file("scores.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		$data = array_map(function($v){
+			list($username, $score) = explode(":", $v);
+			return ["username" => $username, "score" => $score];
+		}, $lines);
+
+		usort($data, function($a, $b){
+			if($a["score"] == $b["score"])
+				return 0;
+			return $a["score"] > $b["score"] ? 1 : -1;
+		});
+
+	?>
+
+	<table width="200" border="1">
+		<tr>
+			<td width="85">Nom</td>
+			<td width="99">Score</td>
+		</tr>
+	<?php foreach($data as $user){ ?>
+		<tr>
+			<td height="119"><?php echo $user["username"]; ?></td>
+			<td><?php echo $user["score"]; ?></td>
+		</tr>
+	<?php } ?>
+	</table>
+    
+    
+    <?php 
+		$lines = file("driver_shift_file.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		$data = array_map(function($v){
+			list($sun, $mon, $tue, $wed, $thu, $fri, $sat) = explode(", ", $v);
+			return ["sun" => $sun, "mon" => $mon, "tue" => $tue, "wed" => $wed, "thu" => $thu, "fri" => $fri, "sat" => $sat];
+		}, $lines);
+	?>
+
+	<table width="200" border="1">
+		
+	<?php foreach($data as $time_slot){ ?>
+		<tr>
+			<td><?php echo $time_slot["sun"]; ?></td>
+			<td><?php echo $time_slot["mon"]; ?></td>
+			<td><?php echo $time_slot["tue"]; ?></td>
+			<td><?php echo $time_slot["wed"]; ?></td>
+			<td><?php echo $time_slot["thu"]; ?></td>
+			<td><?php echo $time_slot["fri"]; ?></td>
+			<td><?php echo $time_slot["sat"]; ?></td>
+		</tr>
+	<?php } ?>
+	</table>
+    -->
+    <script>
+    
+    var fileReader = new FileReader();
+    fileReader.onload = function(e) {
+    	//var fileContent = fileReader.result;
+    	var output = e.target.result;
+    	window.alert(output);
+    }
+    fileReader.readAsText('driver_shift_file.txt');
+    //var fileContent = e.target.result;
+    
+    /*var fileContent;
+    var fs = require("fs");
+    fs.readFile("driver_shift_file.txt", function(text) {
+    	document.body.innerHTML += text;
+    	fileContent = test;
+    });
+    
+    function readTextFile(file)
+	{
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		rawFile.onreadystatechange = function ()
+		{
+			if(rawFile.readyState === 4)
+			{
+				if(rawFile.status === 200 || rawFile.status == 0)
+				{
+					var allText = rawFile.responseText;
+					window.alert(allText);
+				}
+			}
+		}
+		rawFile.send(null);
+	}
+	readTextFile('file:///Users/zhzhang/Documents/CS397/STARRS/driver_shift_file.txt');
+    */
+    
+    
+    //var data = "1234567";
+    function generateTable(data) {
+    	var htmlCode = '<table id="schedule" border="1">\
+    	<!-- Horizontal header -->\
+    	<tr>\
+    		<th></th>\
+    		<th>Sunday</th>\
+    		<th>Monday</th>\
+    		<th>Tuesday</th>\
+    		<th>Wednesday</th>\
+    		<th>Thursday</th>\
+    		<th>Friday</th>\
+    		<th>Saturday</th>\
+    	</tr>';
+    	//htmlCode += data;
+    	var lines = data.split("\n");
+    	var time = 7;
+    	var am = 1;
+    	for (i = 0; i < lines.length; i++) {
+    		var names = lines[i].split(", ");
+    		time++;
+    		if (am == 0) {
+    			htmlCode += '<tr align="middle" valign="middle">\
+    			<th><em><br>'+time+':00<br><br></em></th>';
+    		} else {
+    			htmlCode += '<tr align="middle" valign="middle">\
+    			<th><br>'+time+':00<br><br></th>';
+    		}
+    		if (time == 12) {
+    			am = 1 - am;
+    			time -= 12;
+    		}
+    		
+    		for (j = 0; j < names.length; j++) {
+    			htmlCode += '<td>'+names[j]+'</td>';
+    		}
+    		
+    		htmlCode += '</tr>';
+    	}
+    	htmlCode += '</table>';
+    	document.body.innerHTML += htmlCode;
+    }
+    
+    generateTable(fileContent);
+    </script>
+    <!--
+    <script>generateTable("(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
+Driver A, (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), Driver B\n\
+Driver A, (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), Driver B\n\
+Driver A, Driver C, Driver D, Driver E, Driver A, Driver D, Driver B\n\
+Driver A, Driver C, Driver D, Driver E, Driver A, Driver D, Driver B\n\
+Driver F, Driver G, Driver E, Driver A, Driver A, Driver D, Driver F\n\
+Driver F, Driver G, Driver E, Driver A, Driver C, Driver G, Driver F\n\
+Driver H, Driver I, Driver E, Driver D, Driver C, Driver G, Driver D\n\
+Driver H, Driver I, Driver E, Driver D, Driver E, Driver F, Driver D\n\
+Driver H, Driver I, Driver B, Driver F, Driver E, Driver F, Driver D\n\
+Driver H, Driver I, Driver B, Driver F, Driver A, Driver F, Driver A\n\
+(Not operating), (Not operating), (Not operating), Driver I, Driver I, Driver I, (Not operating)\n\
+(Not operating), (Not operating), (Not operating), Driver I, Driver I, Driver I, (Not operating)\n\
+(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)")</script>
+	-->
     <table id="ScheduleTable" border="1">
     	<!-- Horizontal header -->
     	<tr>
