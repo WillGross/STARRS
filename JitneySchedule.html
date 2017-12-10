@@ -15,16 +15,13 @@
     </head>
     <body>
     <script>
+    /*
     alert("Testing");
 	var fileDisplayArea = document.getElementById('ScheduleTable');
-	function readTextFile(file)
-	{
-		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", file, false);
-		alert("File acquired");
-		rawFile.onreadystatechange = function ()
+	
+	function processRequest ()
 		{
-			if(rawFile.readyState == 4 || rawFile.readyState == 1)
+			if(rawFile.readyState == 4)
 			{
 				if(rawFile.status == 200 || rawFile.status == 0)
 				{
@@ -39,71 +36,58 @@
 				alert(rawFile.readyState+"");
 			}
 		}
+	
+	function readTextFile(file)
+	{
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		alert("File acquired");
+		rawFile.onreadystatechange = processRequest;
 		alert("Still alive");
 		rawFile.onreadystatechange();
 		rawFile.send(null);
 	}
 
-	readTextFile("driver_shift_file.txt");
+	readTextFile("https://github.com/WillGross/STARRS/blob/master/driver_shift_file.txt");
+	
+	*/
+	// Code source: https://stackoverflow.com/questions/3094997/ajax-readystate-always-1
+	var xmlHttpRequest = init();
+	var fileContent;
+
+	function init(){
+		if (window.XMLHttpRequest) {
+			//alert("init successful");
+			return new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		} else {
+			alert("Your browser does not support AJAX!");
+		}
+	}
+	  
+	function processRequest(){
+		//alert("process request called with " + xmlHttpRequest);
+		if (xmlHttpRequest.readyState==4) {
+			if (xmlHttpRequest.status == 200 || xmlHttpRequest.status == 0) {
+				fileContent = xmlHttpRequest.responseText;
+				//alert(fileContent);
+			}
+		} else {
+			//alert("process request no luck readyState = " + xmlHttpRequest.readyState);
+		}
+		//alert("process request exiting");
+		//alert("status = " + xmlHttpRequest.status);
+	}
+	xmlHttpRequest.open("GET", "https://raw.githubusercontent.com/WillGross/STARRS/master/driver_shift_file.txt", false); 
+	xmlHttpRequest.onreadystatechange = processRequest; 
+	xmlHttpRequest.send(null);
+	//alert(fileContent);
 	</script>
     
-    <!--
-    Source: https://stackoverflow.com/questions/29882108/getting-data-from-text-file-and-display-it-in-html-table
-    <?php 
-
-		$lines = file("scores.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-		$data = array_map(function($v){
-			list($username, $score) = explode(":", $v);
-			return ["username" => $username, "score" => $score];
-		}, $lines);
-
-		usort($data, function($a, $b){
-			if($a["score"] == $b["score"])
-				return 0;
-			return $a["score"] > $b["score"] ? 1 : -1;
-		});
-
-	?>
-
-	<table width="200" border="1">
-		<tr>
-			<td width="85">Nom</td>
-			<td width="99">Score</td>
-		</tr>
-	<?php foreach($data as $user){ ?>
-		<tr>
-			<td height="119"><?php echo $user["username"]; ?></td>
-			<td><?php echo $user["score"]; ?></td>
-		</tr>
-	<?php } ?>
-	</table>
     
-    
-    <?php 
-		$lines = file("driver_shift_file.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-		$data = array_map(function($v){
-			list($sun, $mon, $tue, $wed, $thu, $fri, $sat) = explode(", ", $v);
-			return ["sun" => $sun, "mon" => $mon, "tue" => $tue, "wed" => $wed, "thu" => $thu, "fri" => $fri, "sat" => $sat];
-		}, $lines);
-	?>
-
-	<table width="200" border="1">
-		
-	<?php foreach($data as $time_slot){ ?>
-		<tr>
-			<td><?php echo $time_slot["sun"]; ?></td>
-			<td><?php echo $time_slot["mon"]; ?></td>
-			<td><?php echo $time_slot["tue"]; ?></td>
-			<td><?php echo $time_slot["wed"]; ?></td>
-			<td><?php echo $time_slot["thu"]; ?></td>
-			<td><?php echo $time_slot["fri"]; ?></td>
-			<td><?php echo $time_slot["sat"]; ?></td>
-		</tr>
-	<?php } ?>
-	</table>
-    -->
     <script>
-    
+    /*
     var fileReader = new FileReader();
     fileReader.onload = function(e) {
     	//var fileContent = fileReader.result;
@@ -112,7 +96,7 @@
     }
     fileReader.readAsText('driver_shift_file.txt');
     //var fileContent = e.target.result;
-    
+    */
     /*var fileContent;
     var fs = require("fs");
     fs.readFile("driver_shift_file.txt", function(text) {
@@ -139,7 +123,6 @@
 	}
 	readTextFile('file:///Users/zhzhang/Documents/CS397/STARRS/driver_shift_file.txt');
     */
-    
     
     //var data = "1234567";
     function generateTable(data) {
@@ -186,29 +169,7 @@
     
     generateTable(fileContent);
     </script>
-    <!--
-    <script>generateTable("(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)\n\
-Driver A, (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), Driver B\n\
-Driver A, (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), Driver B\n\
-Driver A, Driver C, Driver D, Driver E, Driver A, Driver D, Driver B\n\
-Driver A, Driver C, Driver D, Driver E, Driver A, Driver D, Driver B\n\
-Driver F, Driver G, Driver E, Driver A, Driver A, Driver D, Driver F\n\
-Driver F, Driver G, Driver E, Driver A, Driver C, Driver G, Driver F\n\
-Driver H, Driver I, Driver E, Driver D, Driver C, Driver G, Driver D\n\
-Driver H, Driver I, Driver E, Driver D, Driver E, Driver F, Driver D\n\
-Driver H, Driver I, Driver B, Driver F, Driver E, Driver F, Driver D\n\
-Driver H, Driver I, Driver B, Driver F, Driver A, Driver F, Driver A\n\
-(Not operating), (Not operating), (Not operating), Driver I, Driver I, Driver I, (Not operating)\n\
-(Not operating), (Not operating), (Not operating), Driver I, Driver I, Driver I, (Not operating)\n\
-(Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating), (Not operating)")</script>
-	-->
-    <table id="ScheduleTable" border="1">
-    	<!-- Horizontal header -->
+    <!--<table id="ScheduleTable" border="1">
     	<tr>
     		<th></th>
     		<th>Sunday</th>
@@ -219,7 +180,6 @@ Driver H, Driver I, Driver B, Driver F, Driver A, Driver F, Driver A\n\
     		<th>Friday</th>
     		<th>Saturday</th>
     	</tr>
-    	<!--Vertical header-->
     	<tr>
     		<th><em><br>8:00<br><br></em></th>
     		<td align="middle">(Not operating)</td>
@@ -411,7 +371,7 @@ Driver H, Driver I, Driver B, Driver F, Driver A, Driver F, Driver A\n\
     		<td>(Not operating)</td>
     	</tr>
     
-    </table>
+    </table>-->
     
     </body>
 </html>
