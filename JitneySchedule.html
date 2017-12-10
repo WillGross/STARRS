@@ -14,9 +14,162 @@
         </style>
     </head>
     <body>
+    <script>
+    /*
+    alert("Testing");
+	var fileDisplayArea = document.getElementById('ScheduleTable');
+	
+	function processRequest ()
+		{
+			if(rawFile.readyState == 4)
+			{
+				if(rawFile.status == 200 || rawFile.status == 0)
+				{
+					alert("Status checked");
+					var allText = rawFile.responseText;
+					alert(allText);
+					fileDisplayArea.innerText = allText 
+				} else {
+					alert("Status not good");
+				}
+			} else {
+				alert(rawFile.readyState+"");
+			}
+		}
+	
+	function readTextFile(file)
+	{
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		alert("File acquired");
+		rawFile.onreadystatechange = processRequest;
+		alert("Still alive");
+		rawFile.onreadystatechange();
+		rawFile.send(null);
+	}
+
+	readTextFile("https://github.com/WillGross/STARRS/blob/master/driver_shift_file.txt");
+	
+	*/
+	// Code source: https://stackoverflow.com/questions/3094997/ajax-readystate-always-1
+	var xmlHttpRequest = init();
+	var fileContent;
+
+	function init(){
+		if (window.XMLHttpRequest) {
+			//alert("init successful");
+			return new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		} else {
+			alert("Your browser does not support AJAX!");
+		}
+	}
+	  
+	function processRequest(){
+		//alert("process request called with " + xmlHttpRequest);
+		if (xmlHttpRequest.readyState==4) {
+			if (xmlHttpRequest.status == 200 || xmlHttpRequest.status == 0) {
+				fileContent = xmlHttpRequest.responseText;
+				//alert(fileContent);
+			}
+		} else {
+			//alert("process request no luck readyState = " + xmlHttpRequest.readyState);
+		}
+		//alert("process request exiting");
+		//alert("status = " + xmlHttpRequest.status);
+	}
+	xmlHttpRequest.open("GET", "https://raw.githubusercontent.com/WillGross/STARRS/master/driver_shift_file.txt", false); 
+	xmlHttpRequest.onreadystatechange = processRequest; 
+	xmlHttpRequest.send(null);
+	//alert(fileContent);
+	</script>
     
-    <table id="ScheduleTable" border="1">
-    	<!-- Horizontal header -->
+    
+    <script>
+    /*
+    var fileReader = new FileReader();
+    fileReader.onload = function(e) {
+    	//var fileContent = fileReader.result;
+    	var output = e.target.result;
+    	window.alert(output);
+    }
+    fileReader.readAsText('driver_shift_file.txt');
+    //var fileContent = e.target.result;
+    */
+    /*var fileContent;
+    var fs = require("fs");
+    fs.readFile("driver_shift_file.txt", function(text) {
+    	document.body.innerHTML += text;
+    	fileContent = test;
+    });
+    
+    function readTextFile(file)
+	{
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", file, false);
+		rawFile.onreadystatechange = function ()
+		{
+			if(rawFile.readyState === 4)
+			{
+				if(rawFile.status === 200 || rawFile.status == 0)
+				{
+					var allText = rawFile.responseText;
+					window.alert(allText);
+				}
+			}
+		}
+		rawFile.send(null);
+	}
+	readTextFile('file:///Users/zhzhang/Documents/CS397/STARRS/driver_shift_file.txt');
+    */
+    
+    //var data = "1234567";
+    function generateTable(data) {
+    	var htmlCode = '<table id="schedule" border="1">\
+    	<!-- Horizontal header -->\
+    	<tr>\
+    		<th></th>\
+    		<th>Sunday</th>\
+    		<th>Monday</th>\
+    		<th>Tuesday</th>\
+    		<th>Wednesday</th>\
+    		<th>Thursday</th>\
+    		<th>Friday</th>\
+    		<th>Saturday</th>\
+    	</tr>';
+    	//htmlCode += data;
+    	var lines = data.split("\n");
+    	var time = 7;
+    	var am = 1;
+    	for (i = 0; i < lines.length; i++) {
+    		var names = lines[i].split(", ");
+    		time++;
+    		if (am == 0) {
+    			htmlCode += '<tr align="middle" valign="middle">\
+    			<th><em><br>'+time+':00<br><br></em></th>';
+    		} else {
+    			htmlCode += '<tr align="middle" valign="middle">\
+    			<th><br>'+time+':00<br><br></th>';
+    		}
+    		if (time == 12) {
+    			am = 1 - am;
+    			time -= 12;
+    		}
+    		
+    		for (j = 0; j < names.length; j++) {
+    			htmlCode += '<td>'+names[j]+'</td>';
+    		}
+    		
+    		htmlCode += '</tr>';
+    	}
+    	htmlCode += '</table>';
+    	document.body.innerHTML += htmlCode;
+    }
+    
+    generateTable(fileContent);
+    </script>
+    <!--<table id="ScheduleTable" border="1">
     	<tr>
     		<th></th>
     		<th>Sunday</th>
@@ -27,7 +180,6 @@
     		<th>Friday</th>
     		<th>Saturday</th>
     	</tr>
-    	<!--Vertical header-->
     	<tr>
     		<th><em><br>8:00<br><br></em></th>
     		<td align="middle">(Not operating)</td>
@@ -219,7 +371,7 @@
     		<td>(Not operating)</td>
     	</tr>
     
-    </table>
+    </table>-->
     
     </body>
 </html>
