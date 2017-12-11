@@ -159,161 +159,173 @@
 			});
 
 
-        var davisStMarker = new google.maps.Marker({
-          position: davisLatLng,
-          map: map,
-            icon: markerIcon,
-            label: {
-                text: 'D',
-                color: '#0000FF',
-                fontWeight: 'bold'
-            }
-        });
-        
-        mainStMarker.addListener('click', function() {
-            mainStWindow.open(map, mainStMarker);
-        });
-        
-        gilmanStMarker.addListener('click', function() {
-            gilmanStWindow.open(map, gilmanStMarker);
-        });
-        
-        diamondStMarker.addListener('click', function() {
-            diamondWindow.open(map, diamondStMarker);
-        });
-        
-        davisStMarker.addListener('click', function() {
-            davisWindow.open(map, davisStMarker);
-        });
-        
-        var shuttleSymbol = {
-            path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            scale: 4,
-            fillColor: '#5555FF',
-            fillOpacity: 0.7,
-            strokeWeight: 2,
-            strokeColor: '#000000',
-            strokeOpacity: 1
-        };
-        
-        var mgLatLng_001 = {lat: 44.551679, lng: -69.635225};
-        var mgLatLng_002 = {lat: 44.553167, lng: -69.634346};
-        
-        var gdLatLng_001 = {lat: 44.556345, lng: -69.654988};
-        var gdLatLng_002 = {lat: 44.557197, lng: -69.657624};
-        var gdLatLng_003 = {lat: 44.557434, lng: -69.658141};
-        var gdLatLng_004 = {lat: 44.557957, lng: -69.658622};
-        var gdLatLng_005 = {lat: 44.561336, lng: -69.660115};
-        var gdLatLng_006 = {lat: 44.561908, lng: -69.660352};
-        var gdLatLng_007 = {lat: 44.561983, lng: -69.659704};
-        var gdLatLng_008 = {lat: 44.562064, lng: -69.659634};
+			var davisStMarker = new google.maps.Marker({
+			  position: davisLatLng,
+			  map: map,
+				icon: markerIcon,
+				label: {
+					text: 'D',
+					color: '#0000FF',
+					fontWeight: 'bold'
+				}
+			});
+		
+			mainStMarker.addListener('click', function() {
+				mainStWindow.open(map, mainStMarker);
+			});
+		
+			gilmanStMarker.addListener('click', function() {
+				gilmanStWindow.open(map, gilmanStMarker);
+			});
+		
+			diamondStMarker.addListener('click', function() {
+				diamondWindow.open(map, diamondStMarker);
+			});
+		
+			davisStMarker.addListener('click', function() {
+				davisWindow.open(map, davisStMarker);
+			});
+		
+			var shuttleSymbol = {
+				path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+				scale: 4,
+				fillColor: '#5555FF',
+				fillOpacity: 0.7,
+				strokeWeight: 2,
+				strokeColor: '#000000',
+				strokeOpacity: 1
+			};
+		
+			var mgLatLng_001 = {lat: 44.551679, lng: -69.635225};
+			var mgLatLng_002 = {lat: 44.553167, lng: -69.634346};
+		
+			var gdLatLng_001 = {lat: 44.556345, lng: -69.654988};
+			var gdLatLng_002 = {lat: 44.557197, lng: -69.657624};
+			var gdLatLng_003 = {lat: 44.557434, lng: -69.658141};
+			var gdLatLng_004 = {lat: 44.557957, lng: -69.658622};
+			var gdLatLng_005 = {lat: 44.561336, lng: -69.660115};
+			var gdLatLng_006 = {lat: 44.561908, lng: -69.660352};
+			var gdLatLng_007 = {lat: 44.561983, lng: -69.659704};
+			var gdLatLng_008 = {lat: 44.562064, lng: -69.659634};
 
-        var ddLatLng_001 = {lat: 44.562267, lng: -69.659589};
-        var ddLatLng_002 = {lat: 44.562118, lng: -69.659593};
-        var ddLatLng_003 = {lat: 44.561975, lng: -69.659549};
-        var ddLatLng_004 = {lat: 44.561865, lng: -69.660306};
-        var ddLatLng_005 = {lat: 44.562531, lng: -69.660461};
-        var ddLatLng_006 = {lat: 44.562982, lng: -69.660462};
-        var ddLatLng_007 = {lat: 44.563372, lng: -69.660422};
-        var ddLatLng_008 = {lat: 44.564047, lng: -69.660254};
-        var ddLatLng_009 = {lat: 44.564460, lng: -69.660065};
-        var ddLatLng_010 = {lat: 44.565225, lng: -69.659534};
-        var ddLatLng_011 = {lat: 44.564955, lng: -69.659012};
-        var ddLatLng_012 = {lat: 44.564701, lng: -69.658627};
-        var ddLatLng_013 = {lat: 44.564518, lng: -69.658531};
+			var ddLatLng_001 = {lat: 44.562267, lng: -69.659589};
+			var ddLatLng_002 = {lat: 44.562118, lng: -69.659593};
+			var ddLatLng_003 = {lat: 44.561975, lng: -69.659549};
+			var ddLatLng_004 = {lat: 44.561865, lng: -69.660306};
+			var ddLatLng_005 = {lat: 44.562531, lng: -69.660461};
+			var ddLatLng_006 = {lat: 44.562982, lng: -69.660462};
+			var ddLatLng_007 = {lat: 44.563372, lng: -69.660422};
+			var ddLatLng_008 = {lat: 44.564047, lng: -69.660254};
+			var ddLatLng_009 = {lat: 44.564460, lng: -69.660065};
+			var ddLatLng_010 = {lat: 44.565225, lng: -69.659534};
+			var ddLatLng_011 = {lat: 44.564955, lng: -69.659012};
+			var ddLatLng_012 = {lat: 44.564701, lng: -69.658627};
+			var ddLatLng_013 = {lat: 44.564518, lng: -69.658531};
 
-        //DG ROUTE IS NOT CERTIAN, MAY BE CHANGED IF ROUTE DIFFERES FROM ASSUMEND ROUTE
-        var dgLatLng_001 = {lat: 44.562064, lng: -69.659634};
-        var dgLatLng_002 = {lat: 44.561983, lng: -69.659704};
-        var dgLatLng_003 = {lat: 44.561908, lng: -69.660352};
-        var dgLatLng_004 = {lat: 44.561336, lng: -69.660115};
-        var dgLatLng_005 = {lat: 44.557957, lng: -69.658622};
-        var dgLatLng_006 = {lat: 44.557434, lng: -69.658141};
-        var dgLatLng_007 = {lat: 44.557197, lng: -69.657624};
-        var dgLatLng_008 = {lat: 44.556345, lng: -69.654988};
-
-       
+			//DG ROUTE IS NOT CERTIAN, MAY BE CHANGED IF ROUTE DIFFERES FROM ASSUMEND ROUTE
+			var dgLatLng_001 = {lat: 44.562064, lng: -69.659634};
+			var dgLatLng_002 = {lat: 44.561983, lng: -69.659704};
+			var dgLatLng_003 = {lat: 44.561908, lng: -69.660352};
+			var dgLatLng_004 = {lat: 44.561336, lng: -69.660115};
+			var dgLatLng_005 = {lat: 44.557957, lng: -69.658622};
+			var dgLatLng_006 = {lat: 44.557434, lng: -69.658141};
+			var dgLatLng_007 = {lat: 44.557197, lng: -69.657624};
+			var dgLatLng_008 = {lat: 44.556345, lng: -69.654988};
         
-
-
-        
-        var shuttleCoords = [
-            mainStLatLng,
-            mgLatLng_001,
-            mgLatLng_002,
-            gilmanStLatLng,
-            gdLatLng_001,
-            gdLatLng_002,
-            gdLatLng_003,
-            gdLatLng_004,
-            gdLatLng_005,
-            gdLatLng_006,
-            gdLatLng_007,
-            gdLatLng_008,
-            diamondLatLng,            
-            ddLatLng_001,
-            ddLatLng_002,
-            ddLatLng_003,
-            ddLatLng_004,
-            ddLatLng_005,
-            ddLatLng_006,
-            ddLatLng_007,
-            ddLatLng_008,
-            ddLatLng_009,
-            ddLatLng_010,
-            ddLatLng_011,
-            ddLatLng_012,
-            ddLatLng_013,
-            davisLatLng,
-            ddLatLng_013,
-            ddLatLng_012,
-            ddLatLng_011,
-            ddLatLng_010,
-            ddLatLng_009,
-            ddLatLng_008,
-            ddLatLng_007,
-            ddLatLng_006,
-            ddLatLng_005,
-            dgLatLng_003,
-            dgLatLng_004,
-            dgLatLng_005,
-            dgLatLng_006,
-            dgLatLng_007,
-            dgLatLng_008,
-            gilmanStLatLng,
-            mgLatLng_002,
-            mgLatLng_001,
-            mainStLatLng
-        ];
-        
-        var shuttlePath = new google.maps.Polyline({
-            path: shuttleCoords,
-            icons: [{
-                icon: shuttleSymbol,
-                offset: '100%'
-            }],
-            geodesic: true,
-            strokeColor: '#00FF00',
-            strokeOpacity: 0.5,
-            strokeWeight: 5
-        });
-        
-        shuttlePath.setMap(map);
-        
-        /* Only display the shuttle if it's a weekday, and it's during operation time
-           (7:45 am -- 6:00 pm) 
-           Test code:
-        var d = new Date(2017, 10, 22, 7, 44, 59, 0);
-        window.alert(d);*/
-        var d = new Date();
-        if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() >= 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
-        } else {
-	        animateCircle(shuttlePath);
-        }
+			var shuttleCoords = [
+				mainStLatLng,
+				mgLatLng_001,
+				mgLatLng_002,
+				gilmanStLatLng,
+				gdLatLng_001,
+				gdLatLng_002,
+				gdLatLng_003,
+				gdLatLng_004,
+				gdLatLng_005,
+				gdLatLng_006,
+				gdLatLng_007,
+				gdLatLng_008,
+				diamondLatLng,            
+				ddLatLng_001,
+				ddLatLng_002,
+				ddLatLng_003,
+				ddLatLng_004,
+				ddLatLng_005,
+				ddLatLng_006,
+				ddLatLng_007,
+				ddLatLng_008,
+				ddLatLng_009,
+				ddLatLng_010,
+				ddLatLng_011,
+				ddLatLng_012,
+				ddLatLng_013,
+				davisLatLng,
+				ddLatLng_013,
+				ddLatLng_012,
+				ddLatLng_011,
+				ddLatLng_010,
+				ddLatLng_009,
+				ddLatLng_008,
+				ddLatLng_007,
+				ddLatLng_006,
+				ddLatLng_005,
+				dgLatLng_003,
+				dgLatLng_004,
+				dgLatLng_005,
+				dgLatLng_006,
+				dgLatLng_007,
+				dgLatLng_008,
+				gilmanStLatLng,
+				mgLatLng_002,
+				mgLatLng_001,
+				mainStLatLng
+			];
+		
+			var shuttlePath = new google.maps.Polyline({
+				path: shuttleCoords,
+				icons: [{
+					icon: shuttleSymbol,
+					offset: '100%'
+				}],
+				geodesic: true,
+				strokeColor: '#00FF00',
+				strokeOpacity: 0.5,
+				strokeWeight: 5
+			});
+		
+			shuttlePath.setMap(map);
+		
+			/* Only display the shuttle if it's a weekday, and it's during operation time
+			   (7:45 am -- 6:00 pm) 
+			   Test code:
+			var d = new Date(2017, 10, 22, 7, 44, 59, 0);
+			window.alert(d);*/
+			var d = new Date();
+			if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() >= 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
+			} else {
+				animateCircle(shuttlePath);
+			}
       
-      }
-
       
+			function addUserLocationMarker() {
+				if (geoLocationFunctionOn == 1) {
+					//document.getElementById('Links').innerHTML += "Alright sugarcube. ";
+					var userLocationMarker = new google.maps.Marker({
+						position: new google.maps.LatLng(userLat, userLng),
+						map: map
+					});
+					userLocationMarker.setMap(map);
+					//alert("I'm still alive"+userLat+" "+userLng);
+				} else if (geoLocationFunctionOn == 0) {
+					setTimeout(addUserLocationMarker, 500);
+					//document.getElementById('Links').innerHTML += "Still hasn't decided yet?<br>";
+				} else {
+					//document.getElementById('Links').innerHTML += "Jesus Christ how terrifying ";
+				}
+			}
+			addUserLocationMarker();
+    	}  
+    	
 		// animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
 		// To change speed: mess up with the var "speed" and "200" in the last few lines.
 		function animateCircle(line) {
