@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>STARRS for Colby</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      /* Ref: https://stackoverflow.com/questions/953918/how-to-align-a-div-to-the-middle-horizontally-width-of-the-page */
-      #map {
-        height: 50%;
-        width: 50%;
-        position: absolute;
-        top: 10%;
-        left: 25%;
-        background-color: grey;
-      }
-      
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      
-      #Links {
-      	position: relative;
-      	top: 60%;
-      	left: 25%;
-      }
-      
-      #getLocation {
-      	position: fixed;
-      	bottom: 5px;
-      }
-    </style>
-  </head>
-  <body>
+  	<head>
+		<title>STARRS for Colby</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+		<style>
+			/* Always set the map height explicitly to define the size of the div
+			 * element that contains the map. */
+			/* Ref: https://stackoverflow.com/questions/953918/how-to-align-a-div-to-the-middle-horizontally-width-of-the-page */
+			#map {
+				height: 50%;
+				width: 50%;
+				position: absolute;
+				top: 10%;
+				left: 25%;
+				background-color: grey;
+			}
+	  
+			/* Optional: Makes the sample page fill the window. */
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+	  
+			#LocationEstimation {
+				position: relative;
+				top: 55%;
+				left: 25%;
+			}
+	  
+			#Links {
+				position: relative;
+				top: 57%;
+				left: 25%;
+			}
+	  
+			#getLocation {
+				position: fixed;
+				bottom: 5px;
+			}
+		</style>
+  	</head>
+  	<body>
 
     <div id="header">
     <a href="https://www.colby.edu/">
@@ -48,99 +54,110 @@
     Things.
     </div>
     <script>
-    /*window.alert("Getting location");*/
-    window.onload = getPosition;
-    var x = document.getElementById("getLocation");
-    function getPosition() {
-    	if (navigator.geolocation) {
-        	navigator.geolocation.getCurrentPosition(showPosition);
-      		x.innerHTML = "Wait a second...";
-        } else {
-            x.innerHTML = "Location service unavailable.";
-        }
-    }
-    function showPosition(position) {
-      	var lat = position.coords.latitude;
-      	var lng = position.coords.longitude;
-      	x.innerHTML = "You are at " + lat + ", " + lng;
-    }
+		var geoLocationFunctionOn = 0;
+		var userLat = 44.556;
+		var userLng = -69.646;
+		window.onload = getPosition;
+		var x = document.getElementById("getLocation");
+		function getPosition() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, function(error) {
+					if (error.code == error.PERMISSION_DENIED) {
+						geoLocationFunctionOn = -1;
+						x.innerHTML = "Location service unavailable.";
+					}
+				});
+				x.innerHTML = "Wait a second...";
+			} else {
+				x.innerHTML = "Location service unavailable.";
+				geoLocationFunctionOn = -1;
+			}
+		}
+		function showPosition(position) {
+			userLat = position.coords.latitude;
+			userLng = position.coords.longitude;
+			x.innerHTML = "You are at " + userLat + ", " + userLng;
+			geoLocationFunctionOn = 1;
+		}
     </script>
     
     <div id="map"></div>
     <script>
-      var map;
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat:44.556, lng:-69.646},
-          zoom: 14
-        });
+		var map;
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+			  center: {lat:44.556, lng:-69.646},
+			  zoom: 14
+			});
 
-        var mainStString = '<div>173 Main St. & Appleton St.</div>';
-        var gilmanStString = '<div>Gilman St.</div>';
-        var diamondString = '<div>Diamond building</div>';
-        var davisString = '<div>Davis Science Building</div>';
-        
-        var mainStWindow = new google.maps.InfoWindow({
-            content: mainStString
-        });
-        
-        var gilmanStWindow = new google.maps.InfoWindow({
-            content: gilmanStString
-        });
-        
-        var diamondWindow = new google.maps.InfoWindow({
-            content: diamondString
-        });
-        
-        var davisWindow = new google.maps.InfoWindow({
-            content: davisString
-        });
-        
-        var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-        var imageAnchorPt = new google.maps.Point(10, 10);
-        
-        var mainStLatLng = {lat: 44.550999, lng: -69.632022};
-        var gilmanStLatLng = {lat: 44.553614, lng: -69.637182};
-        var diamondLatLng = {lat: 44.562241, lng: -69.659671};
-        var davisLatLng = {lat: 44.564428, lng: -69.658850};
-        
-        var markerIcon = {
-            url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            labelOrigin: imageAnchorPt
-        };
-        
-        var mainStMarker = new google.maps.Marker({
-            position: mainStLatLng,
-            map: map,
-            icon: markerIcon,
-            label: {
-                text: 'M',
-                color: '#0000FF',
-                fontWeight: 'bold'
-            }
-        });
+			var mainStString = '<div>173 Main St. & Appleton St.</div>';
+			var gilmanStString = '<div>Gilman St.</div>';
+			var diamondString = '<div>Diamond building</div>';
+			var davisString = '<div>Davis Science Building</div>';
+	
+			var mainStWindow = new google.maps.InfoWindow({
+				content: mainStString
+			});
+	
+			var gilmanStWindow = new google.maps.InfoWindow({
+				content: gilmanStString
+			});
+	
+			var diamondWindow = new google.maps.InfoWindow({
+				content: diamondString
+			});
+	
+			var davisWindow = new google.maps.InfoWindow({
+				content: davisString
+			});
+	
+			var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+			var imageAnchorPt = new google.maps.Point(10, 10);
+	
+			var mainStLatLng = {lat: 44.550999, lng: -69.632022};
+			var gilmanStLatLng = {lat: 44.553614, lng: -69.637182};
+			var diamondLatLng = {lat: 44.562241, lng: -69.659671};
+			var davisLatLng = {lat: 44.564428, lng: -69.658850};
+	
+	
+			var markerIcon = {
+				url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+				labelOrigin: imageAnchorPt
+			};
+	
+			var mainStMarker = new google.maps.Marker({
+				position: mainStLatLng,
+				map: map,
+				icon: markerIcon,
+				label: {
+					text: 'M',
+					color: '#0000FF',
+					fontWeight: 'bold'
+				}
+			});
 
-        var gilmanStMarker = new google.maps.Marker({
-          position: gilmanStLatLng,
-          map: map,
-            icon: markerIcon,
-            label: {
-                text: 'G',
-                color: '#0000FF',
-                fontWeight: 'bold'
-            }
-        });
+			var gilmanStMarker = new google.maps.Marker({
+			  position: gilmanStLatLng,
+			  map: map,
+				icon: markerIcon,
+				label: {
+					text: 'G',
+					color: '#0000FF',
+					fontWeight: 'bold'
+				}
+			});
 
-        var diamondStMarker = new google.maps.Marker({
-          position: diamondLatLng,
-          map: map,
-            icon: markerIcon,
-            label: {
-                text: 'D',
-                color: '#0000FF',
-                fontWeight: 'bold'
-            }
-        });
+			var diamondStMarker = new google.maps.Marker({
+			  position: diamondLatLng,
+			  map: map,
+				icon: markerIcon,
+				label: {
+					text: 'D',
+					color: '#0000FF',
+					fontWeight: 'bold'
+				}
+			});
+
 
         var davisStMarker = new google.maps.Marker({
           position: davisLatLng,
@@ -295,23 +312,74 @@
         }
       
       }
+
       
-      // animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
-      // To change speed: mess up with the var "speed" and "200" in the last few lines.
-      function animateCircle(line) {
-      	var count = 0;
-      	var speed = 5;
-      	window.setInterval(function() {
-      	    count = (count+1)%(speed*100);
-      	    
-      	    var icons = line.get('icons');
-      	    icons[0].offset = (count/speed) + '%';
-      	    line.set('icons', icons);
-      	}, 200);
-      }
+		// animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
+		// To change speed: mess up with the var "speed" and "200" in the last few lines.
+		function animateCircle(line) {
+			var count = 0;
+			var speed = 5;
+			window.setInterval(function() {
+				count = (count+1)%(speed*100);
+			
+				var icons = line.get('icons');
+				icons[0].offset = (count/speed) + '%';
+				line.set('icons', icons);
+			}, 200);
+		}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
     async defer></script>
+    
+    <div id="LocationEstimation">
+    </div>
+    <script>
+    function updateEstimation() {
+    	//var day = new Date(2017, 11, 10, 16, 47, 30, 0);
+    	var day = new Date();
+    	if (day.getDay() == 0 || day.getDay() == 6) {
+    		document.getElementById("LocationEstimation").innerHTML = "Shuttle is not operating today.";
+    	} else if ( day.getHours() < 7 || day.getHours() >= 18 || (day.getHours() == 7 && day.getMinutes() < 45) ) {
+    		document.getElementById("LocationEstimation").innerHTML = "Shuttle is not operating right now.";
+    	} else {
+    		document.getElementById("LocationEstimation").innerHTML = findNextStop(day);
+    	}
+    }
+    
+    function findNextStop(day) {
+    	var minutes_lapsed = day.getMinutes() % 30;
+    	switch(true) {
+    		case minutes_lapsed == 0:
+    			return "Shuttle has arrived at Davis\
+						and wil depart for 173 Main and Appleton St. soon.";
+    		case minutes_lapsed == 15:
+    			return "Shuttle has arrived at 173 Main and Appleton St.\
+						and wil depart for 21 Gilman St. soon.";
+    		case minutes_lapsed == 22:
+    			return "Shuttle has arrived at 21 Gilman St.\
+						and wil depart for Diamond soon.";
+    		case minutes_lapsed == 27:
+    			return "Shuttle has arrived at Diamond\
+						and wil depart for Davis soon.";
+    		case minutes_lapsed < 15:
+    			return "Shuttle is heading for 173 Main and Appleton St.\
+						and will arrive in "+ (15-minutes_lapsed) +" minutes.";
+    		case minutes_lapsed < 22:
+    			return "Shuttle is heading for 21 Gilman St.\
+						and will arrive in "+ (22-minutes_lapsed) +" minutes.";
+    		case minutes_lapsed < 27:
+    			return "Shuttle is heading for Diamond\
+						and will arrive in "+ (27-minutes_lapsed) +" minutes.";
+    		case minutes_lapsed < 30:
+    			return "Shuttle is heading for Davis\
+						and will arrive in "+ (30-minutes_lapsed) +" minutes.";
+    	}
+    }
+    
+    updateEstimation();
+    setInterval( updateEstimation, 10000 );
+    //setInterval( addUserLocationMarker, 5000 );
+    </script>
     
     <div id="Links">
     <a href="http://htmlpreview.github.io/?https://github.com/WillGross/STARRS/blob/master/jitney%20table.html"
