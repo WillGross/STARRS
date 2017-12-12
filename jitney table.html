@@ -1,43 +1,48 @@
+<!-- This creates a web page that shows the jitney operating hours
+     and jitney driver schedule, it also allows users making jitney 
+     pick up request -->
+
 <html>
 <body bgcolor="#E6E6FA">
 <h1>Colby College Jitney</h1>
 </body>
 </html>
 
-
+<!--Create a table that shows jitney operating hours from Monday to Sunday -->
 <b>Colby College Jitney Operating Hours</b><br><br>
 
 <table style="width:50%">
+  <!-- Monday schedule -->
   <tr>
     <td>Monday</td>
     <td>2:00pm - 12:00am</td> 
   </tr>
-
+  <!-- Tuesday schedule -->
   <tr>
     <td>Tuesday</td>
     <td>2:00pm - 12:00am</td> 
   </tr>
-
+  <!-- Wednesday schedule -->
   <tr>
     <td>Wednesday</td>
     <td>2:00pm - 12:00am</td> 
   </tr>
-
+  <!-- Thursday schedule -->
   <tr>
     <td>Thursday</td>
     <td>2:00pm - 2:00am</td> 
   </tr>
-
+  <!-- Friday schedule -->
   <tr>
     <td>Friday</td>
     <td>2:00pm - 2:00am</td> 
   </tr>
-
+  <!-- Saturday schedule -->
   <tr>
     <td>Saturday</td>
     <td>2:00pm - 2:00am</td> 
   </tr>
-
+  <!-- Sunday schedule -->
   <tr>
     <td>Sunday</td>
     <td>2:00pm - 12:00am</td> 
@@ -46,6 +51,8 @@
 </table>
 
 <br><br>
+
+<!--Special jitney hours to Annex -->
 <b>Jitney to Annex</b><br><br>
 
 <table style="width:50%">
@@ -58,32 +65,34 @@
 </table>
 
 
-
-
 <br><br>
+<!-- Shows jitney drivers time shift 
+     Right now, it creates a link to the Jitney Schedule page-->
 <b>Jitney drivers time shift</b><br>
-<small> *See Jitney Schedule </small>
+<A HREF = "file:///Users/zilinchen/Desktop/Zilin's%20397%20project/STARRS/JitneySchedule.html">Jitney Schedule</A>
 <br><br>
 
 
-
+<!-- Create a form that allows user to enter pick up information-->
 <br><br>
 <b>Make a request</b><br>
 <br>  
-<form name="myForm" action="forminfo.php" onsubmit="return validateForm()" method="post"> 
+<form name="myForm" action="forminfo.php" onsubmit="return validateForm()" method="post"> <!-- The form inputs will be stored in forminfo.php-->
 Nickname: 
 <input type='text' name ='nickname'/><br> 
 People#: 
 <input type="text" name="people"> <br>
 Address: 
 <input type="text" name="address"> <br>
-<input type="submit" name="submit" value="Submit" /> 
+<input type="submit" name="submit" value="Submit" /> <!--Once the submit button is clicked, the validateForm() function is called -->
   
 </form>  
   
 
+<!--Check the validaty of the information entered in the form -->
 <script>  
 function validateForm() {
+    // store inputs to variables
     var name = document.forms["myForm"]["nickname"].value;
     var people = document.forms["myForm"]["people"].value;
     var address = document.forms["myForm"]["address"].value;
@@ -113,8 +122,8 @@ function validateForm() {
     }
 
 
-    //confirm information
-    if (confirmInfo(name, address)) {
+    //confirm/cancel information
+    if (confirmPickUp(name, address)) {
       return true;
     } else {
       return false;
@@ -123,13 +132,15 @@ function validateForm() {
 }
 
 
+//function for testing special characters
 function testSpecialCharacter(string){
     var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
     if (format.test(string)){ return true; }
     else { return false;}  
 }
 
-function confirmInfo(name,address){
+//create ok-cancel alert to confirm/cancel pick up request
+function confirmPickUp(name,address){
   var message = name + " is going to be picked up at " + address;
   if (confirm(message) == true){
     return true;
@@ -141,5 +152,5 @@ function confirmInfo(name,address){
 </script>
 
 
-
+<!--Security's phone number-->
 <br><small> *Contact Security: 207-859-4000</small>
