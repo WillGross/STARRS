@@ -1,156 +1,147 @@
-<!-- This creates a web page that shows the jitney operating hours
+<!DOCTYPE html>
+<!-- This file creates a web page that shows the jitney operating hours
      and jitney driver schedule, it also allows users making jitney 
      pick up request -->
 
 <html>
-<body bgcolor="#E6E6FA">
-<h1>Colby College Jitney</h1>
-</body>
+	<body bgcolor="#E6E6FA">
+		<h1>Colby College Jitney</h1>
+	</body>
 </html>
 
 <!--Create a table that shows jitney operating hours from Monday to Sunday -->
 <b>Colby College Jitney Operating Hours</b><br><br>
 
-<table style="width:50%">
-  <!-- Monday schedule -->
-  <tr>
-    <td>Monday</td>
-    <td>2:00pm - 12:00am</td> 
-  </tr>
-  <!-- Tuesday schedule -->
-  <tr>
-    <td>Tuesday</td>
-    <td>2:00pm - 12:00am</td> 
-  </tr>
-  <!-- Wednesday schedule -->
-  <tr>
-    <td>Wednesday</td>
-    <td>2:00pm - 12:00am</td> 
-  </tr>
-  <!-- Thursday schedule -->
-  <tr>
-    <td>Thursday</td>
-    <td>2:00pm - 2:00am</td> 
-  </tr>
-  <!-- Friday schedule -->
-  <tr>
-    <td>Friday</td>
-    <td>2:00pm - 2:00am</td> 
-  </tr>
-  <!-- Saturday schedule -->
-  <tr>
-    <td>Saturday</td>
-    <td>2:00pm - 2:00am</td> 
-  </tr>
-  <!-- Sunday schedule -->
-  <tr>
-    <td>Sunday</td>
-    <td>2:00pm - 12:00am</td> 
-  </tr>
+<table style="width:50%" id="JitneyHours">
+	<tr>
+		<td>Monday</td>
+		<td>2:00pm - 12:00am</td> 
+	</tr>
+	<tr>
+		<td>Tuesday</td>
+		<td>2:00pm - 12:00am</td> 
+	</tr>
+	<tr>
+		<td>Wednesday</td>
+		<td>2:00pm - 12:00am</td> 
+	</tr>
+	<tr>
+		<td>Thursday</td>
+		<td>2:00pm - 2:00am</td> 
+	</tr>
+	<tr>
+		<td>Friday</td>
+		<td>2:00pm - 2:00am</td> 
+	</tr>
+	<tr>
+		<td>Saturday</td>
+		<td>2:00pm - 2:00am</td> 
+	</tr>
+	<tr>
+		<td>Sunday</td>
+		<td>2:00pm - 12:00am</td> 
+	</tr>
+</table><br><br>
 
-</table>
+<!--Create a table that shows the special jitney hours to Annex -->
+<b>Jitney to Annex <em>(currently not operating)</em></b><br><br>
 
-<br><br>
-
-<!--Special jitney hours to Annex -->
-<b>Jitney to Annex</b><br><br>
-
-<table style="width:50%">
-  <tr>
-    <td>Monday to Friday</td>
-    <td>10:00am - 4:00pm</td> 
-  </tr>
-
-  
+<table style="width:50%" id="AnnexHours">
+	<tr>
+		<td>Monday to Friday</td>
+		<td>10:00am - 4:00pm</td> 
+	</tr>
 </table>
 
 
 <br><br>
-<!-- Shows jitney drivers time shift 
-     Right now, it creates a link to the Jitney Schedule page-->
+<!-- Shows Jitney drivers' time shift information.
+     Right now, it creates a link to the Jitney Schedule page -->
 <b>Jitney drivers time shift</b><br>
-<A HREF = "file:///Users/zilinchen/Desktop/Zilin's%20397%20project/STARRS/JitneySchedule.html">Jitney Schedule</A>
+<A HREF = "http://htmlpreview.github.io/?https://github.com/WillGross/STARRS/blob/master/JitneySchedule.html">Jitney Schedule</A>
 <br><br>
 
 
-<!-- Create a form that allows user to enter pick up information-->
+<!-- Create a form that allows user to enter pick up information -->
 <br><br>
 <b>Make a request</b><br>
-<br>  
-<form name="myForm" action="forminfo.php" onsubmit="return validateForm()" method="post"> <!-- The form inputs will be stored in forminfo.php-->
-Nickname: 
-<input type='text' name ='nickname'/><br> 
-People#: 
-<input type="text" name="people"> <br>
-Address: 
-<input type="text" name="address"> <br>
-<input type="submit" name="submit" value="Submit" /> <!--Once the submit button is clicked, the validateForm() function is called -->
-  
+<br>
+<!-- The form inputs will be stored in forminfo.php.
+	 Once the submit button is clicked, the validateForm() function is called -->
+<form name="myForm" action="forminfo.php" onsubmit="return validateForm()" method="post">
+	Nickname: 
+	<input type='text' name ='nickname'/><br> 
+	People#: 
+	<input type="text" name="people"> <br>
+	Address: 
+	<input type="text" name="address"> <br>
+	<input type="submit" name="submit" value="Submit" />
 </form>  
   
 
 <!--Check the validaty of the information entered in the form -->
 <script>  
-function validateForm() {
-    // store inputs to variables
-    var name = document.forms["myForm"]["nickname"].value;
-    var people = document.forms["myForm"]["people"].value;
-    var address = document.forms["myForm"]["address"].value;
-    
-    // test for empty blank
-    if (name == "" || people == "" || address == ""){
-      alert("You must fill all information");
-      return false;
-    }
+	function validateForm() {
+		// store inputs to variables
+		var name = document.forms["myForm"]["nickname"].value;
+		var people = document.forms["myForm"]["people"].value;
+		var address = document.forms["myForm"]["address"].value;
+	
+		// test for empty blank
+		if (name == "" || people == "" || address == ""){
+			alert("You must fill all information");
+			return false;
+		}
 
-    //test for special characters in Nickname
-    if (testSpecialCharacter(name)){
-      alert("Invalid character in Name");
-      return false;
-    }
+		//test for special characters in Nickname
+		if (testSpecialCharacter(name)){
+			alert("Invalid character in Name");
+			return false;
+		}
 
-    //test for numerical value in #People
-    if (isNaN(people)){
-      alert("Please enter a valid number for #People");
-      return false;
-    }
+		//test for numerical value in #People
+		if (isNaN(people)){
+			alert("Please enter a valid number for #People");
+			return false;
+		}
 
-    //test for special characters in Address
-    if (testSpecialCharacter(address)){
-      alert("Invalid character in Address");
-      return false;
-    }
-
-
-    //confirm/cancel information
-    if (confirmPickUp(name, address)) {
-      return true;
-    } else {
-      return false;
-    }
-
-}
+		//test for special characters in Address
+		if (testSpecialCharacter(address)){
+			alert("Invalid character in Address");
+			return false;
+		}
 
 
-//function for testing special characters
-function testSpecialCharacter(string){
-    var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
-    if (format.test(string)){ return true; }
-    else { return false;}  
-}
-
-//create ok-cancel alert to confirm/cancel pick up request
-function confirmPickUp(name,address){
-  var message = name + " is going to be picked up at " + address;
-  if (confirm(message) == true){
-    return true;
-  } else { 
-    return false; }
-}
+		//confirm/cancel information
+		if (confirmPickUp(name, address)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
+	// function for testing special characters
+	function testSpecialCharacter(string){
+		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,<>\/?]+/;
+		if (format.test(string)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	//create ok-cancel alert to confirm/cancel pick up request
+	function confirmPickUp(name,address){
+		var message = name + " is going to be picked up at " + address;
+		if (confirm(message) == true) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
 </script>
 
 
-<!--Security's phone number-->
+<!--Add Security's phone number to the page-->
 <br><small> *Contact Security: 207-859-4000</small>
