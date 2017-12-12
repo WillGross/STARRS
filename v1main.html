@@ -49,14 +49,19 @@
     <image src="https://alumni.colby.edu/s/1470/images/editor/original/colby.jpg" 
     ALT="Colby Banner" width=100% height=50 ></a></div>
     
-    <!--Testing getting location-->
+    <!-- Tries to obtain geolocation of user.
+    	 Stores the location in userLat and userLng;
+    	 Stores if it obtained the location successfully in geoLocationFunctionOn
+    	 	(0 if no response, 1 if successfully, -1 if failed).
+    Code source: http://www.spiceforms.com/blog/use-html5-geolocation-api-detailed-tutorial/ -->
     <div id="getLocation">
-    Things.
     </div>
     <script>
 		var geoLocationFunctionOn = 0;
+		// Default location
 		var userLat = 44.556;
 		var userLng = -69.646;
+		// Try to obtain user location once the page starts loading
 		window.onload = getPosition;
 		var x = document.getElementById("getLocation");
 		function getPosition() {
@@ -73,6 +78,7 @@
 				geoLocationFunctionOn = -1;
 			}
 		}
+		// Records the position into the global variables.
 		function showPosition(position) {
 			userLat = position.coords.latitude;
 			userLng = position.coords.longitude;
@@ -89,8 +95,10 @@
 		 * map-related into this method, making it smell.
 		 */
 		function initMap() {
+			var userLocation = new google.maps.LatLng(userLat, userLng);
+			
 			var map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat:44.556, lng:-69.646},
+			  center: userLocation,
 			  zoom: 14
 			});
 	
@@ -215,35 +223,38 @@
       		
 			function addUserLocationMarker() {
 				if (geoLocationFunctionOn == 1) {
-					//document.getElementById('Links').innerHTML += "Alright sugarcube. ";
+					// If the user allows access to location, update the userLocation,
+					// and add a marker for the location on the map.
+					userLocation = new google.maps.LatLng(userLat, userLng);
 					var userLocationMarker = new google.maps.Marker({
-						position: new google.maps.LatLng(userLat, userLng),
+						position: userLocation,
 						map: map
 					});
 					userLocationMarker.setMap(map);
-					//alert("I'm still alive"+userLat+" "+userLng);
 				} else if (geoLocationFunctionOn == 0) {
+					// Keep calling this method until the user allows or blocks the
+					// the access to the current location
 					setTimeout(addUserLocationMarker, 500);
-					//document.getElementById('Links').innerHTML += "Still hasn't decided yet?<br>";
-				} else {
-					//document.getElementById('Links').innerHTML += "Jesus Christ how terrifying ";
 				}
 			}
+			
 			addUserLocationMarker();
     	}  
     	
-		// animation function copied from https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
-		// To change speed: mess up with the var "speed" and "200" in the last few lines.
+    	// Animates the marker for the shuttle along the predefined route.
+		// To change speed: adjust speedOfMarker and markerUpdateIntervalMS
+		// Source: https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-animate
 		function animateCircle(line) {
-			var count = 0;
-			var speed = 30;
+			var updateTimeCount = 0;
+			var speedOfMarker = 30;
+			var markerUpdateIntervalMS = 200;
 			window.setInterval(function() {
-				count = (count+1)%(speed*100);
+				updateTimeCount = (updateTimeCount+1)%(speedOfMarker*100);
 			
 				var icons = line.get('icons');
-				icons[0].offset = (count/speed) + '%';
+				icons[0].offset = (updateTimeCount/speedOfMarker) + '%';
 				line.set('icons', icons);
-			}, 200);
+			}, markerUpdateIntervalMS);
 		}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
@@ -253,7 +264,8 @@
     </div>
     <script>
     function updateEstimation() {
-    	//var day = new Date(2017, 11, 10, 16, 47, 30, 0);
+    	// Test code: (Test the test case suite 2 by modifying the date)
+    	// var day = new Date(2017, 11, 10, 16, 47, 30, 0);
     	var day = new Date();
     	if (day.getDay() == 0 || day.getDay() == 6) {
     		document.getElementById("LocationEstimation").innerHTML = "Shuttle is not operating today.";
@@ -296,7 +308,6 @@
     
     updateEstimation();
     setInterval( updateEstimation, 10000 );
-    //setInterval( addUserLocationMarker, 5000 );
     </script>
     
     <div id="Links">
