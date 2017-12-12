@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Jitney Time Schedule</title>
         <style>
-        /* Changes color for all <h6> elements */
         #ScheduleTable {
         	width: 100%;
         	border-top: 10px;
@@ -16,45 +15,13 @@
     <body>
     <script>
     /*
-    alert("Testing");
-	var fileDisplayArea = document.getElementById('ScheduleTable');
-	
-	function processRequest ()
-		{
-			if(rawFile.readyState == 4)
-			{
-				if(rawFile.status == 200 || rawFile.status == 0)
-				{
-					alert("Status checked");
-					var allText = rawFile.responseText;
-					alert(allText);
-					fileDisplayArea.innerText = allText 
-				} else {
-					alert("Status not good");
-				}
-			} else {
-				alert(rawFile.readyState+"");
-			}
-		}
-	
-	function readTextFile(file)
-	{
-		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", file, false);
-		alert("File acquired");
-		rawFile.onreadystatechange = processRequest;
-		alert("Still alive");
-		rawFile.onreadystatechange();
-		rawFile.send(null);
-	}
-
-	readTextFile("https://github.com/WillGross/STARRS/blob/master/driver_shift_file.txt");
-	
-	*/
+     * The following two methods and 3 lines pertaining xmlHttpRequest are responsible
+     * for reading in the sample TXT file that contains information on shifts.
+	 */
 	// Code source: https://stackoverflow.com/questions/3094997/ajax-readystate-always-1
 	var xmlHttpRequest = init();
 	var fileContent;
-
+	/* Initializes the request for accessing the sample TxT file on GitHub	*/
 	function init(){
 		if (window.XMLHttpRequest) {
 			//alert("init successful");
@@ -65,67 +32,29 @@
 			alert("Your browser does not support AJAX!");
 		}
 	}
-	  
-	function processRequest(){
-		//alert("process request called with " + xmlHttpRequest);
-		if (xmlHttpRequest.readyState==4) {
+	
+	/* Checks if the TXT file is ready for use	*/
+	function processRequest() {
+		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200 || xmlHttpRequest.status == 0) {
 				fileContent = xmlHttpRequest.responseText;
-				//alert(fileContent);
 			}
-		} else {
-			//alert("process request no luck readyState = " + xmlHttpRequest.readyState);
 		}
-		//alert("process request exiting");
-		//alert("status = " + xmlHttpRequest.status);
 	}
+	
 	xmlHttpRequest.open("GET", "https://raw.githubusercontent.com/WillGross/STARRS/master/driver_shift_file.txt", false); 
 	xmlHttpRequest.onreadystatechange = processRequest; 
 	xmlHttpRequest.send(null);
-	//alert(fileContent);
 	</script>
     
     
     <script>
     /*
-    var fileReader = new FileReader();
-    fileReader.onload = function(e) {
-    	//var fileContent = fileReader.result;
-    	var output = e.target.result;
-    	window.alert(output);
-    }
-    fileReader.readAsText('driver_shift_file.txt');
-    //var fileContent = e.target.result;
-    */
-    /*var fileContent;
-    var fs = require("fs");
-    fs.readFile("driver_shift_file.txt", function(text) {
-    	document.body.innerHTML += text;
-    	fileContent = test;
-    });
-    
-    function readTextFile(file)
-	{
-		var rawFile = new XMLHttpRequest();
-		rawFile.open("GET", file, false);
-		rawFile.onreadystatechange = function ()
-		{
-			if(rawFile.readyState === 4)
-			{
-				if(rawFile.status === 200 || rawFile.status == 0)
-				{
-					var allText = rawFile.responseText;
-					window.alert(allText);
-				}
-			}
-		}
-		rawFile.send(null);
-	}
-	readTextFile('file:///Users/zhzhang/Documents/CS397/STARRS/driver_shift_file.txt');
-    */
-    
-    //var data = "1234567";
+     * Takes in the data read from the sample TXT file, assuming that the file content
+     * matches the expected format, and converts the information into a table.=
+     */
     function generateTable(data) {
+    	// Add basic headers
     	var htmlCode = '<table id="schedule" border="1">\
     	<!-- Horizontal header -->\
     	<tr>\
@@ -138,25 +67,66 @@
     		<th>Friday</th>\
     		<th>Saturday</th>\
     	</tr>';
-    	//htmlCode += data;
+    	
+    	/*
+    	 * The following code before refactoring:
     	var lines = data.split("\n");
-    	var time = 7;
+    	var timeOfRow = 7;
     	var am = 1;
     	for (i = 0; i < lines.length; i++) {
     		var names = lines[i].split(", ");
-    		time++;
+    		timeOfRow++;
     		if (am == 0) {
     			htmlCode += '<tr align="middle" valign="middle">\
-    			<th><em><br>'+time+':00<br><br></em></th>';
+    			<th><em><br>'+timeOfRow+':00<br><br></em></th>';
     		} else {
     			htmlCode += '<tr align="middle" valign="middle">\
-    			<th><br>'+time+':00<br><br></th>';
+    			<th><br>'+timeOfRow+':00<br><br></th>';
     		}
-    		if (time == 12) {
+    		if (timeOfRow == 12) {
     			am = 1 - am;
-    			time -= 12;
+    			timeOfRow -= 12;
     		}
     		
+    		for (j = 0; j < names.length; j++) {
+    			htmlCode += '<td>'+names[j]+'</td>';
+    		}
+    		
+    		htmlCode += '</tr>';
+    	}
+    	htmlCode += '</table>';
+    	document.body.innerHTML += htmlCode;
+    	 */
+    	
+    	// After refactoring:
+    	// Process input data by separating rows by line break, and then separating
+    	// each row by ", ".
+    	// Also, for afternoon & evening hours, the time is emphasized in the table.
+    	var lines = data.split("\n");
+    	var TIME_BEFORE_FIRST_ROW = 7;
+    	var TIME_AT_NOON = 12;
+    	var timeOfRow = TIME_BEFORE_FIRST_ROW;
+    	var amIndicator = 1;
+    	for (i = 0; i < lines.length; i++) {
+    		var names = lines[i].split(", ");
+    		timeOfRow++;
+    		
+    		// Add the header for the current row
+    		htmlCode += '<tr align="middle" valign="middle"><th><br>';
+    		if (amIndicator == 0) {
+    			htmlCode += '<em>'+timeOfRow+':00</em>';
+    		} else {
+    			htmlCode += (timeOfRow+':00');
+    		}
+    		htmlCode += '<br><br></th>';
+    		
+    		// Change indicator of whether the next row will be in AM or PM
+    		if (timeOfRow == TIME_AT_NOON) {
+    			amIndicator = 1 - amIndicator;
+    			timeOfRow -= TIME_AT_NOON;
+    		}
+    		
+    		// Add the driver shift information for the current row
     		for (j = 0; j < names.length; j++) {
     			htmlCode += '<td>'+names[j]+'</td>';
     		}
@@ -169,209 +139,6 @@
     
     generateTable(fileContent);
     </script>
-    <!--<table id="ScheduleTable" border="1">
-    	<tr>
-    		<th></th>
-    		<th>Sunday</th>
-    		<th>Monday</th>
-    		<th>Tuesday</th>
-    		<th>Wednesday</th>
-    		<th>Thursday</th>
-    		<th>Friday</th>
-    		<th>Saturday</th>
-    	</tr>
-    	<tr>
-    		<th><em><br>8:00<br><br></em></th>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    		<td align="middle">(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em><br>9:00<br><br></em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em><br>10:00<br><br></em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em><br>11:00<br><br></em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>12:00<br><br></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>1:00<br><br></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>2:00<br><br></th>
-    		<td></td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>3:00<br><br></th>
-    		<td></td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>4:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>5:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>6:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>7:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>8:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>9:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>10:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><br>11:00<br><br></th>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em><br>12:00<br><br></em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em><br>1:00<br><br></em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-    		<td>(Not operating)</td>
-    	</tr>
-    	<tr align="middle" valign="middle">
-    		<th><em>2:00</em></th>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    		<td>(Not operating)</td>
-    	</tr>
-    
-    </table>-->
     
     </body>
 </html>
