@@ -93,6 +93,7 @@
 		/* Initializes the map with this method.
 		 * Google Maps has some weird properties, so we have to stuff everything
 		 * map-related into this method, making it smell.
+		 * This part of code before factoring is presented at the bottom of the file.
 		 */
 		function initMap() {
 			var userLocation = new google.maps.LatLng(userLat, userLng);
@@ -101,7 +102,9 @@
 			  center: userLocation,
 			  zoom: 14
 			});
-	
+			
+			// The followings: One pop-up window about the name and location of the stop
+			// for each of them.
 			var mainStWindow = new google.maps.InfoWindow({
 				content: mainStString
 			});
@@ -117,13 +120,13 @@
 			var davisWindow = new google.maps.InfoWindow({
 				content: davisString
 			});
-	
-			var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-			var imageAnchorPt = new google.maps.Point(10, 10);
+			
+			// Sets he icon as the shuttle stop markers
+			var markerImageAnchorPt = new google.maps.Point(10, 10);
 	
 			var markerIcon = {
 				url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-				labelOrigin: imageAnchorPt
+				labelOrigin: markerImageAnchorPt
 			};
 
 			var mainStMarker = new google.maps.Marker({
@@ -169,7 +172,9 @@
 					fontWeight: 'bold'
 				}
 			});
-		
+			
+			// The following: Adds event listeners to each marker, so that they can
+			// respond to user clicking.
 			mainStMarker.addListener('click', function() {
 				mainStWindow.open(map, mainStMarker);
 			});
@@ -185,7 +190,8 @@
 			davisStMarker.addListener('click', function() {
 				davisWindow.open(map, davisStMarker);
 			});
-		
+			
+			// Draw an arrow symbol to indicate the shuttle location
 			var shuttleSymbol = {
 				path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
 				scale: 4,
@@ -196,6 +202,7 @@
 				strokeOpacity: 1
 			};
 			
+			// Draw the route of the shuttle from the list of locations in GoogleMapsVariables.js
 			var shuttlePath = new google.maps.Polyline({
 				path: shuttleCoords,
 				icons: [{
@@ -207,20 +214,29 @@
 				strokeOpacity: 0.5,
 				strokeWeight: 5
 			});
-			
 			shuttlePath.setMap(map);
-			
-			/* Only display the shuttle if it's a weekday, and it's during operation time
-			   (7:45 am -- 6:00 pm) 
-			   Test code:
-			var d = new Date(2017, 10, 22, 7, 44, 59, 0);
-			window.alert(d);*/
-			var d = new Date();
-			if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() >= 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
-			} else {
-				animateCircle(shuttlePath);
+		
+			/* 
+			 * Animates the shuttle marker along the path, but only runs if it's a 
+			 * weekday, and it's during operation time (7:45 am -- 6:00 pm).
+			 * Test code: Substitute line with "var  d = new Date()" with the following:
+					var d = new Date(2017, 10, 22, 7, 44, 59, 0);
+			 * Notice: The following functions have to be defined within the initialization
+			 * method of the map, otherwise bugs would occur. We blame Google for this.
+			 */
+			function animateShuttlePath() {
+				var d = new Date(); // Obtain the current date and time
+				if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() >= 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
+					// If it's not the operation time right now, double-check after 10 seconds.
+					setTimeout(animateShuttlePath, 10000);
+				} else {
+					animateCircle(shuttlePath);
+				}
 			}
+			animateShuttlePath();
       		
+      		// This method checks if the user has allowed the location query,
+      		// and if so, displays the user location on the map.
 			function addUserLocationMarker() {
 				if (geoLocationFunctionOn == 1) {
 					// If the user allows access to location, update the userLocation,
@@ -237,9 +253,8 @@
 					setTimeout(addUserLocationMarker, 500);
 				}
 			}
-			
 			addUserLocationMarker();
-    	}  
+    	}
     	
     	// Animates the marker for the shuttle along the predefined route.
 		// To change speed: adjust speedOfMarker and markerUpdateIntervalMS
@@ -263,6 +278,9 @@
     <div id="LocationEstimation">
     </div>
     <script>
+    // The following method first decides if the shuttle is operating.
+    // If it's operating, then it calls findNextStop() with the current time, so that
+    // the called function can return the estimated position of the shuttle.
     function updateEstimation() {
     	// Test code: (Test the test case suite 2 by modifying the date)
     	// var day = new Date(2017, 11, 10, 16, 47, 30, 0);
@@ -310,6 +328,7 @@
     setInterval( updateEstimation, 10000 );
     </script>
     
+    <!-- Useful links provided to the user below the map. -->
     <div id="Links">
     <a href="http://htmlpreview.github.io/?https://github.com/WillGross/STARRS/blob/master/jitney%20table.html"
     	target="_blank">
@@ -328,3 +347,240 @@
     
   </body>
 </html>
+
+<!--
+Old initMap() function:
+You can see that it was very long and smelly. Some methods are built in this larger
+function, and not extracted.
+
+function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+	  center: {lat:44.556, lng:-69.646},
+	  zoom: 14
+	});
+	var mainStString = '<div>173 Main St. & Appleton St.</div>';
+	var gilmanStString = '<div>Gilman St.</div>';
+	var diamondString = '<div>Diamond building</div>';
+	var davisString = '<div>Davis Science Building</div>';
+
+	var mainStWindow = new google.maps.InfoWindow({
+		content: mainStString
+	});
+
+	var gilmanStWindow = new google.maps.InfoWindow({
+		content: gilmanStString
+	});
+
+	var diamondWindow = new google.maps.InfoWindow({
+		content: diamondString
+	});
+
+	var davisWindow = new google.maps.InfoWindow({
+		content: davisString
+	});
+
+	var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+	var imageAnchorPt = new google.maps.Point(10, 10);
+
+	var mainStLatLng = {lat: 44.550999, lng: -69.632022};
+	var gilmanStLatLng = {lat: 44.553614, lng: -69.637182};
+	var diamondLatLng = {lat: 44.562241, lng: -69.659671};
+	var davisLatLng = {lat: 44.564428, lng: -69.658850};
+
+
+	var markerIcon = {
+		url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+		labelOrigin: imageAnchorPt
+	};
+
+	var mainStMarker = new google.maps.Marker({
+		position: mainStLatLng,
+		map: map,
+		icon: markerIcon,
+		label: {
+			text: 'M',
+			color: '#0000FF',
+			fontWeight: 'bold'
+		}
+	});
+	var gilmanStMarker = new google.maps.Marker({
+	  position: gilmanStLatLng,
+	  map: map,
+		icon: markerIcon,
+		label: {
+			text: 'G',
+			color: '#0000FF',
+			fontWeight: 'bold'
+		}
+	});
+	var diamondStMarker = new google.maps.Marker({
+	  position: diamondLatLng,
+	  map: map,
+		icon: markerIcon,
+		label: {
+			text: 'D',
+			color: '#0000FF',
+			fontWeight: 'bold'
+		}
+	});
+	var davisStMarker = new google.maps.Marker({
+	  position: davisLatLng,
+	  map: map,
+		icon: markerIcon,
+		label: {
+			text: 'D',
+			color: '#0000FF',
+			fontWeight: 'bold'
+		}
+	});
+
+	mainStMarker.addListener('click', function() {
+		mainStWindow.open(map, mainStMarker);
+	});
+
+	gilmanStMarker.addListener('click', function() {
+		gilmanStWindow.open(map, gilmanStMarker);
+	});
+
+	diamondStMarker.addListener('click', function() {
+		diamondWindow.open(map, diamondStMarker);
+	});
+
+	davisStMarker.addListener('click', function() {
+		davisWindow.open(map, davisStMarker);
+	});
+
+	var shuttleSymbol = {
+		path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+		scale: 4,
+		fillColor: '#5555FF',
+		fillOpacity: 0.7,
+		strokeWeight: 2,
+		strokeColor: '#000000',
+		strokeOpacity: 1
+	};
+
+	var mgLatLng_001 = {lat: 44.551679, lng: -69.635225};
+	var mgLatLng_002 = {lat: 44.553167, lng: -69.634346};
+
+	var gdLatLng_001 = {lat: 44.556345, lng: -69.654988};
+	var gdLatLng_002 = {lat: 44.557197, lng: -69.657624};
+	var gdLatLng_003 = {lat: 44.557434, lng: -69.658141};
+	var gdLatLng_004 = {lat: 44.557957, lng: -69.658622};
+	var gdLatLng_005 = {lat: 44.561336, lng: -69.660115};
+	var gdLatLng_006 = {lat: 44.561908, lng: -69.660352};
+	var gdLatLng_007 = {lat: 44.561983, lng: -69.659704};
+	var gdLatLng_008 = {lat: 44.562064, lng: -69.659634};
+	var ddLatLng_001 = {lat: 44.562267, lng: -69.659589};
+	var ddLatLng_002 = {lat: 44.562118, lng: -69.659593};
+	var ddLatLng_003 = {lat: 44.561975, lng: -69.659549};
+	var ddLatLng_004 = {lat: 44.561865, lng: -69.660306};
+	var ddLatLng_005 = {lat: 44.562531, lng: -69.660461};
+	var ddLatLng_006 = {lat: 44.562982, lng: -69.660462};
+	var ddLatLng_007 = {lat: 44.563372, lng: -69.660422};
+	var ddLatLng_008 = {lat: 44.564047, lng: -69.660254};
+	var ddLatLng_009 = {lat: 44.564460, lng: -69.660065};
+	var ddLatLng_010 = {lat: 44.565225, lng: -69.659534};
+	var ddLatLng_011 = {lat: 44.564955, lng: -69.659012};
+	var ddLatLng_012 = {lat: 44.564701, lng: -69.658627};
+	var ddLatLng_013 = {lat: 44.564518, lng: -69.658531};
+	//DG ROUTE IS NOT CERTIAN, MAY BE CHANGED IF ROUTE DIFFERES FROM ASSUMEND ROUTE
+	var dgLatLng_001 = {lat: 44.562064, lng: -69.659634};
+	var dgLatLng_002 = {lat: 44.561983, lng: -69.659704};
+	var dgLatLng_003 = {lat: 44.561908, lng: -69.660352};
+	var dgLatLng_004 = {lat: 44.561336, lng: -69.660115};
+	var dgLatLng_005 = {lat: 44.557957, lng: -69.658622};
+	var dgLatLng_006 = {lat: 44.557434, lng: -69.658141};
+	var dgLatLng_007 = {lat: 44.557197, lng: -69.657624};
+	var dgLatLng_008 = {lat: 44.556345, lng: -69.654988};
+
+	var shuttleCoords = [
+		mainStLatLng,
+		mgLatLng_001,
+		mgLatLng_002,
+		gilmanStLatLng,
+		gdLatLng_001,
+		gdLatLng_002,
+		gdLatLng_003,
+		gdLatLng_004,
+		gdLatLng_005,
+		gdLatLng_006,
+		gdLatLng_007,
+		gdLatLng_008,
+		diamondLatLng,            
+		ddLatLng_001,
+		ddLatLng_002,
+		ddLatLng_003,
+		ddLatLng_004,
+		ddLatLng_005,
+		ddLatLng_006,
+		ddLatLng_007,
+		ddLatLng_008,
+		ddLatLng_009,
+		ddLatLng_010,
+		ddLatLng_011,
+		ddLatLng_012,
+		ddLatLng_013,
+		davisLatLng,
+		ddLatLng_013,
+		ddLatLng_012,
+		ddLatLng_011,
+		ddLatLng_010,
+		ddLatLng_009,
+		ddLatLng_008,
+		ddLatLng_007,
+		ddLatLng_006,
+		ddLatLng_005,
+		dgLatLng_003,
+		dgLatLng_004,
+		dgLatLng_005,
+		dgLatLng_006,
+		dgLatLng_007,
+		dgLatLng_008,
+		gilmanStLatLng,
+		mgLatLng_002,
+		mgLatLng_001,
+		mainStLatLng
+	];
+
+	var shuttlePath = new google.maps.Polyline({
+		path: shuttleCoords,
+		icons: [{
+			icon: shuttleSymbol,
+			offset: '100%'
+		}],
+		geodesic: true,
+		strokeColor: '#00FF00',
+		strokeOpacity: 0.5,
+		strokeWeight: 5
+	});
+
+	shuttlePath.setMap(map);
+
+	/* Only display the shuttle if it's a weekday, and it's during operation time
+	   (7:45 am -- 6:00 pm) 
+	   Test code:
+	var d = new Date(2017, 10, 22, 7, 44, 59, 0);
+	window.alert(d);*/
+	var d = new Date();
+	if (d.getDay() == 0 || d.getDay() == 6 || d.getHours() < 7 || d.getHours() = 18 || (d.getHours() == 7 && d.getMinutes() < 45)) {
+	} else {
+		animateCircle(shuttlePath);
+	}
+
+
+	function addUserLocationMarker() {
+		if (geoLocationFunctionOn == 1) {
+			var userLocationMarker = new google.maps.Marker({
+				position: new google.maps.LatLng(userLat, userLng),
+				map: map
+			});
+			userLocationMarker.setMap(map);
+		} else if (geoLocationFunctionOn == 0) {
+			setTimeout(addUserLocationMarker, 500);
+		} else {
+		}
+	}
+	addUserLocationMarker();
+}
+-->
