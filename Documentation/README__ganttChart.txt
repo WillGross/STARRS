@@ -1,0 +1,1 @@
+The .pod file for the Gantt chart can be opened with ProjectLibre. I cannot think of a better way to get the information to you other than giving you the file, but if you would like me to send it in some other way, please contact me! -Will Gross
