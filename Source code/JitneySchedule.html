@@ -41,8 +41,7 @@
 			}
 		}
 	}
-	
-	xmlHttpRequest.open("GET", "https://raw.githubusercontent.com/WillGross/STARRS/master/driver_shift_file.txt", false); 
+	xmlHttpRequest.open("GET", "https://raw.githubusercontent.com/WillGross/STARRS/master/Source%20code/driver_shift_file.txt", false); 
 	xmlHttpRequest.onreadystatechange = processRequest; 
 	xmlHttpRequest.send(null);
 	</script>
@@ -136,7 +135,6 @@
     	htmlCode += '</table>';
     	document.body.innerHTML += htmlCode;
     }
-    
     generateTable(fileContent);
     </script>
     
