@@ -1,5 +1,7 @@
 # STARRS
 Shuttle Tracker and Ride Request Services for the Colby College Shuttle and Jitney
+
+
 To start:
 1. Drag MainPage.html to your browser to open the main page.
 2. The page would ask you to allow or block its access to your GPS location. If you allow, then there will be a marker marking your current location on the map.
