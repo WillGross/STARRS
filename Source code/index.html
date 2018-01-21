@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<title>STARRS for Colby</title>
+		<meta name="viewport" content="initial-scale=1.0">
+		<meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+		<script type="text/javascript" src="GoogleMapsVariables.js"></script>
+        <script src="index.js"></script>
+        <script src="GoogleMaps.js"></script>
+		<link rel="stylesheet"
+              href="index.css"
+              type="text/css" />
+  	</head>
+  	<body>
+
+    <div id="header">
+    <a href="https://www.colby.edu/">
+    <img src="https://alumni.colby.edu/s/1470/images/editor/original/colby.jpg"
+    ALT="Colby Banner" width=100% height=50 ></a></div>
+    
+
+    <p id="getLocation"></p>
+    
+    <div id="map">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
+    async defer></script>
+
+    </div>
+    
+    <p id="LocationEstimation"></p>
+    
+    <!-- Useful links provided to the user below the map. -->
+    <div id="Links">
+        <p>
+            <a href="JitneyPage.html">
+                Jitney user interface</a> <br>
+            <a href="https://www.colby.edu/securitydept/colby-transportation-services/">
+                Colby Transportation Services (security office webpage)</a> <br>
+            <a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
+                Colby Shuttle Schedule and Map</a> <br>
+            <a href="JitneySchedule.html">
+                Jitney shifts (currently hosted on GitHub)</a><br>
+            *The shuttle only runs from Monday to Friday during school sessions.
+        </p>
+    </div>
+    
+  </body>
+</html>
