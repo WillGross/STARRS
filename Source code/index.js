@@ -55,12 +55,12 @@ function updateEstimation() {
         isRunning = false;
     } else {
         isRunning = true;
-        $("#LocationEstimation").text(findNextStop(day));
+        $("#LocationEstimation").text(findNextStop(time));
     }
 }
 
-function findNextStop(day) {
-    var minutes_lapsed = day.getMinutes() % 30;
+function findNextStop(time) {
+    var minutes_lapsed = time.getMinutes() % 30;
     switch(true) {
         case minutes_lapsed === 0:
             return "Shuttle has arrived at Davis\
