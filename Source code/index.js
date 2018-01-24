@@ -63,28 +63,28 @@ function findNextStop(time) {
     var minutes_lapsed = time.getMinutes() % 30;
     switch(true) {
         case minutes_lapsed === 0:
-            return "Shuttle has arrived at Davis\
-						and wil depart for 173 Main and Appleton St. soon.";
+            return "Estimation: Shuttle has arrived at Davis\
+						and will depart for 173 Main and Appleton St. soon.";
         case minutes_lapsed === 15:
-            return "Shuttle has arrived at 173 Main and Appleton St.\
-						and wil depart for 21 Gilman St. soon.";
+            return "Estimation: Shuttle has arrived at 173 Main and Appleton St.\
+						and will depart for 21 Gilman St. soon.";
         case minutes_lapsed === 22:
-            return "Shuttle has arrived at 21 Gilman St.\
-						and wil depart for Diamond soon.";
+            return "Estimation: Shuttle has arrived at 21 Gilman St.\
+						and will depart for Diamond soon.";
         case minutes_lapsed === 27:
-            return "Shuttle has arrived at Diamond\
-						and wil depart for Davis soon.";
+            return "Estimation: Shuttle has arrived at Diamond\
+						and will depart for Davis soon.";
         case minutes_lapsed < 15:
-            return "Shuttle is heading for 173 Main and Appleton St.\
+            return "Estimation: Shuttle is heading for 173 Main and Appleton St.\
 						and will arrive in "+ (15-minutes_lapsed) +" minutes.";
         case minutes_lapsed < 22:
-            return "Shuttle is heading for 21 Gilman St.\
+            return "Estimation: Shuttle is heading for 21 Gilman St.\
 						and will arrive in "+ (22-minutes_lapsed) +" minutes.";
         case minutes_lapsed < 27:
-            return "Shuttle is heading for Diamond\
+            return "Estimation: Shuttle is heading for Diamond\
 						and will arrive in "+ (27-minutes_lapsed) +" minutes.";
         case minutes_lapsed < 30:
-            return "Shuttle is heading for Davis\
+            return "Estimation: Shuttle is heading for Davis\
 						and will arrive in "+ (30-minutes_lapsed) +" minutes.";
     }
 }
