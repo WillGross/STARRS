@@ -16,6 +16,22 @@ html, body {
     padding: 0;
 }
 
+#header {
+    background-image: url("images/colbybannerbg.jpg");
+    height: 50px;
+    width: 100%;
+}
+
+#banner1    {
+    float: left;
+    height: 50px;
+}
+
+#banner2    {
+    float: right;
+    height: 50px;
+}
+
 #LocationEstimation {
     position: relative;
     top: 55%;
