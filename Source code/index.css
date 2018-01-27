@@ -3,7 +3,7 @@
 /* Ref: https://stackoverflow.com/questions/953918/how-to-align-a-div-to-the-middle-horizontally-width-of-the-page */
 #map {
     height: 400px;
-    width: 80%;
+    width: 96%;
     margin: auto;
     background-color: grey;
 }
@@ -30,16 +30,53 @@ html, body {
     height: 50px;
 }
 
+#pageTitle {
+    text-align: center;
+}
+
+#main {
+    width: 90%;
+    margin: auto;
+    display: block;
+}
+
+#linksBanner {
+    display: table;
+    width: 100%;
+}
+
+.linkBlock {
+    width: 32%;
+    display: table-cell;
+    float: left;
+    text-align: center;
+    background-color: #5e79b4;
+    font-size: large;
+    margin-left: 1%;
+
+}
+
+.linkBlockText {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 #LocationEstimation {
-    position: relative;
-    /*text-align: center;*/
-    left: 25%;
+    /*position: relative;*/
+    text-align: center;
+    /*left: 25%;*/
 }
 
 #Links {
-    position: relative;
+    /*position: relative;*/
     /*text-align: center;*/
     left: 25%;
+    width: 50%;
+    margin: auto;
 }
 
 #getLocation {
