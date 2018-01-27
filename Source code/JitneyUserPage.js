@@ -1,3 +1,23 @@
+"use strict";
+
+$(document).ready( function () {
+
+    // Implement a generic character counter for the textareas
+    $(".requestText").on('input', function () {
+        // Get the keyword of the id of the changing textarea, and pass it on
+        var idKeyword = this.id.slice(0, -4);
+        detectWordChange("#"+idKeyword);
+    });
+
+    // Given the start of the id of the changing textarea, find its character amount.
+    function detectWordChange(id) {
+        var len = $(id+"Text").val().length;
+        $(id+"CharLimit").text(len);
+    }
+
+
+});
+
 function validateForm() {
     // store inputs to variables
     var name = document.forms["myForm"]["nickname"].value;
