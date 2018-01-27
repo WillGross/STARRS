@@ -16,18 +16,32 @@ html, body {
 
 #header {
     background-image: url("images/colbybannerbg.jpg");
-    height: 50px;
+    height: 80px;
     width: 100%;
+}
+
+#StarrsTitleContainer {
+    display: table;
+    float: left;
+    width: 75%;
+    margin-left: 2%;
+    height: 80px;
+}
+
+#StarrsTitle {
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
 }
 
 #banner1    {
     float: left;
-    height: 50px;
+    height: 80px;
 }
 
 #banner2    {
     float: right;
-    height: 50px;
+    height: 80px;
 }
 
 #pageTitle {

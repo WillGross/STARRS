@@ -16,11 +16,16 @@
   	<body>
 
     <div id="header">
-    <a href="https://www.colby.edu/">
-    <img src="images/colbybanner1.jpg" id= "banner1" ALT="Colby Banner" />
-    <img src="images/colbybanner2.jpg" id= "banner2" ALT="Colby Banner"  >
-
-    </a></div>
+        <a href="https://www.colby.edu/">
+            <img src="images/colbybanner1.jpg" id= "banner1" ALT="Colby Banner" height="80"/>
+        </a>
+        <div id="StarrsTitleContainer">
+            <h1 id="StarrsTitle">STARRS - Shuttle Tracker And Ride Request Service</h1>
+        </div>
+        <a href="https://www.colby.edu/">
+            <img src="images/colbybanner2.jpg" id= "banner2" ALT="Colby Banner"  >
+        </a>
+    </div>
     
     <div id="pageTitle">
         <h1>Colby Shuttle Tracker</h1>
@@ -28,29 +33,29 @@
 
     <div id="main">
 
-    <div id="linksBanner">
-        <div class="linkBlock">
-            <a href="index.html">
-                <span class="linkBlockText">Colby shuttle tracker</span></a>
+        <div id="linksBanner">
+            <div class="linkBlock">
+                <a href="index.html">
+                    <span class="linkBlockText">Colby shuttle tracker</span></a>
+            </div>
+            <div class="linkBlock">
+                <a href="JitneyPage.html">
+                    <span class="linkBlockText">Order Jitney pickup</span></a>
+            </div>
+            <div class="linkBlock">
+                <a href="https://www.colby.edu/securitydept/colby-transportation-services">
+                    <span class="linkBlockText">Security office</span></a>
+            </div>
         </div>
-        <div class="linkBlock">
-            <a href="JitneyPage.html">
-                <span class="linkBlockText">Order Jitney pickup</span></a>
-        </div>
-        <div class="linkBlock">
-            <a href="https://www.colby.edu/securitydept/colby-transportation-services">
-                <span class="linkBlockText">Security office</span></a>
-        </div>
-    </div>
-    
-    <div id="map">
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
-    async defer></script>
+        <div id="map">
 
-    </div>
-    
-    <p id="LocationEstimation"></p>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
+        async defer></script>
+
+        </div>
+
+        <p id="LocationEstimation"></p>
 
     </div>
 
