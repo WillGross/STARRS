@@ -26,7 +26,7 @@ try {
         $comment = str_replace("\n", '<br>', $comment);
 
         # Get the time when this pickup request is issued
-        $time = date('g:i:s a, m-d, D');
+        $time = date('g:i:s a, m/d, D');
 
         # Prepare to add the entry into the database
         $command = "INSERT INTO jitney_queue 

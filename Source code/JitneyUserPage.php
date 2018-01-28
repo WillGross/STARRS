@@ -117,10 +117,10 @@ try {
                 foreach ($rows as $row) {
                     ?>
                     <tr>
-                        <th><?= $rows["pickupLocation"] ?></th>
-                        <th><?= $rows["dropoffLocation"] ?></th>
-                        <th><?= $rows["numOfPassenger"] ?></th>
-                        <th><?= $rows["requestTime"] ?></th>
+                        <th><?= $row["pickupLocation"] ?></th>
+                        <th><?= $row["dropoffLocation"] ?></th>
+                        <th><?= $row["numOfPassenger"] ?></th>
+                        <th><?= $row["requestTime"] ?></th>
                     </tr>
                     <?php
                 }
@@ -175,12 +175,11 @@ try {
                     </p></label><br>
 
                 <label><p><span class="requestPrompt">Additional comments:</span>
-                        <textarea rows="4" cols="60" name="comment" maxlength="400"
-                                  id="commentText" class="requestText"
-                                  placeholder="E.g. Inconveniences, detailed location">
-                        </textarea>
+                        <textarea rows="6" cols="60" name="comment" maxlength="400"
+                                  placeholder="E.g. Inconveniences, detailed location"
+                                  id="commentText" class="requestText"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="commentCharLimit">0</span>/256
+                            <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
 
