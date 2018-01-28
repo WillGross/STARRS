@@ -16,6 +16,23 @@ $(document).ready( function () {
     }
 
 
+    // Check to see that the user hasn't just put blank spaces as the locations
+    $("#requestForm").submit(function () {
+        var pickup = $("#pickupText").val();
+        var dropoff = $("#dropoffText").val();
+        // var comment = $("#commentText").val();
+
+        // Function reference: https://stackoverflow.com/a/6603043
+        if (/ *[^ ]+ */.test(pickup) && / *[^ ]+ */.test(dropoff)) {
+            alert("Jitney pickup request successfully submitted.");
+            return true;
+        } else {
+            alert("Your pickup and dropoff locations cannot be blank!");
+            return false;
+        }
+    });
+
+
 });
 
 function validateForm() {

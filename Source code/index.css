@@ -14,12 +14,22 @@ html, body {
     padding: 0;
 }
 
-#header {
+/*Top banner area: Colby pics, and title text, and background blue*/
+#header, #footer {
     background-image: url("images/colbybannerbg.jpg");
     height: 80px;
     width: 100%;
+    clear: both;
 }
-
+.banner1    {
+    float: left;
+    height: 80px;
+}
+.banner2    {
+    float: right;
+    height: 80px;
+    display: inline-block;
+}
 #StarrsTitleContainer {
     display: table;
     float: left;
@@ -27,38 +37,27 @@ html, body {
     margin-left: 2%;
     height: 80px;
 }
-
 #StarrsTitle {
     display: table-cell;
     vertical-align: middle;
     color: white;
 }
 
-#banner1    {
-    float: left;
-    height: 80px;
-}
-
-#banner2    {
-    float: right;
-    height: 80px;
-}
-
+/*Main body area*/
 #pageTitle {
     text-align: center;
 }
-
 #main {
     width: 90%;
     margin: auto;
     display: block;
 }
 
+/*The strip with the links*/
 #linksBanner {
     display: table;
     width: 100%;
 }
-
 .linkBlock {
     width: 32%;
     display: table-cell;
@@ -67,9 +66,7 @@ html, body {
     background-color: #5e79b4;
     font-size: large;
     margin-left: 1%;
-
 }
-
 .linkBlockText {
     color: white;
     text-decoration: none;
@@ -79,11 +76,48 @@ html, body {
     margin-bottom: 5px;
 }
 
+/*Below are the blocks for the shuttle page (index.html)*/
 #LocationEstimation {
     /*position: relative;*/
     text-align: center;
     /*left: 25%;*/
 }
+
+#getLocation {
+    position: fixed;
+    /*text-align: center;*/
+    bottom: 5px;
+}
+
+/*Below are the blocks for the Jitney request page (JitneyUserPage.php)*/
+.sectionTitle {
+    text-align: center;
+}
+
+#requestForm {
+    text-align: center;
+    display: block;
+}
+
+label{
+    display: inline-block;
+    margin: auto;
+}
+
+.requestPrompt{
+    text-align: left;
+    display: block;
+}
+
+.textboxCounter{
+    text-align: right;
+    display: block;
+}
+
+.warning {
+    color: #d80000;
+}
+
 
 #Links {
     /*position: relative;*/
@@ -91,10 +125,5 @@ html, body {
     left: 25%;
     width: 50%;
     margin: auto;
-}
-
-#getLocation {
-    position: fixed;
-    /*text-align: center;*/
-    bottom: 5px;
+    clear: both;
 }

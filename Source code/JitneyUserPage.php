@@ -5,6 +5,34 @@
  * Date: 1/27/18
  * Time: 2:34 PM
  */
+
+#If there's already one request issued by the user stored in the database,
+#then the following code would try to find it out and change the variable to true.
+#Users who has issued one existing request should not be allowed to request a second one.
+$alreadyRequested = false;
+# The user's Colby ID would be stored in $username.
+# Right now we don't know how to obtain it, so we keep this function disabled.
+$username = "";
+
+try {
+    $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    # Obtain all entries in the current queue that has the username.
+    $rows = $db->query("SELECT * FROM jitney_queue WHERE username = '$username';");
+
+    # See if there's any entry
+    if ($rows->rowCount() !== 0) {
+        $username = true;
+    }
+
+} catch (PDOException $ex) {
+    ?>
+    <p>Error: <?= $ex->getMessage() ?></p>
+    <p>Please try later.</p>
+    <?php
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +54,13 @@
 
 <div id="header">
     <a href="https://www.colby.edu/">
-        <img src="images/colbybanner1.jpg" id= "banner1" ALT="Colby Banner" height="80"/>
+        <img src="images/colbybanner1.jpg" class="banner1" ALT="Colby Banner"/>
     </a>
     <div id="StarrsTitleContainer">
         <h1 id="StarrsTitle">STARRS - Shuttle Tracker And Ride Request Service</h1>
     </div>
     <a href="https://www.colby.edu/">
-        <img src="images/colbybanner2.jpg" id= "banner2" ALT="Colby Banner"  >
+        <img src="images/colbybanner2.jpg" class="banner2" ALT="Colby Banner"  >
     </a>
 </div>
 
@@ -48,7 +76,7 @@
                 <span class="linkBlockText">Colby shuttle tracker</span></a>
         </div>
         <div class="linkBlock">
-            <a href="JitneyPage.html">
+            <a href="JitneyUserPage.php">
                 <span class="linkBlockText">Order Jitney pickup</span></a>
         </div>
         <div class="linkBlock">
@@ -64,56 +92,128 @@
 
     </div>
 
-    <div class="sectionTitle">
-        <h2>Current Jitney request queue</h2>
+    <div id="queue">
+        <div class="sectionTitle">
+            <h2>Current Jitney request queue</h2>
+        </div>
+
+        <table id="requestQueue">
+            <tr>
+                <th>Location</th>
+                <th>Destination</th>
+                <th>Passengers</th>
+                <th>Request time</th>
+            </tr>
+            <?php
+            try {
+                $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                # Obtain all entries in the current queue and sort by ID.
+                # Hopefully we don't allow anyone to mess up with IDs.
+                $rows = $db->query('SELECT * FROM jitney_queue ORDER BY entryID DESC;');
+
+                # Put each comment into a comment box division, and help form the website.
+                foreach ($rows as $row) {
+                    ?>
+                    <tr>
+                        <th><?= $rows["pickupLocation"] ?></th>
+                        <th><?= $rows["dropoffLocation"] ?></th>
+                        <th><?= $rows["numOfPassenger"] ?></th>
+                        <th><?= $rows["requestTime"] ?></th>
+                    </tr>
+                    <?php
+                }
+
+            } catch (PDOException $ex) {
+                ?>
+                <p>Error: <?= $ex->getMessage() ?></p>
+                <p>Please try later.</p>
+                <?php
+            }
+
+            ?>
+        </table>
     </div>
 
-    <?php
+    <div id="requestArea">
+        <div class="sectionTitle">
+            <h2>Order Jitney Request</h2>
+        </div>
 
+        <div id="requestForm">
+            <form action="submitJitneyRequest.php" method="post">
+                <label><p><span class="requestPrompt">Enter pickup location:</span>
+                        <textarea rows="4" cols="60" name="pickup" maxlength="256"
+                                  id="pickupText" class="requestText"
+                                  required
+                                  placeholder="E.g. Pugh Center, Flagship Cinema"></textarea>
+                        <br><span class="textboxCounter">
+                            <span id="pickupCharLimit">0</span>/256
+                        </span>
+                    </p></label><br>
 
-    ?>
+                <label><p><span class="requestPrompt">Enter dropoff location:</span>
+                        <textarea rows="4" cols="60" name="dropoff" maxlength="256"
+                                  id="dropoffText" class="requestText"
+                                  placeholder="E.g. Walmart, Opera House"></textarea>
+                        <br><span class="textboxCounter">
+                            <span id="dropoffCharLimit">0</span>/256
+                        </span>
+                    </p></label><br>
 
-    <div class="sectionTitle">
-        <h2>Order Jitney Request</h2>
+                <label><p><span class="requestPrompt">How many people are traveling?</span>
+                        <select name="number">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </p></label><br>
+
+                <label><p><span class="requestPrompt">Additional comments:</span>
+                        <textarea rows="4" cols="60" name="comment" maxlength="400"
+                                  id="commentText" class="requestText"
+                                  placeholder="E.g. Inconveniences, detailed location">
+                        </textarea>
+                        <br><span class="textboxCounter">
+                            <span id="commentCharLimit">0</span>/256
+                        </span>
+                    </p></label><br>
+
+                <div id="requestButtons">
+                <?php
+                if ($alreadyRequested) {
+                    ?>
+                    <p class="warning">You already have an existing request.</p>
+                    <input type="submit" value="Submit" disabled="disabled"/>
+                <?php
+                } else {
+                    ?>
+                    <input type="submit" value="Submit" />
+                <?php
+                }
+                ?>
+                <input type="reset" />
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div id="requestForm">
-        <form action="JitneyUserPage.php" method="post">
-            <label><p>Enter pickup location:<br>
-            <textarea rows="4" cols="60" name="pickup" maxlength="256"
-                      id="pickupText" class="requestText"
-                      placeholder="E.g. Pugh Center, Flagship Cinema"></textarea>
-            <br><span id="pickupCharLimit">0</span>/256
-                </p></label>
-
-            <label><p>Enter dropoff location:<br>
-            <textarea rows="4" cols="60" name="dropoff" maxlength="256"
-                      id="dropoffText" class="requestText"
-                      placeholder="E.g. Walmart, Opera House"></textarea>
-            <br><span id="dropoffCharLimit">0</span>/256
-                </p></label>
-
-            <label><p>How many people are traveling?<br>
-            <select name="number">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-            </select>
-                </p></label>
-
-            <label><p>Additional comments:<br>
-            <textarea rows="4" cols="60" name="dropoff" maxlength="400"
-                      id="commentText" class="requestText"
-                      placeholder="E.g. Inconveniences, detailed location"></textarea>
-            <br><span id="commentCharLimit">0</span>/400
-                </p></label>
-
-        </form>
+    <div id="scheduleRequestPage">
+        <div class="sectionTitle">
+            <h2>Today's schedule</h2>
+            <table id="dailySchedule">
+                <?php
+                // Find a way to represent the schedule, and make a table here.
+                ?>
+            </table>
+        </div>
     </div>
+
 
 </div>
 
@@ -130,6 +230,16 @@
             Jitney driver shifts</a><br>
         *The shuttle only runs from Monday to Friday during school sessions.
     </p>
+</div>
+
+<!--bottom of the page-->
+<div id="footer">
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner1.jpg" class="banner1" ALT="Colby Banner" height="80"/>
+    </a>
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner2.jpg" class="banner2" ALT="Colby Banner"  >
+    </a>
 </div>
 
 </body>
