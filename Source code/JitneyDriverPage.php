@@ -2,34 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: zhzhang
- * Date: 1/27/18
- * Time: 2:34 PM
+ * Date: 1/28/18
+ * Time: 7:22 PM
  */
 
-#If there's already one request issued by the user stored in the database,
-#then the following code would try to find it out and change the variable to true.
-#Users who has issued one existing request should not be allowed to request a second one.
-$alreadyRequested = false;
 # The user's Colby ID would be stored in $username.
 # Right now we don't know how to obtain it, so we keep this function disabled.
+# Desirably, we would be able to use this ID to see if the user is a driver,
+# and then decide if we should allow the user to view this page.
+# More ideally, we should be able to check if the user is the only driver who
+# is supposed to be driving the Jitney right now.
 $username = "";
+$isCurrentDriver = false;
 
+$db = null;
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     # Obtain all entries in the current queue that has the username.
-    $rows = $db->query("SELECT * FROM jitney_queue WHERE username = '$username';");
+    $rows = $db->query("SELECT * FROM driver_list WHERE username = '$username';");
 
-    # See if there's any entry
+    # See if the user is one of the stored drivers.
+    # Ideally we should also check if the user is the current driver.
     if ($rows->rowCount() !== 0) {
-        $alreadyRequested = true;
+        $isCurrentDriver = true;
     }
 
 } catch (PDOException $ex) {
     ?>
     <p>Error: <?= $ex->getMessage() ?></p>
-    <p>Please try later.</p>
+    <p>Please contact Security Office for assistance.</p>
     <?php
 }
 
@@ -38,13 +41,13 @@ try {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>STARRS for Colby -- Jitney request page</title>
+    <title>STARRS for Colby -- Jitney driver page</title>
 <!--    <meta name="viewport" content="initial-scale=1.0">-->
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
 <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
-    <script src="JitneyUserPage.js"></script>
+    <script src="JitneyDriverPage.js"></script>
 <!--    <script src="GoogleMaps.js"></script>-->
     <link rel="stylesheet"
           href="index.css<?php echo "?".time(); //To avoid server from caching CSS ?>"
@@ -65,7 +68,7 @@ try {
 </div>
 
 <div id="pageTitle">
-    <h1>Jitney Tracker and Request Page</h1>
+    <h1>Jitney Driver Request Handling Page</h1>
 </div>
 
 <div id="main">
@@ -92,6 +95,59 @@ try {
 
     </div>
 
+    <div id="onboard">
+        <div class="sectionTitle">
+            <h2>Requests Currently Being Processed</h2>
+        </div>
+
+        <table id="onboardQueue">
+            <tr>
+                <th id="onboardQueueLocation">Location</th>
+                <th id="onboardQueueDestination">Destination</th>
+                <th id="onboardQueuePassengers">Passengers</th>
+                <th id="onboardQueueComment">Comments</th>
+                <th id="onboardQueueTime">Request Time</th>
+                <th id="onboardQueueAction">Action</th>
+            </tr>
+            <?php
+            try {
+                # Obtain all entries in the current queue
+                $rows = $db->query('SELECT * FROM jitney_current_request c
+                    JOIN jitney_queue q ON c.queueID = q.entryID
+                    ORDER BY q.pickupID ASC;');
+
+                # Put each request into a row. Each comes with one button for dropoff.
+                # I think the current approach might have some security issues...
+                foreach ($rows as $row) {
+                    ?>
+                    <tr>
+                        <td><?= $row["pickupLocation"] ?></td>
+                        <td><?= $row["dropoffLocation"] ?></td>
+                        <td><?= $row["numOfPassenger"] ?></td>
+                        <td><?= $row["comments"] ?></td>
+                        <td><?= $row["requestTime"] ?></td>
+                        <td>
+                            <form action="dropoffJitneyRequestDriver.php" method="post">
+                                <input name="entryID" readonly type="hidden"
+                                       value="<?= $row['entryID'] ?>" />
+                                <input type="submit" value="Dropoff">
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+
+            } catch (PDOException $ex) {
+                ?>
+                <p>Error: <?= $ex->getMessage() ?></p>
+                <p>Please call Security Office when you need to.</p>
+                <?php
+            }
+
+            ?>
+        </table>
+    </div>
+
     <div id="queue">
         <div class="sectionTitle">
             <h2>Current Jitney request queue</h2>
@@ -106,12 +162,12 @@ try {
             </tr>
             <?php
             try {
-                $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
-                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
                 # Obtain all entries in the current queue and sort by ID.
                 # Hopefully we don't allow anyone to mess up with IDs.
                 $rows = $db->query('SELECT * FROM jitney_queue ORDER BY entryID ASC;');
+
+                # Keep track of whether the row has the earliest request.
+                $earliest = "earliestRequest";
 
                 # Put each comment into a comment box division, and help form the website.
                 foreach ($rows as $row) {
@@ -122,7 +178,19 @@ try {
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
                     </tr>
+                    <tr>
+                        <td class="queueComments" colspan="3"><?= $row["comments"] ?></td>
+                        <td>
+                            <form action="pickupJitneyRequestDriver.php" method="post">
+                                <input name="entryID" readonly type="hidden"
+                                       value="<?= $row['entryID'] ?>" />
+                                <input type="submit" value="Pickup"
+                                       class="<?= $earliest ?>">
+                            </form>
+                        </td>
+                    </tr>
                     <?php
+                    $earliest = "notEarliestRequest";
                 }
 
             } catch (PDOException $ex) {
@@ -136,83 +204,17 @@ try {
         </table>
     </div>
 
-    <div id="requestArea">
-        <div class="sectionTitle">
-            <h2>Order Jitney Request</h2>
-        </div>
-
-        <div id="requestForm">
-            <form action="submitJitneyRequest.php" method="post">
-                <label><p><span class="requestPrompt">Enter pickup location:</span>
-                        <textarea rows="4" cols="60" name="pickup" maxlength="256"
-                                  id="pickupText" class="requestText"
-                                  required
-                                  placeholder="E.g. Pugh Center, Flagship Cinema"></textarea>
-                        <br><span class="textboxCounter">
-                            <span id="pickupCharLimit">0</span>/256
-                        </span>
-                    </p></label><br>
-
-                <label><p><span class="requestPrompt">Enter dropoff location:</span>
-                        <textarea rows="4" cols="60" name="dropoff" maxlength="256"
-                                  id="dropoffText" class="requestText"
-                                  placeholder="E.g. Walmart, Opera House"></textarea>
-                        <br><span class="textboxCounter">
-                            <span id="dropoffCharLimit">0</span>/256
-                        </span>
-                    </p></label><br>
-
-                <label><p><span class="requestPrompt">How many people are traveling?</span>
-                        <select name="number">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                        </select>
-                    </p></label><br>
-
-                <label><p><span class="requestPrompt">Additional comments:</span>
-                        <textarea rows="6" cols="60" name="comment" maxlength="400"
-                                  placeholder="E.g. Inconveniences, detailed location"
-                                  id="commentText" class="requestText"></textarea>
-                        <br><span class="textboxCounter">
-                            <span id="commentCharLimit">0</span>/400
-                        </span>
-                    </p></label><br>
-
-                <div id="requestButtons">
-                <?php
-                if ($alreadyRequested) {
-                    ?>
-                    <p class="warning">You already have an existing request.</p>
-                    <input type="submit" value="Submit" disabled="disabled"/>
-                <?php
-                } else {
-                    ?>
-                    <input type="submit" value="Submit" />
-                <?php
-                }
-                ?>
-                <input type="reset" />
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div id="scheduleRequestPage">
         <div class="sectionTitle">
             <h2>Today's schedule</h2>
             <table id="dailySchedule">
                 <?php
-                // Find a way to represent the schedule, and make a table here.
+                // Find a way to represent the schedule, and make a table here
+                // to display the shift today for the user.
                 ?>
             </table>
         </div>
     </div>
-
 
 </div>
 

@@ -8,17 +8,17 @@
 // We need to find a way to get the username later.
 // Right now, just use this.
 $username = "mulecolby18";
-
+date_default_timezone_set('EST');
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if (isset($_POST["pickup"]) && isset($_POST["dropoff"])) {
         # We sanitize the inputs here.
-        $pickup = $db->quote(htmlspecialchars($_POST["pickup"]));
-        $dropoff = $db->quote(htmlspecialchars($_POST["dropoff"]));
+        $pickup = htmlspecialchars($_POST["pickup"], ENT_QUOTES);
+        $dropoff = htmlspecialchars($_POST["dropoff"], ENT_QUOTES);
         $passengers = $_POST["number"];
-        $comment = $db->quote(htmlspecialchars($_POST["comment"]));
+        $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES);
 
         # Preserve all line breaks in all texts.
         $pickup = str_replace("\n", '<br>', $pickup);

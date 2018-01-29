@@ -65,10 +65,10 @@
 
         <table id="requestQueue">
             <tr>
-                <th>Location</th>
-                <th>Destination</th>
-                <th>Passengers</th>
-                <th>Request time</th>
+                <th id="queueLocation">Location</th>
+                <th id="queueDestination">Destination</th>
+                <th id="queuePassengers">Passengers</th>
+                <th id="queueTime">Request time</th>
             </tr>
                             <p>Error: SQLSTATE[HY000] [2002] No such file or directory</p>
                 <p>Please try later.</p>
@@ -114,12 +114,11 @@
                     </p></label><br>
 
                 <label><p><span class="requestPrompt">Additional comments:</span>
-                        <textarea rows="4" cols="60" name="comment" maxlength="400"
-                                  id="commentText" class="requestText"
-                                  placeholder="E.g. Inconveniences, detailed location">
-                        </textarea>
+                        <textarea rows="6" cols="60" name="comment" maxlength="400"
+                                  placeholder="E.g. Inconveniences, detailed location"
+                                  id="commentText" class="requestText"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="commentCharLimit">0</span>/256
+                            <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
 

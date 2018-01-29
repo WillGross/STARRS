@@ -94,14 +94,29 @@ html, body {
     text-align: center;
 }
 
-#requestForm {
+#queue, #requestForm {
     text-align: center;
     display: block;
 }
 
-label{
+label {
     display: inline-block;
     margin: auto;
+}
+
+#requestQueue {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#queueLocation, #queueDestination {
+    width: 35%;
+}
+#queuePassengers {
+    width: 10%;
+}
+#queueTime {
+    width: 20%;
 }
 
 .requestPrompt{
@@ -118,6 +133,21 @@ label{
     color: #d80000;
 }
 
+/*Below are the blocks for the Jitney driver page (JitneyDriverPage.php)*/
+#onboardQueueLocation, #onboardQueueDestination {
+    width: 27%;
+}
+#onboardQueuePassengers, #onboardQueueTime, #onboardQueueAction {
+    width: 8%;
+}
+#onboardQueueComment {
+    width: 22%;
+}
+/*
+.queueComments {
+    column-span: 3;
+}
+*/
 
 #Links {
     /*position: relative;*/
