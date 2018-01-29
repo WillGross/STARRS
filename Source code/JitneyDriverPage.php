@@ -104,7 +104,7 @@ try {
             <tr>
                 <th id="onboardQueueLocation">Location</th>
                 <th id="onboardQueueDestination">Destination</th>
-                <th id="onboardQueuePassengers">Passengers</th>
+                <th id="onboardQueuePassengers"># Ppl.</th>
                 <th id="onboardQueueComment">Comments</th>
                 <th id="onboardQueueTime">Request Time</th>
                 <th id="onboardQueueAction">Action</th>
@@ -114,7 +114,7 @@ try {
                 # Obtain all entries in the current queue
                 $rows = $db->query('SELECT * FROM jitney_current_request c
                     JOIN jitney_queue q ON c.queueID = q.entryID
-                    ORDER BY q.pickupID ASC;');
+                    ORDER BY c.pickupID ASC;');
 
                 # Put each request into a row. Each comes with one button for dropoff.
                 # I think the current approach might have some security issues...
@@ -154,12 +154,6 @@ try {
         </div>
 
         <table id="requestQueue">
-            <tr>
-                <th id="queueLocation">Location</th>
-                <th id="queueDestination">Destination</th>
-                <th id="queuePassengers">Passengers</th>
-                <th id="queueTime">Request time</th>
-            </tr>
             <?php
             try {
                 # Obtain all entries in the current queue and sort by ID.
@@ -173,13 +167,23 @@ try {
                 foreach ($rows as $row) {
                     ?>
                     <tr>
+                        <th class="queueLocation">Location</th>
+                        <th class="queueDestination">Destination</th>
+                        <th class="queuePassengers"># Ppl.</th>
+                        <th class="queueTime">Request time</th>
+                    </tr>
+                    <tr>
                         <td><?= $row["pickupLocation"] ?></td>
                         <td><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
                     </tr>
                     <tr>
-                        <td class="queueComments" colspan="3"><?= $row["comments"] ?></td>
+                        <th class="queueComments" colspan="3">Comments</th>
+                        <th class="queueAction">Action</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><?= $row["comments"] ?></td>
                         <td>
                             <form action="pickupJitneyRequestDriver.php" method="post">
                                 <input name="entryID" readonly type="hidden"

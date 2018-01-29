@@ -101,7 +101,7 @@ try {
             <tr>
                 <th id="queueLocation">Location</th>
                 <th id="queueDestination">Destination</th>
-                <th id="queuePassengers">Passengers</th>
+                <th id="queuePassengers"># Ppl.</th>
                 <th id="queueTime">Request time</th>
             </tr>
             <?php

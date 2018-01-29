@@ -19,7 +19,10 @@ html, body {
     background-image: url("images/colbybannerbg.jpg");
     height: 80px;
     width: 100%;
+    /*min-width: 600px;*/
     clear: both;
+    /*display: inline-block;*/
+    overflow: hidden;
 }
 .banner1    {
     float: left;
@@ -104,9 +107,23 @@ label {
     margin: auto;
 }
 
-#requestQueue {
+/*onboardQueue is from the Driver's page, but they share the similar properties*/
+#requestQueue, #onboardQueue {
     table-layout: fixed;
     width: 100%;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr, td, th {
+    border: 1px solid black;
+}
+tr:nth-child(odd) {
+    background-color: #EEEEEE;
+}
+tr:nth-child(even) {
+    background-color: #F8F8F8;
 }
 
 #queueLocation, #queueDestination {
@@ -134,20 +151,35 @@ label {
 }
 
 /*Below are the blocks for the Jitney driver page (JitneyDriverPage.php)*/
+
 #onboardQueueLocation, #onboardQueueDestination {
-    width: 27%;
+    width: 23%;
 }
 #onboardQueuePassengers, #onboardQueueTime, #onboardQueueAction {
     width: 8%;
 }
 #onboardQueueComment {
-    width: 22%;
+    width: 30%;
 }
-/*
+/* Apparently this doesn't work... So the number has to be specified in HTML.
 .queueComments {
     column-span: 3;
 }
 */
+
+.queueLocation, .queueDestination {
+    width: 35%;
+}
+.queuePassengers, .queueAction {
+    width: 10%;
+}
+.queueTime {
+    width: 20%;
+}
+/*.queueComments {*/
+    /*width: 90%;*/
+/*}*/
+
 
 #Links {
     /*position: relative;*/
