@@ -197,3 +197,8 @@ tr:nth-child(even) {
 ul{
     list-style-position: inside;
 }
+
+#requestArea {
+    border: 1px solid grey;
+    margin-top: 3em;
+}

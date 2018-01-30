@@ -14,22 +14,22 @@
       <file leaf-file-name="JitneyUserPage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="204" column="50" lean-forward="false" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
+            <state relative-caret-position="135">
+              <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
-                <marker date="1517336042000" expanded="true" signature="760:787" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="760:792" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="760:803" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="760:815" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="3864:4088" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="3864:4091" ph="SELECT * FRO... jitney_queue" />
-                <marker date="1517336042000" expanded="true" signature="3991:4033" ph="SELECT queue... jitney_current_request" />
+                <marker date="1517337371000" expanded="true" signature="771:798" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="771:803" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="771:814" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="771:826" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="3875:4099" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="3875:4102" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517337371000" expanded="true" signature="4002:4044" ph="SELECT queue... jitney_current_request" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cancelRequest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cancelRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cancelRequest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
+            <state relative-caret-position="567">
+              <caret line="185" column="10" lean-forward="false" selection-start-line="185" selection-start-column="10" selection-end-line="185" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -98,12 +98,12 @@
         <option value="$PROJECT_DIR$/JitneyUserPage.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/JitneyDriverPage.php" />
-        <option value="$PROJECT_DIR$/index.css" />
-        <option value="$PROJECT_DIR$/JitneyUserPage.php" />
         <option value="$PROJECT_DIR$/dropoffJitneyRequestDriver.php" />
         <option value="$PROJECT_DIR$/pickupJitneyRequestDriver.php" />
         <option value="$PROJECT_DIR$/submitJitneyRequest.php" />
         <option value="$PROJECT_DIR$/cancelRequest.php" />
+        <option value="$PROJECT_DIR$/JitneyUserPage.php" />
+        <option value="$PROJECT_DIR$/index.css" />
       </list>
     </option>
   </component>
@@ -186,12 +186,12 @@
       <workItem from="1517076418796" duration="17389000" />
       <workItem from="1517183663196" duration="5114000" />
       <workItem from="1517239160731" duration="7856000" />
-      <workItem from="1517334851998" duration="1888000" />
+      <workItem from="1517334851998" duration="2569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40702000" />
+    <option name="totallyTimeSpent" value="41383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1010" y="23" width="1013" height="1018" extended-state="0" />
@@ -294,13 +294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyUserPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/forminfo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -343,13 +336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyUserPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="66" lean-forward="false" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GoogleMaps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -364,14 +350,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="131" column="30" lean-forward="false" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JitneyDriverPage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
@@ -382,22 +360,6 @@
             <marker date="1517271928000" expanded="true" signature="5606:5830" ph="SELECT * FRO... jitney_queue" />
             <marker date="1517271928000" expanded="true" signature="5606:5833" ph="SELECT * FRO... jitney_queue" />
             <marker date="1517271928000" expanded="true" signature="5733:5775" ph="SELECT queue... jitney_current_request" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="204" column="50" lean-forward="false" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
-          <folding>
-            <marker date="1517336042000" expanded="true" signature="760:787" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="760:792" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="760:803" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="760:815" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="3864:4088" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="3864:4091" ph="SELECT * FRO... jitney_queue" />
-            <marker date="1517336042000" expanded="true" signature="3991:4033" ph="SELECT queue... jitney_current_request" />
           </folding>
         </state>
       </provider>
@@ -456,6 +418,46 @@
             <marker date="1517336710000" expanded="true" signature="850:893" ph="SELECT * FRO... jitney_queue" />
             <marker date="1517336710000" expanded="true" signature="955:1079" ph="DELETE FROM jitney_queue... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JitneyUserPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JitneyUserPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="35" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <marker date="1517337371000" expanded="true" signature="771:798" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="771:803" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="771:814" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="771:826" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="3875:4099" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="3875:4102" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517337371000" expanded="true" signature="4002:4044" ph="SELECT queue... jitney_current_request" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="185" column="10" lean-forward="false" selection-start-line="185" selection-start-column="10" selection-end-line="185" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

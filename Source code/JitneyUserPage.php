@@ -12,7 +12,7 @@
 $alreadyRequested = false;
 # The user's Colby ID would be stored in $username.
 # Right now we don't know how to obtain it, so we keep this function disabled.
-$username = "";
+$username = "mulecolby17";
 
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
