@@ -4,7 +4,7 @@
 #map {
     height: 400px;
     width: 96%;
-    margin: auto;
+    margin: 1em auto auto auto;
     background-color: grey;
 }
 
