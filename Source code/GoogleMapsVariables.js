@@ -1,6 +1,7 @@
 // Default user location
 var userLat = 44.556;
 var userLng = -69.646;
+var userTime;
 
 // Markers for shuttle stops.
 var mainStLatLng = {lat: 44.550999, lng: -69.632022};

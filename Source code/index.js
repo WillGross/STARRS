@@ -30,7 +30,8 @@ function getPosition() {
 function showPosition(position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
-    $("#getLocation").text("You are at " + userLat + ", " + userLng);
+    userTime = position.timestamp;// Date(position.timestamp);
+    $("#getLocation").text("You are at " + userLat + ", " + userLng +", "+ userTime);
     geoLocationFunctionOn = 1;
 }
 
