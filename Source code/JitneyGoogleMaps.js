@@ -18,7 +18,7 @@ function initMap() {
     var marker = new google.maps.Marker({
         position: jitneyLocation,
         map: map,
-        icon: '/Users/zhzhang/Downloads/map-icons-master/src/icons/kayaking.svg'
+        icon: 'taxi-stand.svg'
     });
 
     setInterval(function () {
