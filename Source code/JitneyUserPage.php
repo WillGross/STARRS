@@ -239,15 +239,15 @@ try {
 
 <!-- Useful links provided to the user below the map. -->
 <div id="Links">
-    <p>
-        <a href="https://www.colby.edu/securitydept/colby-transportation-services/">
-            Colby Transportation Services (security office webpage)</a> <br>
-        <a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
-            Colby Shuttle Schedule and Map</a> <br>
-        <a href="JitneySchedule.php">
-            Jitney driver shifts</a><br>
+    <ul><span id="linkHeader">Useful Links:</span>
+        <li><a href="https://www.colby.edu/securitydept/colby-transportation-services/">
+            Colby Transportation Services (security office webpage)</a></li>
+        <li><a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
+            Colby Shuttle Schedule and Map</a></li>
+        <li><a href="JitneySchedule.php">
+            Jitney driver shifts</a></li>
         *The shuttle only runs from Monday to Friday during school sessions.
-    </p>
+    </ul>
 </div>
 
 <!--bottom of the page-->
