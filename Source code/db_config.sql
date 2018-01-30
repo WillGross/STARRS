@@ -1,6 +1,6 @@
 -- DROP DATABASE IF EXISTS starrs;
 -- CREATE DATABASE starrs;
--- USE starrs;
+USE starrs;
 
 -- DOCUMENTATION:
 -- Describes the structure of the STARRS database
@@ -16,15 +16,17 @@ DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE `vehicles`  (
   `id` int(2) NOT NULL auto_increment, -- for database use
   `name` char(3) NOT NULL default '', -- vehicle identifier
-  `plateNum` int(10) NOT NULL DEFAULT '', -- vehicle license plate
-  `mileage` int(7) NOT NULL DEFAULT '',
+  `plateNum` int(10) NOT NULL DEFAULT 000000, -- vehicle license plate
+  `mileage` int(7) NOT NULL,
   `oilStatus` VARCHAR (3) NOT NULL DEFAULT '', -- values ok or add
   `antifreezeStatus` VARCHAR (3) NOT NULL DEFAULT '', -- values ok or add
   `operationalStatus` VARCHAR (50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE (`name`),
+  UNIQUE (`plateNum`)
 );
 
---Dumping data for table 'vehicle'
+-- Dumping data for table 'vehicle'
 
 LOCK TABLES `vehicles` WRITE ;
 INSERT INTO `vehicles` VALUES
@@ -40,11 +42,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS  `location`;
 CREATE TABLE `location` (
-  `id` int(13) NOT NULL auto_increment,
-  `vehicle_ID` int(2) NOT NULL default '',
-  `latitude` DOUBLE(11,7) NOT NULL DEFAULT '',
-  `longitude` DOUBLE (11,7) NOT NULL DEFAULT '',
-  `time` int(13) NOT NULL DEFAULT '',-- in milliseconds since epoch
+  -- Ask about how to use tie breaker: `id` int(13) NOT NULL auto_increment,
+  `vehicle_ID` int(2) NOT NULL default 00,
+  `latitude` DOUBLE(11,7) NOT NULL DEFAULT 0.0,
+  `longitude` DOUBLE (11,7) NOT NULL DEFAULT 0.0,
+  `time` int(13) NOT NULL,-- in milliseconds since epoch
   PRIMARY KEY (`time`), -- most recent time will always reflect most recent real life condition
-  SECONDARY KEY (`id`) -- if two events have the same time, resort to which was catalogued first
+  -- Ask about how to use tie breaker: SECONDARY KEY (`id`), -- if two events have the same time, resort to which was catalogued first
+  FOREIGN KEY (`vehicle_ID`) REFERENCES `vehicles`(`id`)
 );
