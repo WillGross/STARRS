@@ -111,7 +111,11 @@ try {
 
                 # Obtain all entries in the current queue and sort by ID.
                 # Hopefully we don't allow anyone to mess up with IDs.
-                $rows = $db->query('SELECT * FROM jitney_queue ORDER BY entryID ASC;');
+                # Update 01/29: Filtered out all entries that are in the current request
+                $rows = $db->query('SELECT * FROM jitney_queue 
+                                    WHERE entryID NOT IN 
+                                        (SELECT queueID FROM jitney_current_request)
+                                    ORDER BY entryID ASC;');
 
                 # Put each comment into a comment box division, and help form the website.
                 foreach ($rows as $row) {

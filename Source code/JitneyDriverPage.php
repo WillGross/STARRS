@@ -158,7 +158,10 @@ try {
             try {
                 # Obtain all entries in the current queue and sort by ID.
                 # Hopefully we don't allow anyone to mess up with IDs.
-                $rows = $db->query('SELECT * FROM jitney_queue ORDER BY entryID ASC;');
+                $rows = $db->query('SELECT * FROM jitney_queue 
+                                    WHERE entryID NOT IN 
+                                        (SELECT queueID FROM jitney_current_request)
+                                    ORDER BY entryID ASC;');
 
                 # Keep track of whether the row has the earliest request.
                 $earliest = "earliestRequest";
