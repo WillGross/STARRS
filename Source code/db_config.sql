@@ -45,8 +45,8 @@ CREATE TABLE `location` (
   -- Ask about how to use tie breaker: `id` int(13) NOT NULL auto_increment,
   `vehicle_ID` int(2) NOT NULL default 00,
   `latitude` DOUBLE(11,7) NOT NULL DEFAULT 0.0,
-  `longitude` DOUBLE (11,7) NOT NULL DEFAULT 0.0,
-  `time` int(13) NOT NULL,-- in milliseconds since epoch
+  `longitude` DOUBLE(11,7) NOT NULL DEFAULT 0.0,
+  `time` BIGINT(20) NOT NULL,-- in milliseconds since epoch
   PRIMARY KEY (`time`), -- most recent time will always reflect most recent real life condition
   -- Ask about how to use tie breaker: SECONDARY KEY (`id`), -- if two events have the same time, resort to which was catalogued first
   FOREIGN KEY (`vehicle_ID`) REFERENCES `vehicles`(`id`)
