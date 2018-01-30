@@ -209,3 +209,13 @@ ul{
     padding-bottom: 2em;
     background-color: #EEEEEE;
 }
+
+.driver_shift{
+	background-color:yellow;
+}
+
+#dailySchedule{
+	border-collapse: collapse;
+	margin: auto auto 2em auto;
+	width: 40%;
+}
