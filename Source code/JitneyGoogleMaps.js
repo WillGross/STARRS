@@ -15,6 +15,8 @@ function initMap() {
     // Missing a function that gets the actual location of the Jitney.
     var jitneyLocation = new google.maps.LatLng(defaultLat, defaultLang);
 
+    // Add a marker with the taxi-stand.svg as the icon.
+    // Source: http://map-icons.com/
     var marker = new google.maps.Marker({
         position: jitneyLocation,
         map: map,
