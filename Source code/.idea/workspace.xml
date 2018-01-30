@@ -14,7 +14,7 @@
       <file leaf-file-name="JitneyDriverPage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JitneyDriverPage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1860">
+            <state relative-caret-position="0">
               <caret line="129" column="84" lean-forward="true" selection-start-line="129" selection-start-column="84" selection-end-line="129" selection-end-column="84" />
               <folding />
             </state>
@@ -36,28 +36,22 @@
       <file leaf-file-name="JitneyUserPage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="223" column="10" lean-forward="true" selection-start-line="223" selection-start-column="10" selection-end-line="223" selection-end-column="10" />
-              <folding />
+            <state relative-caret-position="675">
+              <caret line="192" column="33" lean-forward="true" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+              <folding>
+                <marker date="1517338691000" expanded="true" signature="771:826" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517338691000" expanded="true" signature="3875:4102" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1517338691000" expanded="true" signature="4002:4044" ph="SELECT queue... jitney_current_request" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JitneyUserPage.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JitneyUserPage.css">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JitneySchedule.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JitneySchedule.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+            <state relative-caret-position="807">
+              <caret line="210" column="1" lean-forward="true" selection-start-line="210" selection-start-column="1" selection-end-line="210" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -78,32 +72,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
               <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dropoffJitneyRequestDriver.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dropoffJitneyRequestDriver.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" column="52" lean-forward="false" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-              <folding>
-                <element signature="e#6#152#0#PHP" expanded="true" />
-                <marker date="1517337603000" expanded="true" signature="694:747" ph="SELECT * FRO... jitney_current_request" />
-                <marker date="1517337603000" expanded="true" signature="1076:1184" ph="UPDATE jitney_log... " />
-                <marker date="1517337603000" expanded="true" signature="1303:1354" ph="DELETE FROM jitney_current_request... " />
-                <marker date="1517337603000" expanded="true" signature="1395:1436" ph="DELETE FROM jitney_queue... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -163,8 +131,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1043" />
-    <option name="y" value="54" />
+    <option name="x" value="854" />
+    <option name="y" value="26" />
     <option name="width" value="1013" />
     <option name="height" value="1018" />
   </component>
@@ -239,10 +207,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41670000" />
+    <option name="totallyTimeSpent" value="42558000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1043" y="54" width="1013" height="1018" extended-state="0" />
+    <frame x="854" y="26" width="1013" height="1018" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22803554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -413,7 +381,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
           <caret line="208" column="10" lean-forward="true" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
-          <folding />
+          <folding>
+            <marker date="1517338691000" expanded="true" signature="771:826" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517338691000" expanded="true" signature="3875:4102" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517338691000" expanded="true" signature="4002:4044" ph="SELECT queue... jitney_current_request" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -515,14 +487,6 @@
       </provider>
     </entry>
     <entry file="file:///Volumes/Personal/zhzhang/My Documents/CS325/day4/catchsquare.js" />
-    <entry file="file://$PROJECT_DIR$/JitneySchedule.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JitneyUserPage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -542,7 +506,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JitneyDriverPage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
+        <state relative-caret-position="0">
           <caret line="129" column="84" lean-forward="true" selection-start-line="129" selection-start-column="84" selection-end-line="129" selection-end-column="84" />
           <folding />
         </state>
@@ -586,18 +550,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyUserPage.css">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="192">
+          <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
+    <entry file="file://$PROJECT_DIR$/JitneySchedule.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="223" column="10" lean-forward="true" selection-start-line="223" selection-start-column="10" selection-end-line="223" selection-end-column="10" />
+        <state relative-caret-position="376">
+          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JitneyUserPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -610,18 +582,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/JitneyUserPage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="675">
+          <caret line="192" column="33" lean-forward="true" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+          <folding>
+            <marker date="1517338691000" expanded="true" signature="771:826" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517338691000" expanded="true" signature="3875:4102" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1517338691000" expanded="true" signature="4002:4044" ph="SELECT queue... jitney_current_request" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="807">
-          <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="24" />
+          <caret line="210" column="1" lean-forward="true" selection-start-line="210" selection-start-column="1" selection-end-line="210" selection-end-column="1" />
           <folding />
         </state>
       </provider>

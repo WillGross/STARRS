@@ -141,6 +141,10 @@ tr:nth-child(even) {
     display: block;
 }
 
+.requestText{
+    width: 100%;
+}
+
 .textboxCounter{
     text-align: right;
     display: block;
@@ -203,4 +207,5 @@ ul{
     width: 60%;
     margin: 3em auto 3em auto;
     padding-bottom: 2em;
+    background-color: #EEEEEE;
 }

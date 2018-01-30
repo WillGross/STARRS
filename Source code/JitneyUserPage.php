@@ -181,7 +181,7 @@ try {
                         </span>
                     </p></label><br>
 
-                <label><p><span class="requestPrompt">How many people are traveling?</span>
+                <label><p class="requestPrompt">How many people are traveling?
                         <select name="number">
                             <option value="1">1</option>
                             <option value="2">2</option>
