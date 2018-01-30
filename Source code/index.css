@@ -127,10 +127,10 @@ tr:nth-child(even) {
 }
 
 #queueLocation, #queueDestination {
-    width: 35%;
+    width: 34%;
 }
-#queuePassengers {
-    width: 10%;
+#queuePassengers, #queueAction {
+    width: 6%;
 }
 #queueTime {
     width: 20%;

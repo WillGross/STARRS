@@ -103,6 +103,7 @@ try {
                 <th id="queueDestination">Destination</th>
                 <th id="queuePassengers"># Ppl.</th>
                 <th id="queueTime">Request time</th>
+                <th id="queueAction">Action</th>
             </tr>
             <?php
             try {
@@ -125,6 +126,20 @@ try {
                         <td><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
+                        <td><?php
+                            if ($row["username"] === $username) {
+                                ?>
+                                <form action="cancelRequest.php" method="post">
+                                    <input name="entryID" readonly type="hidden"
+                                           value="<?= $row['entryID'] ?>" />
+                                    <input name="username" readonly type="hidden"
+                                           value="<?= $username ?>" />
+                                    <input type="submit" value="Cancel">
+                                </form>
+                                <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php
                 }
@@ -186,6 +201,8 @@ try {
                             <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
+                <input name="username" readonly type="hidden"
+                       value="<?= $username ?>" />
 
                 <div id="requestButtons">
                 <?php
