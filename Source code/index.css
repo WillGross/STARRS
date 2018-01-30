@@ -200,5 +200,7 @@ ul{
 
 #requestArea {
     border: 1px solid grey;
-    margin-top: 3em;
+    width: 60%;
+    margin: 3em auto 3em auto;
+    padding-bottom: 2em;
 }
