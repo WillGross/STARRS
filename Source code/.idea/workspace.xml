@@ -43,21 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JitneyGoogleMaps.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JitneyGoogleMaps.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JitneyGoogleMaps.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+            <state relative-caret-position="300">
+              <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JitneyDriverPage.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JitneyDriverPage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JitneyDriverPage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+            <state relative-caret-position="312">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <marker date="1517342869000" expanded="true" signature="793:847" ph="SELECT * FRO... driver_list" />
                 <marker date="1517342869000" expanded="true" signature="3725:3872" ph="SELECT * FRO... jitney_current_request" />
@@ -111,8 +111,8 @@
         <option value="$PROJECT_DIR$/cancelRequest.php" />
         <option value="$PROJECT_DIR$/index.css" />
         <option value="$PROJECT_DIR$/JitneyUserPage.php" />
-        <option value="$PROJECT_DIR$/JitneyGoogleMaps.js" />
         <option value="$PROJECT_DIR$/JitneyDriverPage.php" />
+        <option value="$PROJECT_DIR$/JitneyGoogleMaps.js" />
       </list>
     </option>
   </component>
@@ -200,7 +200,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44725000" />
+    <option name="totallyTimeSpent" value="44925000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1010" y="23" width="1013" height="1018" extended-state="0" />
@@ -563,14 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JitneyGoogleMaps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cancelRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -601,8 +593,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JitneyDriverPage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+        <state relative-caret-position="312">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
           <folding>
             <marker date="1517342869000" expanded="true" signature="793:847" ph="SELECT * FRO... driver_list" />
             <marker date="1517342869000" expanded="true" signature="3725:3872" ph="SELECT * FRO... jitney_current_request" />
@@ -610,6 +602,14 @@
             <marker date="1517342869000" expanded="true" signature="5557:5784" ph="SELECT * FRO... jitney_queue" />
             <marker date="1517342869000" expanded="true" signature="5684:5726" ph="SELECT queue... jitney_current_request" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JitneyGoogleMaps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
