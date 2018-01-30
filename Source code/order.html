@@ -4,16 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>STARRS for Colby</title>
+    <title>STARRS for Colby -- Jitney request page</title>
 <!--    <meta name="viewport" content="initial-scale=1.0">-->
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
 <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
     <script src="JitneyUserPage.js"></script>
-<!--    <script src="GoogleMaps.js"></script>-->
+    <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
-          href="index.css"
+          href="index.css?1517342366"
           type="text/css" />
 </head>
 <body>
@@ -67,8 +67,9 @@
             <tr>
                 <th id="queueLocation">Location</th>
                 <th id="queueDestination">Destination</th>
-                <th id="queuePassengers">Passengers</th>
+                <th id="queuePassengers"># Ppl.</th>
                 <th id="queueTime">Request time</th>
+                <th id="queueAction">Action</th>
             </tr>
                             <p>Error: SQLSTATE[HY000] [2002] No such file or directory</p>
                 <p>Please try later.</p>
@@ -101,7 +102,7 @@
                         </span>
                     </p></label><br>
 
-                <label><p><span class="requestPrompt">How many people are traveling?</span>
+                <label><p class="requestPrompt">How many people are traveling?
                         <select name="number">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -121,6 +122,8 @@
                             <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
+                <input name="username" readonly type="hidden"
+                       value="mulecolby17" />
 
                 <div id="requestButtons">
                                     <input type="submit" value="Submit" />
@@ -144,8 +147,6 @@
 <!-- Useful links provided to the user below the map. -->
 <div id="Links">
     <p>
-        <a href="JitneyPage.html">
-            Jitney user interface</a> <br>
         <a href="https://www.colby.edu/securitydept/colby-transportation-services/">
             Colby Transportation Services (security office webpage)</a> <br>
         <a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">

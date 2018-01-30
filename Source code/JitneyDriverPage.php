@@ -47,8 +47,7 @@ try {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
 <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
-    <script src="JitneyDriverPage.js"></script>
-<!--    <script src="GoogleMaps.js"></script>-->
+    <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
           href="index.css<?php echo "?".time(); //To avoid server from caching CSS ?>"
           type="text/css" />

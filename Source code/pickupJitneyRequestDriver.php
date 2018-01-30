@@ -7,7 +7,8 @@
  */
 // We need to find a way to get the username later.
 // Right now, just use this.
-$username = "mulecolby18";
+// Update (01/30/18): I think username should be sent from JitneyUserPage instead.
+//$username = "mulecolby18";
 date_default_timezone_set('EST');
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
@@ -15,6 +16,7 @@ try {
 
     if (isset($_POST["entryID"])) {
         $entryID = $_POST["entryID"];
+        $username = htmlspecialchars($_POST["username"]);
         $rows = $db->query("SELECT * FROM jitney_queue WHERE entryID = $entryID;");
 
         if ($rows->rowCount() !== 0) {

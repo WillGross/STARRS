@@ -7,7 +7,8 @@
  */
 // We need to find a way to get the username later.
 // Right now, just use this.
-$username = "mulecolby18";
+// Update (01/30/18): I think username should be sent from JitneyUserPage instead.
+//$username = "mulecolby18";
 date_default_timezone_set('EST');
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
@@ -19,6 +20,7 @@ try {
         $dropoff = htmlspecialchars($_POST["dropoff"], ENT_QUOTES);
         $passengers = $_POST["number"];
         $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES);
+        $username = htmlspecialchars($_POST["username"]);
 
         # Preserve all line breaks in all texts.
         $pickup = str_replace("\n", '<br>', $pickup);

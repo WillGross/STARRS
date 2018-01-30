@@ -12,7 +12,7 @@
 $alreadyRequested = false;
 # The user's Colby ID would be stored in $username.
 # Right now we don't know how to obtain it, so we keep this function disabled.
-$username = "";
+$username = "mulecolby17";
 
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
@@ -45,7 +45,7 @@ try {
     </script>
 <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
     <script src="JitneyUserPage.js"></script>
-<!--    <script src="GoogleMaps.js"></script>-->
+    <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
           href="index.css<?php echo "?".time(); //To avoid server from caching CSS ?>"
           type="text/css" />
@@ -103,6 +103,7 @@ try {
                 <th id="queueDestination">Destination</th>
                 <th id="queuePassengers"># Ppl.</th>
                 <th id="queueTime">Request time</th>
+                <th id="queueAction">Action</th>
             </tr>
             <?php
             try {
@@ -125,6 +126,20 @@ try {
                         <td><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
+                        <td><?php
+                            if ($row["username"] === $username) {
+                                ?>
+                                <form action="cancelRequest.php" method="post">
+                                    <input name="entryID" readonly type="hidden"
+                                           value="<?= $row['entryID'] ?>" />
+                                    <input name="username" readonly type="hidden"
+                                           value="<?= $username ?>" />
+                                    <input type="submit" value="Cancel">
+                                </form>
+                                <?php
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <?php
                 }
@@ -166,7 +181,7 @@ try {
                         </span>
                     </p></label><br>
 
-                <label><p><span class="requestPrompt">How many people are traveling?</span>
+                <label><p class="requestPrompt">How many people are traveling?
                         <select name="number">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -186,6 +201,8 @@ try {
                             <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
+                <input name="username" readonly type="hidden"
+                       value="<?= $username ?>" />
 
                 <div id="requestButtons">
                 <?php

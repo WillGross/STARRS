@@ -127,10 +127,10 @@ tr:nth-child(even) {
 }
 
 #queueLocation, #queueDestination {
-    width: 35%;
+    width: 34%;
 }
-#queuePassengers {
-    width: 10%;
+#queuePassengers, #queueAction {
+    width: 6%;
 }
 #queueTime {
     width: 20%;
@@ -139,6 +139,10 @@ tr:nth-child(even) {
 .requestPrompt{
     text-align: left;
     display: block;
+}
+
+.requestText{
+    width: 100%;
 }
 
 .textboxCounter{
@@ -196,4 +200,12 @@ tr:nth-child(even) {
 
 ul{
     list-style-position: inside;
+}
+
+#requestArea {
+    border: 1px solid grey;
+    width: 60%;
+    margin: 3em auto 3em auto;
+    padding-bottom: 2em;
+    background-color: #EEEEEE;
 }
