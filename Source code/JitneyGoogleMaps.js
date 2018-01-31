@@ -28,12 +28,16 @@ function initMap() {
         var newLocation = newJitneyLocation();
         // Change the position of the marker
         marker.setPosition(newLocation);
-    }, 100);
+    }, 5000);
 }
 
 // (Supposed to) get the new Jitney location from the GPS device in Jitney,
 // and then return a new google.maps.LatLng object to relocate the marker.
 function newJitneyLocation() {
+    $.ajax({
+        url: ""
+    });
+
     defaultLat -= 0.00005;
     defaultLang += 0.0001;
     return new google.maps.LatLng(defaultLat, defaultLang);

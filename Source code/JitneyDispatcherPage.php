@@ -72,7 +72,7 @@ $username = "admin";
 
     <div id="onboard">
         <div class="sectionTitle">
-            <h2>Requests Currently Being Processed</h2>
+            <h2>Passengers on the Jitney right now</h2>
         </div>
 
         <table id="onboardQueue">

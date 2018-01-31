@@ -50,6 +50,7 @@ try {
 
 }
 
+// Go back to the previous page, if there is one.
 if (isset($_SERVER['HTTP_REFERER'])) {
     header("Location: ".$_SERVER['HTTP_REFERER']);
 } else {

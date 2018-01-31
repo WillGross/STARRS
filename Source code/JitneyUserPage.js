@@ -41,6 +41,11 @@ $(document).ready( function () {
         var dropoff = $("#dropoffText").val();
         // var comment = $("#commentText").val();
 
+        if (!(/ *[^ ]+ */.test($("#usernameText").val()))) {
+            alert("Username cannot be left blank.");
+            return false;
+        }
+
         // Function reference: https://stackoverflow.com/a/6603043
         if (/ *[^ ]+ */.test(pickup) && / *[^ ]+ */.test(dropoff)) {
             var confirmed = confirm("Please confirm the request:"+
