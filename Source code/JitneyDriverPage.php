@@ -46,7 +46,7 @@ try {
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
-    <script src="LogLocation.js"></script>
+    <script src="logLocation.js"></script>
     <script src="JitneyUserPage.js"></script>
     <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
