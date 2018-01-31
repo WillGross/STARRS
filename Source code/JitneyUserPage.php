@@ -232,7 +232,7 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
 
     <div id="scheduleRequestPage">
         <div class="sectionTitle">
-            <h2>Today's schedule</h2>
+            <h2><?= date('D')?>'s schedule</h2>
             <table id="dailySchedule">
             	<tr>
             		<th>Time</th>
