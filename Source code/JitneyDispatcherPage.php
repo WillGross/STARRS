@@ -24,6 +24,7 @@ $username = "admin";
     <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
     <script src="JitneyUserPage.js"></script>
     <script src="JitneyGoogleMaps.js"></script>
+    <script src="pulLocation.js"></script>
     <link rel="stylesheet"
           href="index.css<?php echo "?".time(); //To avoid server from caching CSS ?>"
           type="text/css" />
