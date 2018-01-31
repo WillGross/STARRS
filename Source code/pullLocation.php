@@ -5,6 +5,8 @@
  * Date: 1/31/18
  * Time: 11:19 AM
  */
+header("Access-Control-Allow-Origin: *"); // Allow CORS (Cross-Origin Resource Sharing)
+// so that Chrome and Firefox and Safari etc. are able to pull the recent location.
 try {
     $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
