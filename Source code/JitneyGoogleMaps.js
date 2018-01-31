@@ -47,7 +47,9 @@ function newJitneyLocation() {
 
 //global variables for jitney location
 var lat=44.556;
-var lon-69.646;
+var lon=-69.646;
+
+var jitneyLocation = new google.maps.LatLng(lat, lon);
 
 // Add a marker with the taxi-stand.svg as the icon.
 // Source: http://map-icons.com/
@@ -57,13 +59,10 @@ var marker = new google.maps.Marker({
     icon: 'taxi-stand.svg'
 });
 
-setInterval(function () {
-    // Call some function that gets the new Jitney position and returns a LatLng object here
-    var newLocation = newJitneyLocation();
-    // Change the position of the marker
-    marker.setPosition(newLocation);
-}, 5000);
+newJitneyLocation();
+setInterval(newJitneyLocation, 5000);
 
 function newJitneyLocation() {
-    return new google.maps.LatLng(Lat, defaultLang);
+    var newLocation = new google.maps.LatLng(lat, lon);
+    marker.setPosition(newLocation);
 }
