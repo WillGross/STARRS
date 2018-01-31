@@ -77,15 +77,15 @@ try {
     <div id="linksBanner">
         <div class="linkBlock">
             <a href="index.html">
-                <span class="linkBlockText">Colby shuttle tracker</span></a>
+                <span class="linkBlockText">Colby Shuttle Tracker</span></a>
         </div>
         <div class="linkBlock">
             <a href="JitneyUserPage.php">
-                <span class="linkBlockText">Order Jitney pickup</span></a>
+                <span class="linkBlockText">Order Jitney Pickup</span></a>
         </div>
         <div class="linkBlock">
             <a href="https://www.colby.edu/securitydept/colby-transportation-services">
-                <span class="linkBlockText">Security office</span></a>
+                <span class="linkBlockText">Security Office</span></a>
         </div>
     </div>
 
@@ -98,7 +98,7 @@ try {
 
     <div id="onboard">
         <div class="sectionTitle">
-            <h2>Requests Currently Being Processed</h2>
+            <h2>Who's on the car right now</h2>
         </div>
 
         <table id="onboardQueue">
@@ -222,62 +222,62 @@ try {
 
     <div id="scheduleRequestPage">
         <div class="sectionTitle">
-            <h2><?= date('D')?>'s schedule</h2>
-            <table id="dailySchedule">
-            	<tr>
-            		<th>Time</th>
-            		<th>Schedule</th>
-            	</tr>
-            	
-	
-                <?php
-                // Find a way to represent the schedule, and make a table here.
-                date_default_timezone_set('US/Easter');
-                $my_date = date('D');
-                // echo $my_date;
-                $arr = array(
-                	0 => "Sun",
-                	1 => "Mon",
-                	2 => "Tue",
-                	3 => "Wed",
-                	4 => "Thu",
-                	5 => "Fri",
-                	6 => "Sat"
-                );
-                // echo $arr[$my_date];
-                $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
-                $week = array();
-                $int = 0;
-                while(! feof($myfile)){
-                	$week[$arr[$int]]= fgets($myfile);
-                	$int ++;
-                }
-                fclose($myfile);  
-               	//echo $week[$my_date];
-                $daily = explode(" ",$week[$my_date]);
-                $time = 1;
-                $class = "none";
-                foreach ($daily as $one){
-                	$one = str_replace(' ','',$one);
-                	$time = ($time + 1) % 12;
-                	if ($one !== "None"){
-                	
-                		$class = "driver_shift";
-                	} else {
-                		$class = "none";
-                		$one = '';
-                    }
-                ?>
-                	<tr>
-                		<td><?=$time?>:00</td>
-                		<td class="<?=$class?>" ><?=$one?></td>
-                	</tr>
-                <?php	
-                }
-                
-                ?>
-            </table>
+            <h2>Jitney schedule for today (<?= date('l')?>)</h2>
         </div>
+        <table id="dailySchedule">
+            <tr>
+                <th>Time</th>
+                <th>Schedule</th>
+            </tr>
+
+
+            <?php
+            // Find a way to represent the schedule, and make a table here.
+            date_default_timezone_set('US/Easter');
+            $my_date = date('D');
+            // echo $my_date;
+            $arr = array(
+                0 => "Sun",
+                1 => "Mon",
+                2 => "Tue",
+                3 => "Wed",
+                4 => "Thu",
+                5 => "Fri",
+                6 => "Sat"
+            );
+            // echo $arr[$my_date];
+            $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
+            $week = array();
+            $int = 0;
+            while(! feof($myfile)){
+                $week[$arr[$int]]= fgets($myfile);
+                $int ++;
+            }
+            fclose($myfile);
+            //echo $week[$my_date];
+            $daily = explode(" ",$week[$my_date]);
+            $time = 1;
+            $class = "none";
+            foreach ($daily as $one){
+                $one = str_replace(' ','',$one);
+                $time = ($time + 1) % 12;
+                if ($one !== "None"){
+
+                    $class = "driver_shift";
+                } else {
+                    $class = "none";
+                    $one = '';
+                }
+            ?>
+                <tr>
+                    <td><?=$time?>:00</td>
+                    <td class="<?=$class?>" ><?=$one?></td>
+                </tr>
+            <?php
+            }
+
+            ?>
+        </table>
     </div>
 
 </div>

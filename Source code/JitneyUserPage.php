@@ -74,15 +74,15 @@ try {
     <div id="linksBanner">
         <div class="linkBlock">
             <a href="index.html">
-                <span class="linkBlockText">Colby shuttle tracker</span></a>
+                <span class="linkBlockText">Colby Shuttle Tracker</span></a>
         </div>
         <div class="linkBlock">
             <a href="JitneyUserPage.php">
-                <span class="linkBlockText">Order Jitney pickup</span></a>
+                <span class="linkBlockText">Order Jitney Pickup</span></a>
         </div>
         <div class="linkBlock">
             <a href="https://www.colby.edu/securitydept/colby-transportation-services">
-                <span class="linkBlockText">Security office</span></a>
+                <span class="linkBlockText">Security Office</span></a>
         </div>
     </div>
 
@@ -91,6 +91,47 @@ try {
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
                 async defer></script>
 
+    </div>
+
+    <div id="onboard">
+        <div class="sectionTitle">
+            <h2>Riders on Jitney right now</h2>
+        </div>
+
+        <table id="onboardQueue">
+            <tr>
+                <th id="onboardQueueLocation">Location</th>
+                <th id="onboardQueueDestination">Destination</th>
+                <th id="onboardQueuePassengers"># Ppl.</th>
+            </tr>
+            <?php
+            try {
+                # Obtain all entries in the current queue
+                $rows = $db->query('SELECT * FROM jitney_current_request c
+                    JOIN jitney_queue q ON c.queueID = q.entryID
+                    ORDER BY c.pickupID ASC;');
+
+                # Put each request into a row. Each comes with one button for dropoff.
+                # I think the current approach might have some security issues...
+                foreach ($rows as $row) {
+                    ?>
+                    <tr>
+                        <td><?= $row["pickupLocation"] ?></td>
+                        <td><?= $row["dropoffLocation"] ?></td>
+                        <td><?= $row["numOfPassenger"] ?></td>
+                    </tr>
+                    <?php
+                }
+
+            } catch (PDOException $ex) {
+                ?>
+                <p>Error: <?= $ex->getMessage() ?></p>
+                <p>Please call Security Office when you need to.</p>
+                <?php
+            }
+
+            ?>
+        </table>
     </div>
 
     <div id="queue">
@@ -108,9 +149,6 @@ try {
             </tr>
             <?php
             try {
-                $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
-                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
                 # Obtain all entries in the current queue and sort by ID.
                 # Hopefully we don't allow anyone to mess up with IDs.
                 # Update 01/29: Filtered out all entries that are in the current request
@@ -233,62 +271,62 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
 
     <div id="scheduleRequestPage">
         <div class="sectionTitle">
-            <h2><?= date('D')?>'s schedule</h2>
-            <table id="dailySchedule">
-            	<tr>
-            		<th>Time</th>
-            		<th>Schedule</th>
-            	</tr>
-            	
-	
-                <?php
-                // Find a way to represent the schedule, and make a table here.
-                date_default_timezone_set('US/Easter');
-                $my_date = date('D');
-                // echo $my_date;
-                $arr = array(
-                	0 => "Sun",
-                	1 => "Mon",
-                	2 => "Tue",
-                	3 => "Wed",
-                	4 => "Thu",
-                	5 => "Fri",
-                	6 => "Sat"
-                );
-                // echo $arr[$my_date];
-                $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
-                $week = array();
-                $int = 0;
-                while(! feof($myfile)){
-                	$week[$arr[$int]]= fgets($myfile);
-                	$int ++;
-                }
-                fclose($myfile);  
-               	//echo $week[$my_date];
-                $daily = explode(" ",$week[$my_date]);
-                $time = 1;
-                $class = "none";
-                foreach ($daily as $one){
-                	$one = str_replace(' ','',$one);
-                	$time = ($time + 1) % 12;
-                	if ($one !== "None"){
-                	
-                		$class = "driver_shift";
-                	} else {
-                		$class = "none";
-                		$one = '';
-                    }
-                ?>
-                	<tr>
-                		<td><?=$time?>:00</td>
-                		<td class="<?=$class?>" ><?=$one?></td>
-                	</tr>
-                <?php	
-                }
-
-                ?>
-            </table>
+            <h2>Jitney schedule for today (<?= date('l')?>)</h2>
         </div>
+        <table id="dailySchedule">
+            <tr>
+                <th>Time</th>
+                <th>Schedule</th>
+            </tr>
+
+
+            <?php
+            // Find a way to represent the schedule, and make a table here.
+            date_default_timezone_set('US/Easter');
+            $my_date = date('D');
+            // echo $my_date;
+            $arr = array(
+                0 => "Sun",
+                1 => "Mon",
+                2 => "Tue",
+                3 => "Wed",
+                4 => "Thu",
+                5 => "Fri",
+                6 => "Sat"
+            );
+            // echo $arr[$my_date];
+            $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
+            $week = array();
+            $int = 0;
+            while(! feof($myfile)){
+                $week[$arr[$int]]= fgets($myfile);
+                $int ++;
+            }
+            fclose($myfile);
+            //echo $week[$my_date];
+            $daily = explode(" ",$week[$my_date]);
+            $time = 1;
+            $class = "none";
+            foreach ($daily as $one){
+                $one = str_replace(' ','',$one);
+                $time = ($time + 1) % 12;
+                if ($one !== "None"){
+
+                    $class = "driver_shift";
+                } else {
+                    $class = "none";
+                    $one = '';
+                }
+            ?>
+                <tr>
+                    <td><?=$time?>:00</td>
+                    <td class="<?=$class?>" ><?=$one?></td>
+                </tr>
+            <?php
+            }
+
+            ?>
+        </table>
     </div>
 
 
