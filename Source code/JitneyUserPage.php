@@ -284,10 +284,7 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
                 	</tr>
                 <?php	
                 }
-                
-                
-              	
-                
+
                 ?>
             </table>
         </div>

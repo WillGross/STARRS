@@ -283,7 +283,7 @@ try {
 
 <!-- Useful links provided to the user below the map. -->
 <div id="Links">
-    <ul>
+    <ul><span id="linkHeader">Useful Links:</span>
         <li><a href="https://www.colby.edu/securitydept/colby-transportation-services/">
             Colby Transportation Services (security office webpage)</a> </li>
         <li><a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
