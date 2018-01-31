@@ -43,14 +43,28 @@ $(document).ready( function () {
 
         // Function reference: https://stackoverflow.com/a/6603043
         if (/ *[^ ]+ */.test(pickup) && / *[^ ]+ */.test(dropoff)) {
-            alert("Jitney pickup request successfully submitted.");
-            return true;
+            var confirmed = confirm("Please confirm the request:"+
+                " from "+pickup+" to "+dropoff+"?");
+            if (confirmed) {
+                alert("Jitney pickup request successfully submitted.");
+            }
+            return confirmed;
         } else {
             alert("Your pickup and dropoff locations cannot be blank!");
             return false;
         }
     }
 
+    // Pop up a confirmation message when the user presses "Cancel" to cancel a request
+    $(".requestCancel").submit(function () {
+        var id = this.id.slice(0, -6);
+        var confirmed = confirm("Are you sure you want to cancel the request:"+
+                " from "+$("#"+id+"pickup").text()+" to "+$("#"+id+"dropoff").text()+"?");
+        if (confirmed) {
+            alert("Request is cancelled.");
+        }
+        return confirmed;
+    });
 
 });
 

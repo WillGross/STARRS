@@ -122,14 +122,21 @@ try {
                 foreach ($rows as $row) {
                     ?>
                     <tr>
-                        <td><?= $row["pickupLocation"] ?></td>
-                        <td><?= $row["dropoffLocation"] ?></td>
+<!--            Add IDs for each row's locations to make it easy for confirmation.
+The ID starts with the entryID of request, the user name, and then a keyword. -->
+                        <td id="<?= $row['entryID'].$username."pickup"
+                        ?>"><?= $row["pickupLocation"] ?></td>
+                        <td id="<?= $row['entryID'].$username."dropoff"
+                        ?>"><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
                         <td><?php
                             if ($row["username"] === $username) {
                                 ?>
-                                <form action="cancelRequest.php" method="post">
+<!--            Submit the username and entryID along with the request.-->
+                                <form action="cancelRequest.php" method="post"
+                                      class="requestCancel"
+                                      id="<?= $row['entryID'].$username."cancel" ?>">
                                     <input name="entryID" readonly type="hidden"
                                            value="<?= $row['entryID'] ?>" />
                                     <input name="username" readonly type="hidden"
