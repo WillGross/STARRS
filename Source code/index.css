@@ -126,16 +126,6 @@ tr:nth-child(even) {
     background-color: #F8F8F8;
 }
 
-#queueLocation, #queueDestination {
-    width: 34%;
-}
-#queuePassengers, #queueAction {
-    width: 6%;
-}
-#queueTime {
-    width: 20%;
-}
-
 .requestPrompt{
     text-align: left;
     display: block;
@@ -157,25 +147,23 @@ tr:nth-child(even) {
 /*Below are the blocks for the Jitney driver page (JitneyDriverPage.php)*/
 
 #onboardQueueLocation, #onboardQueueDestination {
-    width: 23%;
+    width: 20%;
 }
-#onboardQueuePassengers, #onboardQueueTime, #onboardQueueAction {
-    width: 8%;
+#onboardQueuePassengers, #onboardQueueAction {
+    width: 6%;
 }
 #onboardQueueComment {
     width: 30%;
 }
-/* Apparently this doesn't work... So the number has to be specified in HTML.
-.queueComments {
-    column-span: 3;
+#onboardQueueTime {
+    width: 18%;
 }
-*/
 
 .queueLocation, .queueDestination {
-    width: 35%;
+    width: 37%;
 }
 .queuePassengers, .queueAction {
-    width: 10%;
+    width: 6%;
 }
 .queueTime {
     width: 20%;

@@ -158,7 +158,7 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
                         <th class="queueAction">Action</th>
                     </tr>
                     <tr>
-                        <td colspan="3"><br>
+                        <td colspan="3">
                             <strong>Request issuer:
                                 <span class="appearedUser"><?= $row["username"] ?></span>
                             </strong><br>

@@ -141,11 +141,11 @@ try {
 
         <table id="requestQueue">
             <tr>
-                <th id="queueLocation">Location</th>
-                <th id="queueDestination">Destination</th>
-                <th id="queuePassengers"># Ppl.</th>
-                <th id="queueTime">Request time</th>
-                <th id="queueAction">Action</th>
+                <th class="queueLocation">Location</th>
+                <th class="queueDestination">Destination</th>
+                <th class="queuePassengers"># Ppl.</th>
+                <th class="queueTime">Request time</th>
+                <th class="queueAction">Action</th>
             </tr>
             <?php
             try {
