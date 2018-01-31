@@ -6,7 +6,7 @@
  * Time: 11:19 AM
  */
 try {
-    $db = new PDO("mysql:dbname=starrs;host=localhost\", \"starrs\", \"Wher3Bus@?");
+    $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $vehicleType = $_GET["vehicleType"];
