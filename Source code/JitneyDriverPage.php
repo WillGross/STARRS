@@ -47,7 +47,7 @@ try {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
     <script src="JitneyDriverPage.js"></script>
-<!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
+    <script src="JitneyUserPage.js"></script>
     <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
           href="index.css<?php echo "?".time(); //To avoid server from caching CSS ?>"
@@ -122,12 +122,15 @@ try {
                     ?>
                     <tr>
                         <td><?= $row["pickupLocation"] ?></td>
-                        <td><?= $row["dropoffLocation"] ?></td>
+                        <td id="<?= $row['entryID'].$row['username']."dropoffLocation"
+                        ?>"><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["comments"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
                         <td>
-                            <form action="dropoffJitneyRequestDriver.php" method="post">
+                            <form action="dropoffJitneyRequestDriver.php" method="post"
+                                  class="requestDropoff"
+                                  id="<?= $row['entryID'].$row['username']."Dropoff" ?>">
                                 <input name="entryID" readonly type="hidden"
                                        value="<?= $row['entryID'] ?>" />
                                 <input type="submit" value="Dropoff">
@@ -166,7 +169,10 @@ try {
                 # Keep track of whether the row has the earliest request.
                 $earliest = "earliestRequest";
 
-                # Put each comment into a comment box division, and help form the website.
+                # Each request occupies 4 rows, 2 of them for column titles.
+                # The driver has the freedom to choose which one to pickup next
+                # at their own discretion, though if the earliest one is not the chosen
+                # one there will be some warnings.
                 foreach ($rows as $row) {
                     ?>
                     <tr>
@@ -176,7 +182,8 @@ try {
                         <th class="queueTime">Request time</th>
                     </tr>
                     <tr>
-                        <td><?= $row["pickupLocation"] ?></td>
+                        <td id="<?= $row['entryID'].$row['username']."pickupLocation"
+                        ?>"><?= $row["pickupLocation"] ?></td>
                         <td><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
@@ -188,11 +195,12 @@ try {
                     <tr>
                         <td colspan="3"><?= $row["comments"] ?></td>
                         <td>
-                            <form action="pickupJitneyRequestDriver.php" method="post">
+                            <form action="pickupJitneyRequestDriver.php" method="post"
+                                  class="requestPickup <?= $earliest ?>"
+                                  id="<?= $row['entryID'].$row['username']."Pickup" ?>">
                                 <input name="entryID" readonly type="hidden"
                                        value="<?= $row['entryID'] ?>" />
-                                <input type="submit" value="Pickup"
-                                       class="<?= $earliest ?>">
+                                <input type="submit" value="Pickup" />
                             </form>
                         </td>
                     </tr>

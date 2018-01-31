@@ -66,6 +66,38 @@ $(document).ready( function () {
         return confirmed;
     });
 
+    // Pop up a confirmation message when the driver presses "Pickup" for a request
+    $(".requestPickup").submit(function () {
+        // Check if this request is the earliest one in the queue. If not, notify.
+        if ($(this).hasClass("notEarliestRequest") || !$(this).hasClass("earliestRequest")) {
+            var notFirst = confirm("This is not the earliest request in the queue."+
+                "\nHave you made sure this is fair and is the better choice?");
+            if (!notFirst) {
+                return false;
+            }
+        }
+        // Obtain the request's ID, so that we can get the location later.
+        var id = this.id.slice(0, -6);
+        var confirmed = confirm("Press \"OK\" when you have arrived the pickup location."+
+                "\nHave you already arrived at "+$("#"+id+"pickupLocation").text()+"?");
+        if (confirmed) {
+            alert("Pickup action confirmed. Travel safe!");
+        }
+        return confirmed;
+    });
+
+    // Pop up a confirmation message when the driver presses "Dropoff" for a request
+    $(".requestDropoff").submit(function () {
+        var id = this.id.slice(0, -7);
+        var confirmed = confirm("Press \"OK\" when you have arrived the destination."+
+                "\nHave you sent your passengers to "+
+                $("#"+id+"dropoffLocation").text()+"?");
+        if (confirmed) {
+            alert("Dropoff confirmed. Thanks for the ride!");
+        }
+        return confirmed;
+    });
+
 });
 
 function validateForm() {
