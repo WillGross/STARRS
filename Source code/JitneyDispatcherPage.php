@@ -1,49 +1,27 @@
 <?php
 /**
- * Created by PhpStorm.
+ * JitneyDispatcherPage -- Only accessed by the dispatcher.
+ * Functionalities include adding a request, canceling a request, seeing current Jitney
+ * location, checking current queue and previous recent request histories.
  * User: zhzhang
- * Date: 1/27/18
- * Time: 2:34 PM
+ * Date: 1/30/18
+ * Time: 4:09 PM
  */
 
-#If there's already one request issued by the user stored in the database,
-#then the following code would try to find it out and change the variable to true.
-#Users who has issued one existing request should not be allowed to request a second one.
-$alreadyRequested = false;
-# The user's Colby ID would be stored in $username.
-# Right now we don't know how to obtain it, so we keep this function disabled.
-$username = "mulecolby17";
-
-try {
-    $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    # Obtain all entries in the current queue that has the username.
-    $rows = $db->query("SELECT * FROM jitney_queue WHERE username = '$username';");
-
-    # See if there's any entry
-    if ($rows->rowCount() !== 0) {
-        $alreadyRequested = true;
-    }
-
-} catch (PDOException $ex) {
-    ?>
-    <p>Error: <?= $ex->getMessage() ?></p>
-    <p>Please try later.</p>
-    <?php
-}
+# The dispatcher's ID?
+$username = "admin";
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>STARRS for Colby -- Jitney request page</title>
-<!--    <meta name="viewport" content="initial-scale=1.0">-->
+    <title>STARRS for Colby -- Jitney managing page</title>
+    <!--    <meta name="viewport" content="initial-scale=1.0">-->
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
-<!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
+    <!--    <script type="text/javascript" src="GoogleMapsVariables.js"></script>-->
     <script src="JitneyUserPage.js"></script>
     <script src="JitneyGoogleMaps.js"></script>
     <link rel="stylesheet"
@@ -65,7 +43,7 @@ try {
 </div>
 
 <div id="pageTitle">
-    <h1>Jitney Tracker and Request Page</h1>
+    <h1>Jitney Dispatcher Page</h1>
 </div>
 
 <div id="main">
@@ -92,27 +70,64 @@ try {
 
     </div>
 
-    <div id="queue">
+    <div id="onboard">
         <div class="sectionTitle">
-            <h2>Current Jitney request queue</h2>
+            <h2>Requests Currently Being Processed</h2>
         </div>
 
-        <table id="requestQueue">
+        <table id="onboardQueue">
             <tr>
-                <th id="queueLocation">Location</th>
-                <th id="queueDestination">Destination</th>
-                <th id="queuePassengers"># Ppl.</th>
-                <th id="queueTime">Request time</th>
-                <th id="queueAction">Action</th>
+                <th id="onboardQueueLocation">Location</th>
+                <th id="onboardQueueDestination">Destination</th>
+                <th id="onboardQueuePassengers"># Ppl.</th>
+                <th id="onboardQueueComment">Comments</th>
+                <th id="onboardQueueTime">Request Time</th>
             </tr>
             <?php
             try {
                 $db = new PDO("mysql:dbname=starrs;host=localhost", "starrs", "Wher3Bus@?");
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+                # Obtain all entries in the current queue
+                $rows = $db->query('SELECT * FROM jitney_current_request c
+                    JOIN jitney_queue q ON c.queueID = q.entryID
+                    ORDER BY c.pickupID ASC;');
+
+                # Put each request into a row. Each comes with one button for dropoff.
+                # I think the current approach might have some security issues...
+                foreach ($rows as $row) {
+                    ?>
+                    <tr>
+                        <td><?= $row["pickupLocation"] ?></td>
+                        <td><?= $row["dropoffLocation"] ?></td>
+                        <td><?= $row["numOfPassenger"] ?></td>
+                        <td><?= $row["comments"] ?></td>
+                        <td><?= $row["requestTime"] ?></td>
+                    </tr>
+                    <?php
+                }
+
+            } catch (PDOException $ex) {
+                ?>
+                <p>Error: <?= $ex->getMessage() ?></p>
+                <p>Please call Security Office when you need to.</p>
+                <?php
+            }
+
+            ?>
+        </table>
+    </div>
+
+    <div id="queue">
+        <div class="sectionTitle">
+            <h2>Current Jitney request queue</h2>
+        </div>
+
+        <table id="requestQueue">
+            <?php
+            try {
                 # Obtain all entries in the current queue and sort by ID.
                 # Hopefully we don't allow anyone to mess up with IDs.
-                # Update 01/29: Filtered out all entries that are in the current request
                 $rows = $db->query('SELECT * FROM jitney_queue 
                                     WHERE entryID NOT IN 
                                         (SELECT queueID FROM jitney_current_request)
@@ -122,23 +137,35 @@ try {
                 foreach ($rows as $row) {
                     ?>
                     <tr>
+                        <th class="queueLocation">Location</th>
+                        <th class="queueDestination">Destination</th>
+                        <th class="queuePassengers"># Ppl.</th>
+                        <th class="queueTime">Request time</th>
+                    </tr>
+                    <tr>
                         <td><?= $row["pickupLocation"] ?></td>
                         <td><?= $row["dropoffLocation"] ?></td>
                         <td><?= $row["numOfPassenger"] ?></td>
                         <td><?= $row["requestTime"] ?></td>
-                        <td><?php
-                            if ($row["username"] === $username) {
-                                ?>
-                                <form action="cancelRequest.php" method="post">
-                                    <input name="entryID" readonly type="hidden"
-                                           value="<?= $row['entryID'] ?>" />
-                                    <input name="username" readonly type="hidden"
-                                           value="<?= $username ?>" />
-                                    <input type="submit" value="Cancel">
-                                </form>
-                                <?php
-                            }
-                            ?>
+                    </tr>
+                    <tr>
+                        <th class="queueComments" colspan="3">Comments</th>
+                        <th class="queueAction">Action</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><br>
+                            <strong>Request issuer:
+                                <span class="appearedUser"><?= $row["username"] ?></span>
+                            </strong><br>
+                            <?= $row["comments"] ?></td>
+                        <td>
+                            <form action="cancelRequest.php" method="post">
+                                <input name="entryID" readonly type="hidden"
+                                       value="<?= $row['entryID'] ?>" />
+                                <input name="username" readonly type="hidden"
+                                       value="<?= $username ?>" />
+                                <input type="submit" value="Cancel">
+                            </form>
                         </td>
                     </tr>
                     <?php
@@ -161,7 +188,7 @@ try {
         </div>
 
         <div id="requestForm">
-            <form action="submitJitneyRequest.php" method="post" id="userSubmitRequest">
+            <form action="submitJitneyRequest.php" method="post">
                 <label><p><span class="requestPrompt">Enter pickup location:</span>
                         <textarea rows="4" cols="60" name="pickup" maxlength="256"
                                   id="pickupText" class="requestText"
@@ -201,90 +228,26 @@ try {
                             <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
-                <input name="username" readonly type="hidden"
-                       value="<?= $username ?>" />
+
+                <label><p><span class="requestPrompt">Caller's myColby username:</span>
+                        <textarea rows="1" cols="60" name="username" maxlength="16"
+                                  id="usernameText" class="requestText" required
+                                  placeholder="E.g. djskrien"></textarea>
+                        <br><span class="textboxCounter">
+                            <span id="usernameCharLimit">0</span>/16
+                        </span>
+                    </p></label><br>
+
 
                 <div id="requestButtons">
-                <?php
-                if ($alreadyRequested) {
-                    ?>
-                    <p class="warning">You already have an existing request.</p>
-                    <input type="submit" value="Submit" disabled="disabled"/>
-                <?php
-                } else {
-                    ?>
                     <input type="submit" value="Submit" id="submitRequest"/>
-                <?php
-                }
-                ?>
-                <input type="reset" />
+                    <input type="reset" />
                 </div>
             </form>
         </div>
     </div>
 
-    <div id="scheduleRequestPage">
-        <div class="sectionTitle">
-            <h2>Today's schedule</h2>
-            <table id="dailySchedule">
-            	<tr>
-            		<th>Time</th>
-            		<th>Schedule</th>
-            	</tr>
-            	
-	
-                <?php
-                // Find a way to represent the schedule, and make a table here.
-                date_default_timezone_set('US/Easter');
-                $my_date = date('D');
-                // echo $my_date;
-                $arr = array(
-                	0 => "Sun",
-                	1 => "Mon",
-                	2 => "Tue",
-                	3 => "Wed",
-                	4 => "Thu",
-                	5 => "Fri",
-                	6 => "Sat"
-                );
-                // echo $arr[$my_date];
-                $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
-                $week = array();
-                $int = 0;
-                while(! feof($myfile)){
-                	$week[$arr[$int]]= fgets($myfile);
-                	$int ++;
-                }
-                fclose($myfile);  
-               	//echo $week[$my_date];
-                $daily = explode(" ",$week[$my_date]);
-                $time = 1;
-                $class = "none";
-                foreach ($daily as $one){
-                	$one = str_replace(' ','',$one);
-                	$time = ($time + 1) % 12;
-                	if ($one !== "None"){
-                	
-                		$class = "driver_shift";
-                	} else {
-                		$class = "none";
-                		$one = '';
-                    }
-                ?>
-                	<tr>
-                		<td><?=$time?>:00</td>
-                		<td class="<?=$class?>" ><?=$one?></td>
-                	</tr>
-                <?php	
-                }
-                
-                
-              	
-                
-                ?>
-            </table>
-        </div>
-    </div>
+
 
 
 </div>
@@ -293,11 +256,11 @@ try {
 <div id="Links">
     <ul><span id="linkHeader">Useful Links:</span>
         <li><a href="https://www.colby.edu/securitydept/colby-transportation-services/">
-            Colby Transportation Services (security office webpage)</a></li>
+                Colby Transportation Services (security office webpage)</a></li>
         <li><a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
-            Colby Shuttle Schedule and Map</a></li>
+                Colby Shuttle Schedule and Map</a></li>
         <li><a href="JitneySchedule.php">
-            Jitney driver shifts</a></li>
+                Jitney driver shifts</a></li>
         *The shuttle only runs from Monday to Friday during school sessions.
     </ul>
 </div>

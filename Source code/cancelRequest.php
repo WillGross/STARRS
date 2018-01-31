@@ -19,9 +19,9 @@ try {
     if (isset($_POST["entryID"])) {
         $entryID = $_POST["entryID"];
         $username = htmlspecialchars($_POST["username"]);
-        $db->query("DELETE FROM jitney_queue WHERE queueID = $entryID;");
+        $db->query("DELETE FROM jitney_queue WHERE entryID = $entryID;");
         // A safer query would be:
-//        $db->query("DELETE FROM jitney_queue WHERE queueID = $entryID
+//        $db->query("DELETE FROM jitney_queue WHERE entryID = $entryID
 //                                             AND (username = '$username'
 //                                             OR '$username' = '<dispatcher's myColby username>');");
     }
@@ -29,5 +29,9 @@ try {
 } catch (PDOException $ex) {
 
 }
-header("Location: JitneyUserPage.php");
+if (isset($_SERVER['HTTP_REFERER'])) {
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+} else {
+    header("Location: JitneyUserPage.php");
+}
 ?>

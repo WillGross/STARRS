@@ -15,9 +15,28 @@ $(document).ready( function () {
         $(id+"CharLimit").text(len);
     }
 
+    // If the submit comes from the dispatcher, check to see if the user who called the
+    // dispatcher has already had a request already.
+    $("#submitRequest").click(function () {
+        // alert("?????");
+        var names = $(".appearedUser");
+        var foundSameName = false;
+        $.each(names, function (index, value) {
+            if ($(value).text() === $("#usernameText").val()) {
+                alert("This user already has a request!");
+                foundSameName = true;
+                return false;
+            }
+        });
+        if (foundSameName) {
+            return false;
+        } else {
+            return onSubmitRequest();
+        }
+    });
 
     // Check to see that the user hasn't just put blank spaces as the locations
-    $("#requestForm").submit(function () {
+    function onSubmitRequest() {
         var pickup = $("#pickupText").val();
         var dropoff = $("#dropoffText").val();
         // var comment = $("#commentText").val();
@@ -30,7 +49,7 @@ $(document).ready( function () {
             alert("Your pickup and dropoff locations cannot be blank!");
             return false;
         }
-    });
+    }
 
 
 });

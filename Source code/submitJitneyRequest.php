@@ -49,5 +49,10 @@ try {
 } catch (PDOException $ex) {
 
 }
-header("Location: JitneyUserPage.php");
+
+if (isset($_SERVER['HTTP_REFERER'])) {
+    header("Location: ".$_SERVER['HTTP_REFERER']);
+} else {
+    header("Location: JitneyUserPage.php");
+}
 ?>
