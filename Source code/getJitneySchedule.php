@@ -1,4 +1,4 @@
-<div id="scheduleRequestPage">
+<div id="scheduleJitneyPage">
     <div class="sectionTitle">
         <h2>Jitney schedule for today (<?= date('l')?>)</h2>
     </div>

@@ -56,7 +56,7 @@ html, body {
     display: block;
 }
 
-/*The strip with the links*/
+/*The strip with the links (bannerAndMap.php)*/
 #linksBanner {
     display: table;
     width: 100%;
@@ -79,7 +79,7 @@ html, body {
     margin-bottom: 5px;
 }
 
-/*Below are the blocks for the shuttle page (index.html)*/
+/*====index.html specific====*/
 #LocationEstimation {
     /*position: relative;*/
     text-align: center;
@@ -92,22 +92,14 @@ html, body {
     bottom: 5px;
 }
 
-/*Below are the blocks for the Jitney request page (JitneyUserPage.php)*/
+/*====Jitney pages (JUserP, JDriverP, JDispatcherP) specific====*/
+
+/*Title of each section in the main body*/
 .sectionTitle {
     text-align: center;
 }
 
-#queue, #requestForm {
-    text-align: center;
-    display: block;
-}
-
-label {
-    display: inline-block;
-    margin: auto;
-}
-
-/*onboardQueue is from the Driver's page, but they share the similar properties*/
+/*Table stype for all queues: With borders and stripings.*/
 #requestQueue, #onboardQueue {
     table-layout: fixed;
     width: 100%;
@@ -115,9 +107,9 @@ label {
     border: 1px solid black;
     border-collapse: collapse;
 }
-
 tr, td, th {
     border: 1px solid black;
+    word-break: keep-all;
 }
 tr:nth-child(odd) {
     background-color: #EEEEEE;
@@ -126,26 +118,49 @@ tr:nth-child(even) {
     background-color: #F8F8F8;
 }
 
+/*The section where the user/dispatcher can issue a pickup request.*/
+#requestArea {
+    border: 1px solid grey;
+    width: 60%;
+    margin: 3em auto 3em auto;
+    padding-bottom: 2em;
+    background-color: #EEEEEE;
+}
+/*Make each element (label) in the requestForm centered.*/
+#requestForm {
+    text-align: center;
+    display: block;
+}
+label {
+    display: inline-block;
+    margin: auto;
+}
+/*Make the text before each textarea align to the left of the textarea box*/
 .requestPrompt{
     text-align: left;
     display: block;
 }
-
+/*Make the width of each label element the same as the textarea's width
+  by setting this width to 100% and setting the labels as inline-blocks.*/
 .requestText{
     width: 100%;
 }
-
+/*The counter that counts the number of characters entered into the textbox.*/
 .textboxCounter{
     text-align: right;
     display: block;
 }
-
+/*The warning that shows if the user already has one request on file. (JUserP specific)*/
 .warning {
     color: #d80000;
 }
 
-/*Below are the blocks for the Jitney driver page (JitneyDriverPage.php)*/
-
+/*Table width specifications for the queue displaying requests currently on Jitney.
+  Notice that though the sum of the percentages are 100%, in JDispatcherP the
+  onboardQueueAction is not even displayed. Similarly, in JUserP, only three
+  of them are displayed. However, the full width is still achieved.
+  I guess CSS just picks the width by re-calculating them under the same ratio so that
+  any elements in one line has width adding up to 100%.*/
 #onboardQueueLocation, #onboardQueueDestination {
     width: 20%;
 }
@@ -159,6 +174,10 @@ tr:nth-child(even) {
     width: 18%;
 }
 
+/*Table width specifications for the queue displaying pending requests.
+  Notice that though the sum of the percentages are 100%, in JDriverP and JDispatcherP
+  the table is displayed in two rows, and queueAction is located under the
+  queueTime slot, and as a result both share the same length...*/
 .queueLocation, .queueDestination {
     width: 37%;
 }
@@ -168,11 +187,20 @@ tr:nth-child(even) {
 .queueTime {
     width: 20%;
 }
-/*.queueComments {*/
-    /*width: 90%;*/
-/*}*/
 
+/*The Jitney schedule of the day; shown in all Jitney pages.*/
+#dailySchedule{
+    border-collapse: collapse;
+    margin: auto auto 2em auto;
+    width: 40%;
+    text-align: center;
+}
+/*Slots that corresponds to the time where the Jitney is running.*/
+.driver_shift{
+    background-color:yellow;
+}
 
+/*The links section at the bottom shared by all pages. Might be replaced later.*/
 #Links {
     /*position: relative;*/
     /*text-align: center;*/
@@ -181,29 +209,9 @@ tr:nth-child(even) {
     margin: auto;
     clear: both;
 }
-
 #linkHeader{
     font-weight: bold;
 }
-
 ul{
     list-style-position: inside;
-}
-
-#requestArea {
-    border: 1px solid grey;
-    width: 60%;
-    margin: 3em auto 3em auto;
-    padding-bottom: 2em;
-    background-color: #EEEEEE;
-}
-
-.driver_shift{
-	background-color:yellow;
-}
-
-#dailySchedule{
-	border-collapse: collapse;
-	margin: auto auto 2em auto;
-	width: 40%;
 }

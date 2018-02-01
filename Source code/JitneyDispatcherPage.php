@@ -172,21 +172,21 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
         <div id="requestForm">
             <form action="submitJitneyRequest.php" method="post">
                 <label><p><span class="requestPrompt">Enter pickup location:</span>
-                        <textarea rows="4" cols="60" name="pickup" maxlength="256"
+                        <textarea rows="4" cols="60" name="pickup" maxlength="128"
                                   id="pickupText" class="requestText"
                                   required
                                   placeholder="E.g. Pugh Center, Flagship Cinema"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="pickupCharLimit">0</span>/256
+                            <span id="pickupCharLimit">0</span>/128
                         </span>
                     </p></label><br>
 
                 <label><p><span class="requestPrompt">Enter dropoff location:</span>
-                        <textarea rows="4" cols="60" name="dropoff" maxlength="256"
+                        <textarea rows="4" cols="60" name="dropoff" maxlength="128"
                                   id="dropoffText" class="requestText"
                                   placeholder="E.g. Walmart, Opera House"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="dropoffCharLimit">0</span>/256
+                            <span id="dropoffCharLimit">0</span>/128
                         </span>
                     </p></label><br>
 

@@ -180,24 +180,32 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
             <h2>Order Jitney request</h2>
         </div>
 
+<!--NOTICE: KNOWN BUG -->
+<!--If the entered text is too long AND has some special characters, it won't-->
+<!--be able to be successfully added to the database.-->
+<!--For example: If we have a 127-char comment with one quotation mark in it, then-->
+<!--the mark would be changed into something similar to "&quot;", increasing the entire-->
+<!--length of the string into 132. This creates an error because the maximum length-->
+<!--of an allowed pickup location is 128, and the entry wouldn't be successfully added.-->
+<!--Right now we're generally not considering such edge case.-->
         <div id="requestForm">
             <form action="submitJitneyRequest.php" method="post" id="userSubmitRequest">
                 <label><p><span class="requestPrompt">Enter pickup location:</span>
-                        <textarea rows="4" cols="60" name="pickup" maxlength="256"
+                        <textarea rows="4" cols="60" name="pickup" maxlength="128"
                                   id="pickupText" class="requestText"
                                   required
                                   placeholder="E.g. Pugh Center, Flagship Cinema"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="pickupCharLimit">0</span>/256
+                            <span id="pickupCharLimit">0</span>/128
                         </span>
                     </p></label><br>
 
                 <label><p><span class="requestPrompt">Enter dropoff location:</span>
-                        <textarea rows="4" cols="60" name="dropoff" maxlength="256"
+                        <textarea rows="4" cols="60" name="dropoff" maxlength="128"
                                   id="dropoffText" class="requestText"
                                   placeholder="E.g. Walmart, Opera House"></textarea>
                         <br><span class="textboxCounter">
-                            <span id="dropoffCharLimit">0</span>/256
+                            <span id="dropoffCharLimit">0</span>/128
                         </span>
                     </p></label><br>
 
@@ -221,8 +229,9 @@ The ID starts with the entryID of request, the user name, and then a keyword. --
                             <span id="commentCharLimit">0</span>/400
                         </span>
                     </p></label><br>
-                <input name="username" readonly type="hidden"
-                       value="<?= $username ?>" />
+
+                <label>You're currently logged in as:
+                <input name="username" readonly value="<?= $username ?>" /><br></label>
 
                 <div id="requestButtons">
                 <?php
