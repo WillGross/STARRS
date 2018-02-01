@@ -56,17 +56,9 @@ try {
 </head>
 <body>
 
-<div id="header">
-    <a href="https://www.colby.edu/">
-        <img src="images/colbybanner1.jpg" class="banner1" ALT="Colby Banner"/>
-    </a>
-    <div id="StarrsTitleContainer">
-        <h1 id="StarrsTitle">STARRS - Shuttle Tracker And Ride Request Service</h1>
-    </div>
-    <a href="https://www.colby.edu/">
-        <img src="images/colbybanner2.jpg" class="banner2" ALT="Colby Banner"  >
-    </a>
-</div>
+<?php
+include 'header.php';
+?>
 
 <div id="pageTitle">
     <h1>Jitney Driver Request Handling Page</h1>
@@ -74,27 +66,9 @@ try {
 
 <div id="main">
 
-    <div id="linksBanner">
-        <div class="linkBlock">
-            <a href="index.html">
-                <span class="linkBlockText">Colby Shuttle Tracker</span></a>
-        </div>
-        <div class="linkBlock">
-            <a href="JitneyUserPage.php">
-                <span class="linkBlockText">Order Jitney Pickup</span></a>
-        </div>
-        <div class="linkBlock">
-            <a href="https://www.colby.edu/securitydept/colby-transportation-services">
-                <span class="linkBlockText">Security Office</span></a>
-        </div>
-    </div>
-
-    <div id="map">
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
-                async defer></script>
-
-    </div>
+    <?php
+    include "bannerAndMap.php";
+    ?>
 
     <div id="onboard">
         <div class="sectionTitle">

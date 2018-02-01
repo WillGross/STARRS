@@ -19,7 +19,8 @@ $(document).ready(function () {
             navigator.geolocation.getCurrentPosition(sendLocation, function(error) {
                 if (error.code === error.PERMISSION_DENIED) {
                     clearInterval(cycle);
-                    alert("Location not found, permission denied.");
+                    alert("Location not found, permission denied.\n"+
+                        "Try using https or allowing location data services.");
                 }
             });
         } else {
