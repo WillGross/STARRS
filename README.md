@@ -1,16 +1,10 @@
 # STARRS
 Shuttle Tracker and Ride Request Services for the Colby College Shuttle and Jitney
 
-
 To start:
-1. Drag MainPage.html to your browser to open the main page.
+1. Go to https://starrs.colby.edu
 2. The page would ask you to allow or block its access to your GPS location. If you allow, then there will be a marker marking your current location on the map.
 3. You can click on the Colby banner to go to Colby home page.
-4. You can click on the first link below the Map to go to Jitney info page. Note that to see the fully-functioning page, you would have to drag the file "JitneyPage.html" to your browser instead.
-5. You can click on the second and third link below the Map to go to the official pages of Jitney. Clicking the fourth link will take you to the table of Jitney shift information.
-
-JitneyPage.html: 
-When you have opened the webpage locally, you can click on the link to go to the table of Jitney shift information. You can also try submitting pickup request by filling up the boxes below. The page would check to see if your input is valid. If it's invalid, it would warn you at the errors. If it's valid, then it would try to run the PHP script to store the input, which would end up in opening the text file of the script instead -- because we don't have a server right now.
 
 To test:
 --Test Suite 1:
