@@ -54,11 +54,11 @@ CREATE TABLE `location` (
 
 -- Table structure for drivers
 
-DROP TABLE IF EXISTS `drivers`;
-CREATE TABLE `drivers`  (
-  `id` int(5) NOT NULL auto_increment,
-  `name` VARCHAR(30) NOT NULL,
-  `email` VARCHAR (30) NOT NULL,
-  `status` VARCHAR (100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
-)
+-- DROP TABLE IF EXISTS `drivers`;
+-- CREATE TABLE `drivers`  (
+--  `id` int(5) NOT NULL auto_increment,
+--  `name` VARCHAR(30) NOT NULL,
+--  `email` VARCHAR (30) NOT NULL,
+--  `status` VARCHAR (100) NOT NULL DEFAULT '',
+--  PRIMARY KEY (`id`)
+-- )
