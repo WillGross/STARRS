@@ -13,27 +13,14 @@ $(document).ready(function () {
     var cycle=setInterval(pullLocation,5000);
 
 
+
+
     function pullLocation() {
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(sendLocation, function(error) {
-                if (error.code === error.PERMISSION_DENIED) {
-                    clearInterval(cycle);
-                    alert("Location not found, permission denied.");
-                }
-            });
-        } else {
-            clearInterval(cycle);
-            alert("Location service unavailable.");
-        }
-    }
-
-    function sendLocation(position) {
-
         var vehicleIdentifier='T';
-        $.ajax("https://starrs.colby.edu/logLocation.php",
+        $.ajax("https://starrs.colby.edu/pullLocation.php",
             {
-                type: "GET",
+                type: "POST",
                 data: {vehicleType: vehicleIdentifier},
                 dataType: "JSON",
                 success: updateLocation,
@@ -45,7 +32,6 @@ $(document).ready(function () {
     }
 
     function updateLocation(data) {
-        alert("data:" +data);
         lat=data['latitude'];
         lon=data['longitude'];
     }

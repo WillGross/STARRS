@@ -51,3 +51,14 @@ CREATE TABLE `location` (
   -- Ask about how to use tie breaker: SECONDARY KEY (`id`), -- if two events have the same time, resort to which was catalogued first
   FOREIGN KEY (`vehicle_ID`) REFERENCES `vehicles`(`id`)
 );
+
+-- Table structure for drivers
+
+DROP TABLE IF EXISTS `drivers`;
+CREATE TABLE `drivers`  (
+  `id` int(5) NOT NULL auto_increment,
+  `name` VARCHAR(30) NOT NULL,
+  `email` VARCHAR (30) NOT NULL,
+  `status` VARCHAR (100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+)

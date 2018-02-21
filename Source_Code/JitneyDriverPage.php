@@ -56,9 +56,17 @@ try {
 </head>
 <body>
 
-<?php
-include 'header.php';
-?>
+<div id="header">
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner1.jpg" class="banner1" ALT="Colby Banner"/>
+    </a>
+    <div id="StarrsTitleContainer">
+        <h1 id="StarrsTitle">STARRS - Shuttle Tracker And Ride Request Service</h1>
+    </div>
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner2.jpg" class="banner2" ALT="Colby Banner"  >
+    </a>
+</div>
 
 <div id="pageTitle">
     <h1>Jitney Driver Request Handling Page</h1>
@@ -66,13 +74,31 @@ include 'header.php';
 
 <div id="main">
 
-    <?php
-    include "bannerAndMap.php";
-    ?>
+    <div id="linksBanner">
+        <div class="linkBlock">
+            <a href="index.html">
+                <span class="linkBlockText">Colby shuttle tracker</span></a>
+        </div>
+        <div class="linkBlock">
+            <a href="JitneyUserPage.php">
+                <span class="linkBlockText">Order Jitney pickup</span></a>
+        </div>
+        <div class="linkBlock">
+            <a href="https://www.colby.edu/securitydept/colby-transportation-services">
+                <span class="linkBlockText">Security office</span></a>
+        </div>
+    </div>
+
+    <div id="map">
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLCCaUcKU-3hW_63p_op4CnEg8axVZgY&callback=initMap"
+                async defer></script>
+
+    </div>
 
     <div id="onboard">
         <div class="sectionTitle">
-            <h2>Who's on the car right now</h2>
+            <h2>Requests Currently Being Processed</h2>
         </div>
 
         <table id="onboardQueue">
@@ -194,15 +220,90 @@ include 'header.php';
         </table>
     </div>
 
-    <?php
-    include 'getJitneySchedule.php';
-    ?>
+    <div id="scheduleRequestPage">
+        <div class="sectionTitle">
+            <h2><?= date('D')?>'s schedule</h2>
+            <table id="dailySchedule">
+            	<tr>
+            		<th>Time</th>
+            		<th>Schedule</th>
+            	</tr>
+            	
+	
+                <?php
+                // Find a way to represent the schedule, and make a table here.
+                date_default_timezone_set('US/Easter');
+                $my_date = date('D');
+                // echo $my_date;
+                $arr = array(
+                	0 => "Sun",
+                	1 => "Mon",
+                	2 => "Tue",
+                	3 => "Wed",
+                	4 => "Thu",
+                	5 => "Fri",
+                	6 => "Sat"
+                );
+                // echo $arr[$my_date];
+                $myfile = fopen("daily_schedule.txt", "r") or die("Unable to open file!");
+                $week = array();
+                $int = 0;
+                while(! feof($myfile)){
+                	$week[$arr[$int]]= fgets($myfile);
+                	$int ++;
+                }
+                fclose($myfile);  
+               	//echo $week[$my_date];
+                $daily = explode(" ",$week[$my_date]);
+                $time = 1;
+                $class = "none";
+                foreach ($daily as $one){
+                	$one = str_replace(' ','',$one);
+                	$time = ($time + 1) % 12;
+                	if ($one !== "None"){
+                	
+                		$class = "driver_shift";
+                	} else {
+                		$class = "none";
+                		$one = '';
+                    }
+                ?>
+                	<tr>
+                		<td><?=$time?>:00</td>
+                		<td class="<?=$class?>" ><?=$one?></td>
+                	</tr>
+                <?php	
+                }
+                
+                ?>
+            </table>
+        </div>
+    </div>
 
 </div>
 
-<?php
-include 'footer.html';
-?>
+<!-- Useful links provided to the user below the map. -->
+<div id="Links">
+    <ul><span id="linkHeader">Useful Links:</span>
+        <li><a href="https://www.colby.edu/securitydept/colby-transportation-services/">
+            Colby Transportation Services (security office webpage)</a> </li>
+        <li><a href="http://www.colby.edu/securitydept/wp-content/uploads/sites/151/2017/09/Downtown-Shuttle-Schedule-and-Map-Sept2017.pdf">
+            Colby Shuttle Schedule and Map</a> </li>
+        <li><a href="JitneySchedule.php">
+            Jitney driver shifts</a></li>
+        *The shuttle only runs from Monday to Friday during school sessions.
+    </ul>
+</div>
+
+<!--bottom of the page-->
+<div id="footer">
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner1.jpg" class="banner1" ALT="Colby Banner" height="80"/>
+    </a>
+    <a href="https://www.colby.edu/">
+        <img src="images/colbybanner2.jpg" class="banner2" ALT="Colby Banner"  >
+    </a>
+</div>
 
 </body>
 </html>

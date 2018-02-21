@@ -105,7 +105,6 @@ $(document).ready( function () {
 
 });
 
-/* Code from the previous version
 function validateForm() {
     // store inputs to variables
     var name = document.forms["myForm"]["nickname"].value;
@@ -153,4 +152,3 @@ function confirmPickUp(name,address){
     var message = name + " is going to be picked up at " + address;
     return confirm(message) === true;
 }
-*/
