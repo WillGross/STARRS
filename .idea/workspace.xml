@@ -4,7 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7947da7-ebab-4f94-8a75-1e3af5dcba49" name="Default" comment="" />
+    <list default="true" id="a7947da7-ebab-4f94-8a75-1e3af5dcba49" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Source_Code/JitneyUserPage.php" afterPath="$PROJECT_DIR$/Source_Code/JitneyUserPage.php" />
+      <change beforePath="$PROJECT_DIR$/Source_Code/pulLocation.js" afterPath="$PROJECT_DIR$/Source_Code/pulLocation.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +18,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="JitneyUserPage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source_Code/JitneyUserPage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1764">
+              <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <folding>
+                <marker date="1519249166865" expanded="true" signature="827:882" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1519249166865" expanded="true" signature="3973:4200" ph="SELECT * FRO... jitney_queue" />
+                <marker date="1519249166865" expanded="true" signature="4100:4142" ph="SELECT queue... jitney_current_request" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pulLocation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source_Code/pulLocation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pullLocation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source_Code/pullLocation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1517419463226" expanded="true" signature="469:656" ph="SELECT * FRO... vehicles" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logLocation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source_Code/logLocation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-126">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="db_config.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source_Code/db_config.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="58" column="38" lean-forward="true" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+            <state relative-caret-position="987">
+              <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -63,6 +113,8 @@
         <option value="$PROJECT_DIR$/Source code/JitneyGoogleMaps.js" />
         <option value="$PROJECT_DIR$/Source code/pulLocation.js" />
         <option value="$PROJECT_DIR$/Source_Code/db_config.sql" />
+        <option value="$PROJECT_DIR$/Source_Code/JitneyUserPage.php" />
+        <option value="$PROJECT_DIR$/Source_Code/pulLocation.js" />
       </list>
     </option>
   </component>
@@ -76,7 +128,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
@@ -162,10 +214,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41065000" />
+    <option name="totallyTimeSpent" value="44173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -211,10 +263,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Source code/formInfo.php" />
-    <entry file="file://$PROJECT_DIR$/Source code/index.js" />
-    <entry file="file://$PROJECT_DIR$/Source code/logLocationTemp.php" />
-    <entry file="file://$PROJECT_DIR$/Source code/JitneyDriverPage.php" />
     <entry file="file://$PROJECT_DIR$/Source code/logLocation.js" />
     <entry file="file://$PROJECT_DIR$/Source code/logLocation.php" />
     <entry file="file://$PROJECT_DIR$/Source code/db_config.sql" />
@@ -261,10 +309,48 @@
     <entry file="file://$PROJECT_DIR$/Source code/pulLocation.js" />
     <entry file="file://$PROJECT_DIR$/Source code/JitneySchedule.js" />
     <entry file="file://$PROJECT_DIR$/Source code/pullLocation.php" />
+    <entry file="file://$PROJECT_DIR$/Source_Code/JitneyUserPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1764">
+          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <marker date="1519249166865" expanded="true" signature="827:882" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1519249166865" expanded="true" signature="3973:4200" ph="SELECT * FRO... jitney_queue" />
+            <marker date="1519249166865" expanded="true" signature="4100:4142" ph="SELECT queue... jitney_current_request" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source_Code/pulLocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source_Code/pullLocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1517419463226" expanded="true" signature="469:656" ph="SELECT * FRO... vehicles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source_Code/logLocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source_Code/db_config.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="58" column="38" lean-forward="true" selection-start-line="58" selection-start-column="38" selection-end-line="58" selection-end-column="38" />
+        <state relative-caret-position="987">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
           <folding />
         </state>
       </provider>
