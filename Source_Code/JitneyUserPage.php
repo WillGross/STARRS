@@ -6,9 +6,6 @@
  * Time: 2:34 PM
  */
 
-/*require('/colbycollege/header.php');
-get_header();*/
-
 #If there's already one request issued by the user stored in the database,
 #then the following code would try to find it out and change the variable to true.
 #Users who has issued one existing request should not be allowed to request a second one.

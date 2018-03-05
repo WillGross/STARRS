@@ -8,7 +8,7 @@
 * */
 
 $(document).ready(function () {
-    //calls logLocation every 5 seconds
+    //calls logLocation every 10 seconds
     pullLocation();
     var cycle=setInterval(pullLocation,5000);
 
