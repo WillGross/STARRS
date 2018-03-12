@@ -1,8 +1,0 @@
-DriverA DriverA DriverA DriverA DriverF DriverF DriverH DriverH DriverH DriverH None None
-None None DriverC DriverC DriverG DriverG DriverI DriverI DriverI DriverI None None None
-None None DriverD DriverD DriverE DriverE DriverE DriverE DriverB DriverB None None None
-None None DriverE DriverE DriverA DriverA DriverD DriverD DriverF DriverF DriverI DriverI
-None None DriverA DriverA DriverA DriverC DriverC DriverE DriverE DriverA DriverI DriverI
-None None DriverD DriverD DriverD DriverG DriverG DriverF DriverF DriverF DriverI DriverI
-DriverB DriverB DriverB DriverB DriverF DriverF DriverD DriverD DriverD DriverI None None
-
