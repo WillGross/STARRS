@@ -1,0 +1,41 @@
+table.clublinks {
+	margin-top: 1.2em
+}
+#content-container .nav {
+	font-size: .9em
+}
+#content-container .nav a{
+	display:block;
+}
+.clublinks .active{
+	font-weight:bold;
+}
+.content{
+	padding-top:5px;
+}
+.club-description{
+	padding-top:10px;
+	padding-left:1.2em;
+}
+.clublinks span.label{
+	margin-right:15px;
+	width:115px;
+	text-align:center;
+	font-weight:normal;
+}
+.clublinks div.content{
+	display: none;
+}
+.office-website{
+	margin-top:10px;
+}
+a.club-title{
+	display:block;
+}
+.club-description{
+	border-left:2px solid #eee;
+}
+
+#content-container .nav-tabs.nav-stacked > li > a:hover, .nav-tabs.nav-stacked > li > a:focus{
+	border:1px solid #ddd;
+}

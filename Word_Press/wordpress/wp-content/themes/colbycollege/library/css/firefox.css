@@ -1,0 +1,95 @@
+/* Firefox-specific CSS */
+
+
+
+/*
+#sectionMenu .nav-collapse.section-menu.in[style] {
+	top: 77px;
+}
+*/
+.carousel-caption{
+	/*max-width:45%; don't seem to need? */
+}
+
+
+@media (max-width: 979px) {	/* The following will crash IE 7 and 8, so placed in firefox-only stylesheet... */
+	
+	@-moz-document url-prefix() {
+		.nav-collapse.section-menu.in[style]{
+		height:auto!important;
+		z-index:99999;
+		}
+	}
+	
+	/* firefox tweeks to top margin for logo, search and nav icon */
+	@-moz-document url-prefix() {
+		div.colby-logo, #mainNav.navbar .btn-navbar, div#search-wrap {
+			margin-top:15px;
+		}
+		
+}
+
+@media (max-width: 767px){ 
+
+	@-moz-document url-prefix() {#inner-header nav[role="navigation"] a.btn-navbar.btn{
+		}	
+	}
+	
+	.navbar .btn, .navbar .btn-group {/*margin-top: 0;*/}	
+}
+
+/* Fix expanding bar in firefox */
+@media (max-width: 979px) {
+	#sectionMenu{
+		background-color:transparent;
+	}
+	
+	#sectionMenu ul{
+	/*	background-color: #353535; 
+		background: none repeat scroll 0 0 rgba(80, 80, 80, 0.8) !important;*/
+	}
+	
+	#inner-header .navbar .nav > li > a{
+		margin-bottom:2px;
+	}	
+	#sectionMenu ul.nav{
+	}
+	
+	.nav-collapse.section-menu.in[style] {
+		z-index:99999;
+	}
+}
+
+@media (min-width:767px) and (max-width: 979px){
+	#sectionMenu{
+		/*margin-top:30px;*/
+	}
+
+	#sectionMenu .btn-navbar{
+		margin-bottom:20px!important;
+	}
+	
+
+}
+
+/* fix image position for carousel images */
+
+@media (max-width: 979px) {
+      .carousel img {
+        /* height: 450px; remove */
+        height: auto;
+        left:-7%; /* change */
+	    top: 12px !important;
+      }
+}
+
+/* fix inner nav bar btn position on gateway pages */
+
+@media (max-width: 979px) and (min-width: 768px) {
+#sectionMenu .btn-navbar {
+    /*margin-top: 5px;*/
+}
+}
+
+
+

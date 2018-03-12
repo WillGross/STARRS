@@ -1,0 +1,96 @@
+.colby-logo {
+  svg {
+    width: 110px;
+    height: 70px;
+    vertical-align: middle;
+
+    @media (max-width: 979px) {
+      position: relative;
+      z-index: 1000;
+      width: 90px;
+      height: 45px;
+    }
+  }
+
+  .dn-logo-container {
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (min-width: 979px) {
+      img {
+        width: 75px;
+        height: 75px;
+      }
+    }
+  }
+
+  @supports (display: flex) {
+    display: flex;
+
+    a {
+      display: block;
+    }
+
+    .dn-logo-container {
+      border-left: 1px solid white;
+    }
+  }
+}
+
+header[role="banner"] {
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  background-color: gray;
+  background-position: center top;
+  background-size: cover;
+}
+
+.colby-header.container-fluid.navbar {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+}
+
+.colby-header .navbar-inner {
+  padding-right: 0;
+  padding-left: 0;
+  min-height: 50px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+#search-wrap {
+  float: right;
+  margin-top: 0;
+  margin-right: .333em;
+  width: 1.782em;
+  border-radius: 1.782em;
+  background-color: #000;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+#headSearchColby {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.782em;
+  height: 1.782em;
+  text-align: center;
+  cursor: pointer;
+
+  svg {
+    width: 1em;
+    height: 1em;
+    color: white;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,137 @@
+.colby-header .container{
+	background-color:transparent!important;
+}
+
+div.colby-header .navbar-inverse .navbar-inner{
+	/* background should be transparent gif or solid color (rgba doesnt work) */
+	background:url(images/bg333.png)!important;
+}
+
+/* Main navigation needs background in IE8 and under. Presumably due to rgba issues as well */
+
+/* Twitter Bootstrap submit buttons don't have correct height, don't display icon */
+
+.section-title h1 a{
+	font-weight:500
+}
+
+
+
+
+/* Text shadow CSS */
+.ui-text-shadow, .ui-text-shadow-original {
+  position: relative;
+}
+.ui-text-shadow-original {
+  z-index: 1;
+  text-shadow: none;
+  color:#EBEBEB!important;
+}
+.ui-text-shadow-copy {
+  position: absolute;
+  z-index: 0;
+  
+  line-height: 110.74235%; /* fixes #9 */
+
+  /* default positioning */
+  left: 0;
+  top: 0;
+  zoom: 1; /* fixes #8 in IE7 and below */
+  text-shadow: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/*IE header background... */
+#headerBackgroundImageIE{
+	position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+	right:0;
+	bottom:0;
+	height:55%;
+	width:100%;
+}
+
+#headerBackgroundImageIE.noSlideshow {
+	min-height:180px!important;
+}
+
+.topSlideDown{
+	height:auto;
+	position:relative;
+}
+
+.topSlideDown .container-fluid{
+	border: 1px solid #353535\9;
+}
+
+#directoryDivisions ul{
+	width:40%\9;
+}
+
+#sectionMenu{
+	margin-top:15px;
+	margin-top:28px;
+}
+
+/* Front page - content-container fixes */
+
+.page-id-46.colby-edu-homepage #content-container #content {
+    background: url(/wp-content/themes/colbycollege/images/content-bg.png);
+    margin: 0 auto;
+    max-width: 920px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 95%;
+    padding-bottom: 5px;
+}
+/* can't get rid of background-color or shadow ie8 */
+.carousel-control {
+    text-shadow: none;
+    background-color: transparent;
+}
+
+
+.ie9 h1.section-title a, .ie8 h1.section-title a, .ie7 h1.section-title a  {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    
+    padding: 2px 7px;
+}
+
+.ie9 h1.section-title, .ie8 h1.section-title, .ie7 h1.section-title {
+	background: rgb(255, 255, 255);
+    background: rgba(200, 54, 54, 0.5);
+}
+
+
+.ie8 #main .media-grid img{
+	max-height: none !important;
+	max-width: none !important;
+}
+
+.ie8 #inner-header{
+	margin-top:14px;
+}
+
+.ie7 #inner-header{
+	margin-top: 5px;
+}
+.ie7 h1.section-title{
+	margin-bottom: 15px;
+}
+
+.ie7 div.container-fluid.section-title{
+	margin-top:-15px;
+}
+
+.ie7 .section-title h1 a{
+	z-index:1000;
+	position:relative;
+}
+
+.ie8 .mainNavSubmenu{
+	top:34px
+}

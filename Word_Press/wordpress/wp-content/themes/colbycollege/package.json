@@ -1,0 +1,42 @@
+{
+  "name": "Colby_College",
+  "version": "0.1.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-universal-import": "^1.2.7",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.4",
+    "eslint-config-johnwatkins0": "^1.0.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.2",
+    "image-webpack-loader": "^3.4.2",
+    "node-autodeploy-wp": "^1.0.11",
+    "node-sass": "^4.5.2",
+    "postcss-custom-prop-fallbacks": "^1.0.2",
+    "postcss-loader": "^2.0.9",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0"
+  },
+  "eslintConfig": {
+    "extends": ["johnwatkins0"]
+  },
+  "dependencies": {
+    "normalize.scss": "^0.1.0"
+  },
+  "babel": {
+    "presets": ["env", "stage-0"]
+  }
+}

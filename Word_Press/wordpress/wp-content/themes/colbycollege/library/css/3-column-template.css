@@ -1,0 +1,530 @@
+/* ------------------------------------ News page --------------------------------------------- */
+
+
+.page-template-page-three-column-php #content {
+	padding-top: 10px;
+}
+
+/* general styles */
+top-news a:hover, #sights-sounds h3 a:hover, #upcoming-events a:hover, #featured-event a:hover, #in-the-news a:hover, #colby-magazine a:hover, #bottom-section a:hover {text-decoration: none}
+
+#left-column li, #center-column li, #right-column li, .mag-thumb, #bottom-section li {
+	list-style: none outside none;
+}
+
+#left-column ul, #center-column ul, #right-column ul, #bottom-section ul {
+	margin: 0 10px 10px 0;
+}
+
+#content h2.section-title, #content h4.widgettitle {
+    color: #A5A5A5;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+#content h2.section-title a {
+    color: #A5A5A5;
+}
+
+#content h2.section-title a:hover {
+    color: #353535;
+}
+
+#content #sidebar-1 h2.section-title a {
+	font-size:inherit;
+}
+
+#right-column {
+	padding-left: 1%;
+}
+
+
+.display-posts-listing iframe{
+	width:100%;
+}
+
+#content #text-2 {
+	border-top:none;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+/* specific for news page */
+div.widget #in-the-news a, div.textwidget p, div.widget #in-the-news ul li a, .display-posts-listing li a { 
+    font-family:"franklin-gothic-urw", Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    line-height:1.2em;
+}
+
+
+/* add horizontal rules dividers for 3 column view */
+
+#sights-sounds .horz-divider, #in-the-news .horz-divider, #colby-magazine .horz-divider, #topics .horz-divider, #twitter-feed .horz-divider, #athletics-headlines .horz-divider, .horz-divider {
+    border-top: 1px solid #D5D5D5;
+    padding-bottom: 15px;
+}
+
+/* Top headlines */
+
+#left-column .has-thumb img {
+    margin-bottom: 5px;
+    margin-right: 17px;
+    margin-top: 3px;
+}
+
+#left-column .no-thumb img {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#left-column .has-thumb {
+}
+
+#top-news ul {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+#left-column .no-thumb {
+    clear: both;
+    margin-top: 10px;
+}
+
+#top-news .has-thumb h3 a {
+    color: #353535;
+    font-size: 1.4em;
+    font-weight: 700;
+    line-height: 1.1em;
+}
+
+#top-news h3 a {
+    color: #353535;
+    font-size: 1.15em;
+    font-weight: 700;
+    line-height: 1.1em;
+}
+
+#top-news h3 a:hover {
+	color:#858585;
+}
+
+#top-news h3 {
+	margin: 0;
+}
+
+#top-news .has-thumb h3 {
+	margin-bottom: 7px;
+}
+
+
+#top-news h4 {
+	margin-top: 0;
+}
+
+#top-news h4 a {
+    color: #858585;
+    font-size: 1.13em;
+    font-weight: 400;
+}
+
+#top-news h4 a:hover {
+	color:#858585;
+}
+
+.no-thumb {
+	clear: both;
+}
+
+.has-thumb .icon-comment {
+	float: none;
+}
+
+.icon-comment {
+	float: right;
+}
+
+.comment-link a {
+    background: url("images/comment-icon-788bbb.png") no-repeat scroll 0 0 transparent;
+    background: url("images/comment-icon-D87900.png") no-repeat scroll 0 0 transparent;
+    color: #EBEBEB;
+    display: block;
+    float: right;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 0.65em;
+    font-weight: 700;
+    height: 24px;
+    line-height: 1.15em;
+    margin-top: 5px;
+    padding: 4px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 24px;
+}
+
+.has-thumb .comment-link a {
+	float: none;
+}
+
+.comment-link a:hover {
+	color: #fff;
+}
+
+/* Sights and sounds */
+
+#sights-sounds.thumbnail {
+    border: medium none;
+    display: block;
+    line-height: 20px;
+    padding: 1em;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+#sights-sounds .excerpt-dash{
+	display:none;
+}
+
+#sights-sounds span.excerpt{
+	display:block;
+}
+
+#main article #sights-sounds img {
+    height: auto;
+    margin-left: 0;
+    margin-top: 10px;
+    max-width: 90%;
+    padding: 0 5% 2% 0;
+}
+
+#sights-sounds h2.section-title {
+    margin-bottom: 13px;
+    margin-top: 10px;
+}
+
+#sights-sounds a.title {
+    margin-top: 0;
+}
+
+#sights-sounds a.title {
+    color: #353535;
+    font-size: 1.05em;
+    line-height: 1.4em;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+}
+
+#sights-sounds a.title:hover {
+    color: #858585;
+}
+
+#sights-sounds .excerpt {
+    font-size: 0.9em;
+    width: 90%;
+}
+
+a.comment-link {
+	color: gray;
+}
+
+/* Don't miss - featured event */
+
+#featured-event {
+	clear: both;
+}
+
+#featured-event .dontmiss-date {
+    color: #505050;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#featured-event h3 {
+    font-size: .95em !important;
+    line-height: 1.1em;
+    margin-bottom: 7px;
+    margin-top: 0;
+}
+
+#featured-event h3 a {
+    color: #353535;
+    font-weight: 700;
+    line-height: 1.15em;
+    margin-bottom: 0;
+}
+
+#featured-event h3 a:hover {
+	color: #858585;
+}
+
+em.dontmiss-title {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#main #featured-event img {
+    margin-top: 5px;
+    padding: 0;
+}
+
+#featured-event p {
+    font-size: 0.9em;
+    line-height: 1.38em;
+}
+
+/* Colby in the news */
+
+#in-the-news {
+    /*margin-top: 30px; prev */
+    margin-top: 22px; /* align bottom of in the news column with events? */
+}
+
+#in-the-news ul {
+    margin-top: 10px;
+}
+
+#in-the-news li {
+    line-height: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+#in-the-news a.view-more{
+	font-size:.8em;
+}
+
+div.widget.widget_text #in-the-news h2.section-title a {
+    font-size: 1em;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+/* Colby magazine picks */
+
+#colby-magazine .horz-divider {
+	margin-bottom: 20px;
+}
+
+#colby-magazine {
+	clear: both;
+	padding-top: 20px;
+}
+
+#colby-magazine ul {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 15px;
+    padding: 0;
+}
+
+.mag-thumb {
+	float: left;
+	padding-right: 0;
+}
+
+.meta { /* part of magazine the story is from */
+	display: block;
+}
+
+#main article #mag-cover {
+    float: left;
+    padding-right: 0.5%;
+    position: relative;
+    top: -7px;
+}
+
+#main article .hill img {
+    height: auto;
+    max-width: 131%;
+}
+
+#main article .hill-last {
+    left: 4.46%;
+    position: relative;
+}
+
+h4.mag-type {
+    color: #A5A5A5;
+    font-weight: 400;
+    margin: 0.2em 0 0;
+}
+
+#colby-magazine h3 {
+    margin: 0.3em 0;
+    line-height: 1.3em !important;
+}
+
+#colby-magazine h3 a {
+    color: #353535;
+    font-size: 1.05em;
+    font-weight: 700;
+}
+
+#colby-magazine a:hover {
+	color: #858585;
+}
+
+/* bottom section */
+
+#bottom-section {
+    margin-top: 40px;
+}
+
+/* topics */
+
+#topics ul {
+	margin-top: 13px;
+}
+
+#topics li {
+	font-size: 0.9em;
+    line-height: 1.1em;
+    margin-bottom: 0.5em;
+    border-top: 1px dotted #D5D5D5;
+    margin-top: 5px;
+    padding-top: 7px;
+}
+
+/* latest tweets */
+
+#twitter-feed ul {
+    margin-top: 10px;
+}
+
+#twitter-feed p {
+	font-size: .93em;
+	margin-bottom: 0;
+}
+
+#twitter-feed .hash-tag {
+	color: #2D4EA4;
+	font-size: .9em;
+}
+
+.twitter-date {
+    color: #A7B1B9;
+    display: block;
+    font-size: 0.875em;
+    margin-bottom: 10px;
+}
+
+/* athletics-headlines */
+
+#athletics-headlines {
+	padding-left: 1%;
+}
+
+#content #athletics-headlines h2.section-title {
+	margin-bottom: 3px;
+}
+
+#athletics-headlines ul {
+	margin-top: 0;
+}
+
+#athletics-headlines li a {
+    color: #353535;
+    display: block;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 1.15em;
+    margin-bottom: 3px;
+}
+
+#athletics-headlines li a:hover {
+	color: #858585;
+}
+
+#athletics-headlines .date {
+	color: #858585;
+}
+
+
+#athletics-headlines li {
+    font-size: 0.875em;
+    line-height: 1.1em;
+    margin-top: 3px;
+    padding-bottom: 3px;
+    padding-top: 7px;
+}
+
+#athletics-headlines a.view-more:hover {
+	color: #353535;
+}
+
+/* recent comments - in your words */
+
+#recent-comments li {
+    margin: 10px 0 15px;
+}
+
+#recent-comments p {
+    margin: 0 0 5px 0;
+}
+
+#recent-comments a {
+	margin-top: 0;
+}
+
+#recent-comments h4 {
+    margin-top: 0;
+    width: 70%;
+}
+
+#recent-comments .comment-link {
+    float: right;
+    position: relative;
+    top: -25px;
+}
+
+/* For browser */
+@media (max-width: 767px) {
+		
+	#sights-sounds.thumbnail {
+	    padding: 0;
+	}
+	
+	#top-news {
+		margin-bottom: 10px;
+	}
+	
+	#sights-sounds {
+		margin-bottom: 30px;
+	}
+	
+	#upcoming-events .horz-divider, #featured-event .horz-divider {
+	    border-top: 1px solid #D5D5D5;
+	    padding-bottom: 15px;
+	}
+	
+	#featured-event {
+	    padding-top: 30px;
+	}
+	
+	#colby-magazine h2.section-title {
+	    clear: left;
+	    padding-bottom: 7px;
+	}
+	
+	#colby-magazine img#mag-cover {
+		margin-bottom: 7px;
+	}
+	
+	#colby-magazine li.mag-thumb-last {
+		display:none;
+	}
+	#topics, #twitter-feed, #athletics-headlines {
+		padding-bottom: 15px;
+	}
+	
+	#colby-magazine img {
+		float: left;
+		clear: left;
+		margin-right: 20px;
+		margin-bottom: 25px;
+		max-width: 50%;
+	}
+	#colby-magazine .mag-thumb {
+		float:left;
+	}
+}
