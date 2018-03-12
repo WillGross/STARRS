@@ -1,0 +1,8 @@
+{
+  "require": {
+    "frozzare/wp-autoload": "^2.0"
+  },
+  "autoload": {
+    "files": ["wp-autoload/index.php"]
+  }
+}

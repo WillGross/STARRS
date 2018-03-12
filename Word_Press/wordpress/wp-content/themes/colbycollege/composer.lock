@@ -1,0 +1,63 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "ed5a3b267a9d2aaf0836fca410ef9c7a",
+    "content-hash": "4d6411f5d9787e7daae191c9c0593ae8",
+    "packages": [
+        {
+            "name": "frozzare/wp-autoload",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpup/autoload.git",
+                "reference": "081d479868d3da9376d0ede7bb94f51d7a915c4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpup/autoload/zipball/081d479868d3da9376d0ede7bb94f51d7a915c4d",
+                "reference": "081d479868d3da9376d0ede7bb94f51d7a915c4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Forsmo",
+                    "email": "fredrik.forsmo@gmail.com"
+                }
+            ],
+            "description": "Simple autoloader that will autoload classes or traits with namespace prefix",
+            "keywords": [
+                "autoload",
+                "namespace",
+                "wordpress"
+            ],
+            "time": "2016-05-01 15:41:07"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

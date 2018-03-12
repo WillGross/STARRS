@@ -1,0 +1,50 @@
+/* Resetting from main stylesheet */
+body#tinymce, html {
+	height: auto!important;
+}
+
+body {
+
+	color: #353535;
+  font-size: 13px;
+	  line-height: 18px;
+
+}
+p {
+  margin: 0 0 9px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+h1, h1, h1 span, body#tinymce h1{
+	font-size:23px!important;
+	font-weight:bold!important;
+}
+
+h2, h2, h2 span, body#tinymce h2{
+	font-size:19px!important;
+	font-weight:bold!important;
+}
+
+
+h3, h3, h3 span, body#tinymce h3{
+	font-size:15px!important;
+	color:#2D4EA4!important;
+}
+
+p small {
+  font-size: 11px;
+  color: #999999;
+}
+
+.wp_themeSkin .mceMenuItemTitle span.mceText{
+	font-weight:normal;
+	font-style:italic;
+}
+
+.sidewell-right{
+	width:23%;
+	float:right;
+}
+

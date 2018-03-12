@@ -1,0 +1,942 @@
+/* Styles specific to Colby.edu homepage */
+
+/* --------------------------------------------- New Front page ----------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------ */
+
+#front-content .horz-divider {
+    border-top: 1px solid #D5D5D5;
+    padding-bottom: 15px;
+}
+
+.front-content-topic {
+    display: block;
+    font-size: 0.85em;
+    margin: 0;
+    padding: 5px 7px;
+}
+
+.colby-edu-homepage .carousel {
+    margin-bottom: 0;
+}
+
+.front-content-image .listing-item a.image  {
+    border: medium none;
+    border-radius: 0 0 0 0;
+    -webkit-border-radius: 0 0 0 0;
+    -moz-border-radius: 0 0 0 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    display: block;
+    line-height: 20px;
+    padding: 0;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.front-item li {
+    list-style-type: none;
+}
+
+#main .front-item ul {
+    margin: 0;
+}
+
+#main .front-content-image h3, #main .front-content-image h4 {
+    margin: 0;
+}
+
+#main .front-content-image h3, #main .front-content-image .listing-item a.title {
+    font-family:"franklin-gothic-urw", Helvetica, Arial, sans-serif;
+}
+
+h4.front-content-topic a {
+    color: #FFFFFF;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+#main .front-item h3.front-media-heading {
+    font-size: 0.87em !important;
+    line-height: 1.2em;
+    margin-bottom: 0.9em;
+}
+
+#front-content-athletics {
+    margin: 0;
+}
+
+/* Featured events block - slider nav temp */
+
+.eventslides_container .flex-control-nav {
+    bottom: -14px;
+    text-align: left;
+    width: 100px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.eventslides_container .flex-control-nav li {
+    margin: 0 4px;
+    display: inline-block;
+}
+
+.eventslides_container .flex-control-paging li a {
+    background: none repeat scroll 0 0 #BBBBBB;
+    border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) inset;
+    cursor: pointer;
+    display: block;
+    height: 10px;
+    text-indent: -9999px;
+    width: 10px;
+    text-decoration: none !important;
+}
+
+.eventslides_container .flex-control-nav li a.flex-active {
+    background-color: #D87900;
+}
+
+#front-content li.span12  {
+    margin-bottom: 0;
+}
+
+.row-fluid .thumbnails {
+    margin: 0;
+}
+
+#main .front-content-headline {
+    background-color: #A1AAB2;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0;
+    padding: 5px;
+}
+
+#main .front-content-headline a {
+    color: #F1F1F1;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    padding-left: 3px;
+}
+
+#main .front-content-block {
+    /*background-color: #555555;*/
+    margin-top: 7px;
+    padding: 0;
+}
+
+.front-content-image.span3, .front-item.span3 {
+
+}
+
+/* ------ new CSS for content blocks on front page ------ */
+
+.colby-edu-homepage #main article {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+/* - move left/right arrows up above content blocks - */
+.colby-edu-homepage .carousel-control.left, .colby-edu-homepage .carousel-control.right {top:20% !important}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel img, { /*.page-id-46 */
+    max-width: 2500px;
+    min-width: 100%;
+    height:auto;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {
+    height: 850px !important;
+    max-height: 850px !important;
+}
+
+/* video carousel bg */
+
+
+@media (max-width: 1530px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 120%;
+margin-left: -10%;
+}
+}
+@media (max-width: 1280px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 135%;
+margin-left: -10%;
+}
+#myCarousel .video .container {
+    left: 60px;
+}
+}
+
+@media (max-width: 1280px) {
+#myCarousel .video .container {
+    left: 60px;
+}
+}
+
+@media (max-width: 1140px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 150%;
+margin-left: -15%;
+}
+#myCarousel .video .container {
+    left: 50px;
+}
+}
+
+@media (max-width: 1280px) {
+#myCarousel .video .container {
+    left: 90px;
+}
+}
+
+@media (max-width: 1040px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 180%;
+margin-left: -15%;
+}
+#myCarousel .video .container {
+    left: -45px;
+}
+}
+
+@media (max-width: 980px){
+	.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 190%;
+margin-left: -18%;
+}
+#myCarousel .video .container {
+  left: -20px;
+}
+}
+@media (max-width: 979px) {
+	#myCarousel .video .container {
+    left: -160px;
+}
+
+}
+
+@media (max-width: 970px) {
+#myCarousel .video .container {
+    left: -160px;
+}
+}
+
+@media (max-width: 940px) {
+#myCarousel .video .container {
+    left: -160px;
+}
+}
+
+@media (max-width: 920px) {
+#myCarousel .video .container {
+    left: -160px;
+}
+}
+
+@media (max-width: 860px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 200%;
+margin-left: -20%;
+}
+#myCarousel .video .container {
+  left:-140px;
+}
+}
+
+@media (max-width: 830px) {
+	#myCarousel .video .container {
+  left:-130px;
+}
+}
+@media (max-width: 810px) {
+	#myCarousel .video .container {
+  left:-100px;
+}
+}
+@media (max-width: 760px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 100%;
+margin-left: 0;
+}
+}
+
+@media (max-width: 640px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 120%;
+}
+}
+
+@media (max-width: 520px) {
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item.video {
+width: 150%;
+}
+}
+
+/* end video carousel bg */
+
+.colby-edu-homepage .carousel-caption {
+    max-width: 35%;
+}
+
+#front-content .eventslides_container .flex-control-nav {
+    list-style: none outside none;
+    margin: 0 0 10px;
+    padding: 0;
+    text-align: left;
+    width: 100px;
+}
+
+.colby-edu-homepage #front-content .eventslides_container .flex-control-nav {
+    list-style: none outside none;
+    margin: 0 0 0 20px;
+    padding-bottom: 10px;
+    text-align: left;
+    width: 100px;
+}
+
+#main .front-content-block h3  a:hover, #main .front-content-block p a:hover, #main .front-content-image .listing-item a.title:hover {
+color: #858585;
+}
+
+#main .front-content-block h3 {
+    font-size: 1em !important;
+    margin-bottom: 10px !important;
+    margin-top: 0 !important;
+    padding-top: 15px !important;
+}
+
+#main .front-content-block p {
+    font-size: 0.9em !important;
+    line-height: 1.25em;
+    margin-bottom: 10px;
+}
+
+#main .front-content-image .front-content-block h3 {
+    padding-top: 0px !important;
+}
+
+#main .front-content-image .image img {
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-top: 0;
+    max-width: 85%;
+    padding: 5px 0 0;
+}
+
+#main .front-content-block .homepageEventDate {
+    color: #FFFFFF;
+    font-size: 0.875em;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+#main .front-content-block .homepageEventLocation {
+    color: #ffffff;
+}
+
+#main .front-item .eventslides_container .flex-viewport {
+    min-height: 120px; /* set to actual when final data is being pulled in */
+    padding-bottom: 20px;
+}
+
+/* bottom of blocks topic bar arrow */
+
+.topic-bar {
+    position: relative;
+}
+
+.topic-bar-title a {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    color: #f1f1f1;
+    font-weight: 700;
+    font-size: .85em;
+}
+
+.topic-bar-box {
+    background-color: #758195;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 31px;
+}
+
+#homepageEmergencyMessage{
+    background-color:#FFF;
+    padding-bottom:30px;
+    min-height:100%;
+    border:4px solid #B94A48;
+}
+
+#homepageEmergencyMessage h2{
+    color: #B94A48
+}
+
+.emergency-notification-major #main{
+    display:none;
+}
+
+/* ---------------------------------------- Front page styles - by page ID number --------------------------------------- */
+
+body.colby-edu-homepage.page-template-page-homepage-full-width-php  {
+    background-color: #353535; /* same as footer */
+}
+
+
+#main-wrapper {min-height: 0!important;}
+
+/*
+#content-container {overflow:auto;
+    padding-bottom: 185px;
+}
+
+#colbytemplatefooter {
+    position: relative;
+    margin-top: -185px!important;
+    clear:both;
+}
+*/
+
+#colbytemplatefooter {
+    position:relative;
+    z-index:1000;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {
+    margin-bottom: 45px;
+    margin-top: -400px;
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container #content {
+    border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    max-width:920px;
+    width:85%;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage.emergency-notification-major #content-container{
+    min-height:100%;
+    max-height:100%;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-headline {
+    background-color: transparent;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    border-top: 1px solid #D5D5D5;
+
+}
+.page-template-page-homepage-full-width-php #main .front-content-headline a {
+    color: #999999;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-headline a:hover {
+    color:#353535;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-block {
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 7px;
+    padding: 0;
+}
+
+.page-template-page-homepage-full-width-php  .front-content-block h3 a, #main .front-content-image .listing-item a.title {
+    color: #353535;
+    display: block;
+    margin:0;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-block p a {
+    color:#858585;
+    margin:0;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-block p a:hover {
+    color: #353535;
+}
+
+.page-template-page-homepage-full-width-php  #main .homepageEventDate {
+    color: #353535;
+    font-size: 0.875em;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+
+.page-template-page-homepage-full-width-php  #main .homepageEventDate a{
+    color: #353535;
+}
+
+.page-template-page-homepage-full-width-php #main .homepageEventDate a:hover {
+    color: #999999;
+}
+
+.page-template-page-homepage-full-width-php  #main .front-content-block .homepageEventLocation {
+    color: #858585;
+    font-weight: 400;
+
+}
+
+.page-template-page-homepage-full-width-php .front-content-topic {
+    background-color: rgba(0, 0, 0, 0);
+    display: block;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar {
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    border-top: 1px solid #D5D5D5;
+    border-bottom: 1px solid #D5D5D5;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar-title a {
+    color: #707E2E;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar-title a:hover {
+    color: #353535;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar-box {
+    background-color: #758195;
+    display: none;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar-box img {
+    width: 25px;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .eventslides_container .flex-control-nav {
+    list-style: none outside none;
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: left;
+    width: 100px;
+}
+
+.page-template-page-homepage-full-width-php #main .front-content-block h3, #main .front-content-image .listing-item a.title {
+    font-size: 1.1em !important;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin-bottom: 5px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.page-template-page-homepage-full-width-php .topic-bar > p {display: none;}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.left, .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.right {
+    top: 30% !important;
+}
+.colby-edu-homepage #myCarousel {
+    display: block;
+    height: 850px;
+    overflow-y: hidden;
+}
+
+/* new front-page content block */
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {
+    margin-bottom: 33px;
+    margin-top: -370px;
+    max-height: 336px;
+    min-height: 336px;
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    overflow:hidden;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container #content {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9) !important;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 920px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 95%;
+}
+
+article.type-page header{
+    display:none;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container #main {
+    padding-left: 0; /* only for full width content-container - changes for single column */
+    padding-right: 15px;
+}
+
+.page-template-page-homepage-full-width-php .front-item {padding: 15px 2px;}
+
+/* Rearrange front content items for single column responsive */
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .pair {float: right;}
+.page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .front-content-image {padding-right: 20px;}
+
+.colby-edu-homepage #main article footer {display: none;} /* removes overlapping footer on front-page */
+
+.eventslides_container ul.slides li{
+    display:none;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage.emergency-notification-major #content-container{
+    margin-top:0;
+}
+
+.homepage-warning{
+    background-color:red;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:4px;
+    background-color: #FCF8E3;
+    border: 1px solid #FBEED5
+}
+
+.page-template-page-homepage-full-width-php .front-content-block .homepage-warning h3.news-headline a, .page-template-page-homepage-full-width-php .front-content-block .homepage-warning p a{
+    color: #C09853!important;
+}
+
+
+/* ----------------------------------- end of new front page layouts ------------------------------- */
+
+
+/* --------------------------------------------------- Media queries for new front-page -------------------------------------------------------- */
+
+/* Changing left and right margins for content-container - three front blocks on front page for browser width until max-width 979px */
+@media (max-width: 1600px) { body{} .colby-edu-homepage #content-container {}}
+
+
+/* Move Carousel image left as browser window narrows */
+@media (max-width: 1400px) {
+    body{}
+    .colby-edu-homepage #content-container {}
+    .colby-edu-homepage .carousel img {left:-150px;}
+}
+
+@media (max-width: 1200px) {
+    .colby-edu-homepage .carousel img {left:-250px;}
+}
+
+@media (max-width: 1040px) {
+    body{}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {padding: 0;max-height: none;}
+    .colby-edu-homepage #myCarousel .carousel-caption {left: -55px;}
+    /*.colby-edu-homepage .carousel img {left:-350px;}*/
+    footer#colbytemplatefooter {margin-top: 0 !important;}
+}
+
+@media (max-width: 980px) {
+	  .colby-edu-homepage .carousel img {left:-150px;}
+}
+
+
+/* Front-page caption - headline and subhead - width and size of text */
+@media (max-width: 1200px) {
+    .colby-edu-homepage #myCarousel .carousel img {left:-250px;}
+    .colby-edu-homepage #myCarousel .carousel-caption h4 a {
+        font-size: 2.5em;
+        letter-spacing: 0.05em;
+        line-height: 1em;
+    }
+
+    .colby-edu-homepage #myCarousel .carousel-inner p {
+        font-family: "franklin-gothic-urw",Helvetica,Arial,sans-serif;
+        font-size: 1.5em;
+        line-height: 1em;
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
+
+    .colby-edu-homepage #myCarousel .carousel-caption {
+        left: -50px;
+        max-width: 35%;
+    }
+
+		.colby-edu-homepage #myCarousel .carousel-caption.carousel-right {
+		    left: 37%;
+		    max-width: 35%;
+		}
+
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.left, .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.right {
+        top: 27% !important;
+    }
+} /* end (max-width: 1200px) */
+
+
+/* Initial Bootstrap media query - iPad portrait */
+@media (max-width: 979px) {
+    body{}
+    .colby-edu-homepage #content-container {margin: 0 auto;}
+    .colby-edu-homepage .carousel-caption {max-width: 40%;}
+    .colby-edu-homepage #myCarousel .carousel-caption {left: 0;}
+
+    /* tablet landscape */
+   /* .colby-edu-homepage .carousel img {
+        left: -500px;}*/
+}
+
+/* browser fix - keep content-container from going into footer */
+
+@media (max-width: 800px) {
+    body{}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {margin-bottom: 73px;margin-top:-410px;}
+}
+
+/*  Bootstrap landscape phone to portrait tablet - single column begins in browser */
+@media (max-width: 767px) {
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container #main {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    footer#colbytemplatefooter {
+        height:auto;
+        margin-top: 15px!important;
+    }
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .pair {
+        float: none;
+    }
+
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .front-content-image {
+        padding-right: 0;
+    }
+
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {
+        margin-bottom: 0;
+        margin-top: 10px;
+        max-height: none;
+        min-height: 0;
+        position: relative;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .colby-edu-homepage #myCarousel {
+        height: 550px;
+    }
+
+/*  .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {
+        height: 550px !important;
+        max-height: 550px !important;
+    }
+    */
+    .colby-edu-homepage .carousel .item {
+        height: 550px;
+    }
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel img {
+        max-width: 1200px;
+    }
+
+    .colby-edu-homepage #myCarousel .carousel-caption h4 a {
+        font-size: 2em;
+    }
+
+    .colby-edu-homepage #myCarousel .carousel-inner p {
+        font-size: 1.4em;
+    }
+/*      .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.left, .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.right {
+        top: 38% !important;
+    }
+*/
+    /* changes to img size, item window size and remove subhead */
+
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {height: 370px !important;max-height: 370px !important;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel img {max-width: 1000px;}
+    .colby-edu-homepage #myCarousel .carousel-inner p {display: none;}
+
+    /* content-container area changes for all smartphone */
+    .colby-edu-homepage .carousel img {left: -250px;}
+
+
+    #main .front-item .eventslides_container .flex-viewport {padding-bottom: 0;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #front-content .eventslides_container .flex-control-nav {width: 200px;}
+    .eventslides_container .flex-control-nav li {margin: 0 7px;}
+/*  .colby-edu-homepage #myCarousel .carousel-caption h4 a {font-size: 2.2em;}*/
+/*  .colby-edu-homepage #myCarousel .carousel-caption {max-width: 40%;top:35px;}*/
+    .colby-edu-homepage #myCarousel .btn-small {margin-top: 11px;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {margin-top: -170px;}
+
+
+/* ----- Revisions to homepage 8/11/14 ------ */
+
+/* header */
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {
+height: 350px !important;
+max-height: 350px !important;
+}
+
+#myCarousel .container {
+left: 80px !important;
+top: 145px !important;
+width: auto !important;
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption {
+max-width: 55% !important;
+top: 0 !important;
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption h4 a {
+font-size: 2.3em !important;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.left, .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel-control.right {
+top: 36% !important;
+}
+
+/* content */
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {
+margin-top: -185px !important;
+}
+
+/* --------- end of revisions --------- */
+
+
+
+} /* end (max-width: 767px) */
+
+/* smartphone portrait */
+
+@media (max-width: 480px) {
+body {}
+    .colby-edu-homepage #myCarousel .carousel-inner p {display: none;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {height: 340px !important;max-height: 340px !important;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage .carousel img {max-width: 750px;}
+    .page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {margin-top: -200px;}
+    .colby-edu-homepage #myCarousel .carousel-caption h4 a {font-size: 2.2em;}
+    .colby-edu-homepage #myCarousel .carousel-caption {max-width: 40%;top:40px;}
+    .carousel-control {left:0}
+    /* content-container area changes for all smartphone */
+    /*.colby-edu-homepage .carousel img {left: -250px; top:30px !important;}*/
+    #main .front-item .eventslides_container .flex-viewport {padding-bottom: 0;}
+
+/* ----- Revisions to homepage 8/11/14 ------ */
+
+/* header */
+
+.colby-edu-homepage #myCarousel {
+margin-top: -128px !important;
+z-index: 2 !important;
+}
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage .carousel .item {
+height: 320px !important;
+max-height: 320px !important;
+}
+
+#myCarousel .container {
+top: 145px !important;
+left: 45px !important;
+}
+
+.colby-edu-homepage .carousel img {left: -260px; top:30px !important;}
+
+.colby-edu-homepage #myCarousel .carousel-caption {
+max-width: 60% !important;
+top: 0 !important;
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption h4 a {
+font-size: 2em !important;
+}
+
+/* Content */
+
+.page-template-page-homepage-full-width-php.colby-edu-homepage #content-container {
+margin-top: -220px !important;
+}
+
+}
+
+
+/* 10-12-15 revisions to homepage slideshow captions - add right side version of headlines */
+
+.colby-edu-homepage .carousel-caption.carousel-right {
+    max-width: 35%;
+   left: 37%;
+}
+
+/* tablet and narrow browser */
+@media (max-width: 1040px) {
+    .colby-edu-homepage  #myCarousel .carousel-caption.carousel-right {
+    left:33%;
+    }
+}
+
+/* tablet to landscape phone */
+@media (max-width: 767px) {
+.colby-edu-homepage #myCarousel .carousel-caption.carousel-right {
+    left: 27%;
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption {
+max-width: 50% !important
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption h4 a {
+/*font-size: 1.9em !important;*/
+}
+}
+
+
+/* phone portrait */
+@media (max-width: 480px) {
+.colby-edu-homepage #myCarousel .carousel-caption.carousel-right {
+    left: 15%;
+}
+
+.colby-edu-homepage #myCarousel .carousel-caption {
+    max-width: 60% !important
+}
+}
+
+
+/* ------------------------------- End of Front page specific media queries ------------------------------ */
+
+/* special img adj for gilkes homepage august 2016 - can be removed when not active
+
+@media (max-width: 480px) {
+.pagepage-id-46.colby-edu-homepage .carousel img {
+    left: -150px;
+    top: 30px !important;
+}
+}
+*/
