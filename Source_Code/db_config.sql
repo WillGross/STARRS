@@ -1,22 +1,27 @@
 
-
--- If sharing database with wordpress, drop these commands
--- DROP DATABASE IF EXISTS starrs;
--- CREATE DATABASE starrs;
-
---USE starrs; SPECIFY FINAL DATABASE USED IN IMPLEMENTATION
+-- USE _________; SPECIFY FINAL DATABASE USED IN IMPLEMENTATION
 
 -- DOCUMENTATION:
--- Describes the structure of the STARRS database in the new format
+-- Describes the structure of the new relational STARRS database
 -- Source this file to wipe the db and create a clean coppy
 -- Author: Jacob tower, Will Gross
--- Date:3/11/18, 3/12/18
--- Version: 1.1
+-- Date:3/11/18, 3/12/18, 3/20/18
+-- Version: 1.2
 -- -----------------------------------------------------
+
+-- drops tables in order of least dependency to most to avoid foreign key conflicts
+
+ DROP TABLE IF EXISTS `ride_requests`;
+ DROP TABLE IF EXISTS `shift_info`;
+ DROP TABLE IF EXISTS  `location`;
+ DROP TABLE IF EXISTS `shifts`;
+ DROP TABLE IF EXISTS `drivers`;
+ DROP TABLE IF EXISTS `vehicles`;
+
+
 
 -- Table structure for table 'vehicle'
 
-DROP TABLE IF EXISTS `vehicles`;
 CREATE TABLE `vehicles`  (
   `id` int(2) NOT NULL auto_increment, -- for database use
   `name` char(3) NOT NULL default '', -- vehicle identifier
@@ -44,7 +49,6 @@ UNLOCK TABLES;
 
 -- Table structure for table 'location'
 
-DROP TABLE IF EXISTS  `location`;
 CREATE TABLE `location` (
   -- Ask about how to use tie breaker: `id` int(13) NOT NULL auto_increment,
   `vehicle_ID` int(2) NOT NULL default 00,
@@ -58,7 +62,6 @@ CREATE TABLE `location` (
 
 -- Table structure for table 'drivers'
 
-DROP TABLE IF EXISTS `drivers`;
 CREATE TABLE `drivers` (
 	`id` int(5) NOT NULL auto_increment,
 	`name` VARCHAR(30) NOT NULL,
@@ -80,15 +83,14 @@ UNLOCK TABLES;
 
 -- Table structure for table 'shifts'
 
-DROP TABLE IF EXISTS `shifts`;
 CREATE TABLE `shifts` (
 	 `id` INT(10) NOT NULL auto_increment,
 	 `driver_ID` int(5) NOT NULL DEFAULT 0,
 	 `vehicle_ID` int(2) NOT NULL DEFAULT 0,
-	 `date` DATE(7) NOT NULL,
-	 `day of week` VARCHAR(9),
-	 `start time` DATETIME2 (7) NOT NULL,
-	 `end time` DATETIME2 (7) NOT NULL,
+	 `date` DATE NOT NULL,
+	 `dayOfWeek` VARCHAR(9),
+	 `startTime` DATETIME NOT NULL,
+	 `endTime` DATETIME NOT NULL,
 	 PRIMARY KEY (`id`),
 	 FOREIGN KEY (`driver_ID`) REFERENCES `drivers`(`id`),
 	 FOREIGN KEY (`vehicle_ID`) REFERENCES `vehicles`(`id`)
@@ -98,14 +100,13 @@ CREATE TABLE `shifts` (
 
 LOCK TABLES `shifts` WRITE ;
 INSERT INTO `shifts` VALUES
-  (1,1, 1, SYSDATE(), 'Wednesday', SYSDATETIME(), SYSDATETIME())
+  (1,1, 1, CURRENT_DATE (), 'Wednesday', CURRENT_TIMESTAMP (), CURRENT_TIMESTAMP ())
   ;
 UNLOCK TABLES;
 
 
 -- Table structure for table 'shift_info'
 
-DROP TABLE IF EXISTS `shift_info`;
 CREATE TABLE `shift_info` (
 	`shift_ID` int(10) NOT NULL,
 	`mileageStart` int(7) NOT NULL,
@@ -120,14 +121,13 @@ CREATE TABLE `shift_info` (
 
 -- Table structure for table 'ride_requests'
 
- DROP TABLE IF EXISTS `ride_requests`;
  CREATE TABLE `ride_requests`
  	(
  	`id` int(12) NOT NUll auto_increment,
  	`shift_ID` int(10) NOT NULL,
- 	`timeOfCall` DATETIME2(7) NOT NULL,
- 	`pickupTime` DATETIME2(7) NOT NULL,
- 	`dropoffTime` DATETIME2(7) NOT NULL,
+ 	`timeOfCall` DATETIME NOT NULL,
+ 	`pickupTime` DATETIME NOT NULL,
+ 	`dropoffTime` DATETIME NOT NULL,
  	`pickupLocation` VARCHAR (100) NOT NULL,
  	`dropoffLocation` VARCHAR (100) NOT NULL,
  	`comments` VARCHAR(250) NOT NULL DEFAULT '',
