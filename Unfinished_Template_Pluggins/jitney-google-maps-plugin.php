@@ -1,11 +1,13 @@
 <?php
 /**
-Plugin Name: STARRS Map
-Description: A plugin displays a map tracking the movement of the jitney and shuttle
-Version: 1.0
-Author: Ryan Sellar
+ * Plugin Name: STARRS Map
+ * Description: A plugin displays a map tracking the movement of the jitney and shuttle
+ * Version: 1.0
+ * Author: Ryan Sellar
  */
 
+//shortcode for google map in post:
+//[map lat='<latitude>' lng='longitude' zoom='<zoom>' height='<height>']
 add_shortcode( 'map', 'jitney_map' );
 function jitney_map( $args ) {
 	$args = shortcode_atts( array(
@@ -39,7 +41,7 @@ function jitney_map( $args ) {
 	return $output;
 }
 
-
+//activates the google map api when wordpress loads header
 add_action( 'wp_head', 'mgms_enqueue_assets' );
 function mgms_enqueue_assets() {
 	wp_enqueue_script( 
