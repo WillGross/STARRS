@@ -6,10 +6,8 @@ Version: 1.0
 Author: Paige Hanssen
 */
 
-//talks to ride_requests
-
 // function that sets up the form with html
-function jitney_request_form($pickup, $destination, $num_people, $comments) {
+function jitney_request_form($pickup, $destination, $num_people, $comments, $dispatcher) {
     global $wpdb;
     $databaseCall = $wpdb -> get_results('SELECT * from vehicles');
 
@@ -18,6 +16,14 @@ function jitney_request_form($pickup, $destination, $num_people, $comments) {
         <style>
         </style>
     ';
+
+    if ($dispatcher == "True") {
+        $myColbyUser = 
+            '<div>
+                <label for="username">Caller\'s myColby username:<strong>*</strong></label>
+                <input type="textarea" name="username" value="' . ( isset( $_POST['username'] ) ? $destination : null ) . '">
+            </div>';
+    }
 
     // building the actual form - fields for pickup, destination, number of people and comments
     $pluginContent =
@@ -40,16 +46,16 @@ function jitney_request_form($pickup, $destination, $num_people, $comments) {
         <div>
             <label for="comments">Additional comments:</label>
             <input type="textarea" name="comments" value="' . ( isset( $_POST['comments']) ? $comments : null ) . '">
-        </div>
-    
-        <input type="submit" name="submit" value="Register"/>
+        </div>'
+        . ( isset($myColbyUser) ? $myColbyUser : '' ) .
+        '<input type="submit" name="submit" value="Request"/>
         </form>';
     
     print_r($pluginContent);
 }
 
 // validate function for the request form
-function request_validation($pickup, $destination, $num_people, $comments) {
+function request_validation($pickup, $destination, $num_people, $comments, $username) {
     global $reg_errors;
     $reg_errors = new WP_Error;
 
@@ -70,43 +76,76 @@ function request_validation($pickup, $destination, $num_people, $comments) {
 
 // assign values to global variables, display message when registration complete
 function complete_request() {
-    global $reg_errors, $pickup, $destination, $num_people, $comments;
-    if ( 1 > count( $reg_errors->get_error_messages() ) ) {
-        $userdata = array(
+    global $wpdb, $reg_errors, $pickup, $destination, $num_people, $comments;
+    // if ( 1 > count( $reg_errors->get_error_messages() ) ) {
+        $data = array(
         'pickup'    =>   $pickup,
         'destination'    =>   $destination,
         'num_people'     =>   $num_people,
         'comments'      =>   $comments
         );
-        $user = wp_insert_user( $userdata );
-        echo 'Registration complete.';
-    }
+        $wpdb->insert( 'ride_requests', $data );
+        echo "Request completed.";
+    // }
 }
 
-function custom_request_function() {
+function custom_request_function($atts) {
+    $a = shortcode_atts( array(
+        'dispatcher' => null,
+    ), $atts );
+    $dispatcher = $a['dispatcher'];
+
+    //submit button is clicked
     if ( isset($_POST['submit'] ) ) {
+        // global $wpdb;
+
+        // $tablename=$wpdb->prefix.'ride_requests';
+
+        // $data=array(
+        //     'pickup' => $_POST['pickup'], 
+        //     'destination' => $_POST['destination'],
+        //     'num_people' => $_POST['num_people'], 
+        //     'comments' => $_POST['comments'] );
+
+        // $wpdb->insert( $tablename, $data);
+
+
         // call validation function
-        request_validation(
-            $_POST['pickup'],
-            $_POST['destination'],
-            $_POST['num_people'],
-            $_POST['comments']
-        );
+        // request_validation(
+        //     $_POST['pickup'],
+        //     $_POST['destination'],
+        //     $_POST['num_people'],
+        //     $_POST['comments'],
+        //     ($driver ? $_POST['username'] : null)
+        // );
             
-        // sanitize form input to ensure safe data
-        global $pickup, $destination, $num_people, $comments;
-        $pickup   =   sanitize_text_field( $_POST['pickup'] );
-        $destination   =   sanitize_text_field( $_POST['destination'] );
-        $num_people      =   sanitize_option( $_POST['num_people'] );
-        $comments    =   sanitize_textarea_field( $_POST['comments'] );
+        // // sanitize form input to ensure safe data
+        // global $pickup, $destination, $num_people, $comments, $username;
+        // $pickup   =   sanitize_text_field( $_POST['pickup'] );
+        // $destination   =   sanitize_text_field( $_POST['destination'] );
+        // $num_people      =   sanitize_option( $_POST['num_people'] );
+        // $comments    =   sanitize_textarea_field( $_POST['comments'] );
+
+        if($dispatcher) {
+            $username = ( $_POST['username'] );
+        } else {
+            $username = null;
+        }
     
-        // call complete_request function to create the user
-        // only when no WP_error is found
+        global $pickup, $destination, $num_people, $comments, $username;
+        $pickup   =   ( $_POST['pickup'] );
+        $destination   =  ( $_POST['destination'] );
+        $num_people      =   ( $_POST['num_people'] );
+        $comments    =  ( $_POST['comments'] );
+
+        // // call complete_request function to create the user
+        // // only when no WP_error is found
         complete_request(
             $pickup,
             $destination,
             $num_people,
-            $comments
+            $comments,
+            $username
         );
     }
     
@@ -115,7 +154,8 @@ function custom_request_function() {
         $pickup,
         $destination,
         $num_people,
-        $comments
+        $comments,
+        $dispatcher
     );
 }
 
