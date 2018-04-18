@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7947da7-ebab-4f94-8a75-1e3af5dcba49" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Documentation/databasePlan.xlsx" afterPath="$PROJECT_DIR$/Documentation/databasePlan.xlsx" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Unfinished_Template_Pluggins/riderQueue.php" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +17,43 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="queueTable.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Unfinished_Template_Pluggins/queueTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1029">
+              <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+              <folding>
+                <marker date="1524018432335" expanded="true" signature="837:1199" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="855:1032" ph="{...}" />
+                <marker date="1524018432335" expanded="true" signature="1059:1109" ph="{...}" />
+                <marker date="1524018432335" expanded="true" signature="1137:1187" ph="{...}" />
+                <marker date="1524018432335" expanded="true" signature="1710:1814" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="1723:1814" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="3027:3105" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="3225:3589" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="3685:3764" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="3884:4247" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="4322:4400" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="4520:4882" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="5016:5156" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="5276:5776" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="5872:6012" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="6132:6632" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="6707:6761" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="6881:7329" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="7439:7493" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="7613:7914" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="8010:8065" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="8185:8485" ph="..." />
+                <marker date="1524018432335" expanded="true" signature="8560:8614" ph="select * fro... ride_requests" />
+                <marker date="1524018432335" expanded="true" signature="8734:9034" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -109,6 +147,11 @@
               <item name="STARRS" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Source_Code" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="STARRS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="STARRS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Unfinished_Template_Pluggins" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -121,6 +164,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CS325" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wlgro\Documents\CS397\STARRS\Unfinished_Template_Pluggins" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -156,22 +204,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41220000" />
+    <option name="totallyTimeSpent" value="41367000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-8" y="0" width="976" height="1038" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1734375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25991648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -204,7 +253,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Source code/formInfo.php" />
     <entry file="file://$PROJECT_DIR$/Source code/index.js" />
     <entry file="file://$PROJECT_DIR$/Source code/logLocationTemp.php" />
     <entry file="file://$PROJECT_DIR$/Source code/JitneyDriverPage.php" />
@@ -255,5 +303,38 @@
     <entry file="file://$PROJECT_DIR$/Source code/JitneySchedule.js" />
     <entry file="file://$PROJECT_DIR$/Source code/pullLocation.php" />
     <entry file="file://$PROJECT_DIR$/Source_Code/db_config.sql" />
+    <entry file="file://$PROJECT_DIR$/Unfinished_Template_Pluggins/queueTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding>
+            <marker date="1524018432335" expanded="true" signature="837:1199" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="855:1032" ph="{...}" />
+            <marker date="1524018432335" expanded="true" signature="1059:1109" ph="{...}" />
+            <marker date="1524018432335" expanded="true" signature="1137:1187" ph="{...}" />
+            <marker date="1524018432335" expanded="true" signature="1710:1814" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="1723:1814" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="3027:3105" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="3225:3589" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="3685:3764" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="3884:4247" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="4322:4400" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="4520:4882" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="5016:5156" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="5276:5776" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="5872:6012" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="6132:6632" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="6707:6761" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="6881:7329" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="7439:7493" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="7613:7914" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="8010:8065" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="8185:8485" ph="..." />
+            <marker date="1524018432335" expanded="true" signature="8560:8614" ph="select * fro... ride_requests" />
+            <marker date="1524018432335" expanded="true" signature="8734:9034" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
