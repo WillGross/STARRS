@@ -42,3 +42,29 @@ function jitney_map( $args ) {
 	var latitude = <?php echo $args['lat'] ?>;
 	var longitude = <?php echo $args['lng'] ?>;
 	function updateMarker(){
+		marker.setMap(null);
+		//below is just for testing updating
+		latitude = latitude + 0.001;
+		longitude = longitude + 0.001;
+		//set position should use latitude and longitude from logLocation
+		marker.setPosition({ lat: latitude, lng: longitude });
+		marker.setMap(map);
+	}
+	</script>
+
+	<?php
+	$output = ob_get_clean();
+	return $output;
+}
+
+//activates the google map api when wordpress loads header
+add_action( 'wp_head', 'mgms_enqueue_assets' );
+function mgms_enqueue_assets() {
+	wp_enqueue_script( 
+	  'google-maps', 
+	  '//maps.googleapis.com/maps/api/js?key=AIzaSyD7EpcuhwegwyYstrosisrWSMCu8vqiKCE&callback=initMap', 
+	  array(), 
+	  '1.0', 
+	  true 
+	);
+}
