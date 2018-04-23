@@ -95,6 +95,7 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
         </tr>';
 
     if($driver=="True"){
+        //CHANGE NEEDED BELOW
         //Collect the shift info from cookie created in before you drive
         //store as shift variable
         $shift=1;
@@ -109,7 +110,13 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->pickupTime.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>DROP OFF</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestDropoff" id="dropoff'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Drop Off"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }elseif ($waiting=="True"){
@@ -122,7 +129,13 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>PICK UP</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestPickup" id="pickup'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Pick Up"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }else{
@@ -135,7 +148,13 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>ACCEPT</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestAccept" id="accept'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Accept"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }
@@ -150,9 +169,15 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->pickupTime.'</td>
                         <td>'.$request->name.'</td>
-                        <td>ONCE USERNAME IS ADDED TO RIDE REQUESTS, ADD IT HERE</td>
+                        <td>'.$request->userName.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>CANCEL</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestCancel" id="cancel'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Cancel"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }elseif ($waiting=="True"){
@@ -165,9 +190,15 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
                         <td>'.$request->name.'</td>
-                        <td>ONCE USERNAME IS ADDED TO RIDE REQUESTS, ADD IT HERE</td>
+                        <td>'.$request->userName.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>CANCEL</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestCancel" id="cancel'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Cancel"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }else{
@@ -179,13 +210,22 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->dropoffLocation.'</td>
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
-                        <td>ONCE USERNAME IS ADDED TO RIDE REQUESTS, ADD IT HERE</td>
+                        <td>'.$request->userName.'</td>
                         <td>'.$request->comments.'</td>
-                        <td>CANCEL</td>
+                        <td>
+                            <form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                                class="requestCancel" id="cancel'.$request->id.'">
+                            <input name="requestID" readonly type="hidden" value="'.$request->id.'"/>
+                            <input type="submit" value="Cancel"/>
+                            </form>
+                        </td>
                     </tr>';
             }
         }
     }else{
+        //grab the username of this session from the cookies
+        //CHANGE ONCE IMPLEMENTED
+        $userName="wlgross";
         if($active=="True"){
             $requests=$wpdb->get_results("select * from ride_requests where rideStatus='enroute'");
             foreach ($requests as $request){
@@ -195,7 +235,17 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->dropoffLocation.'</td>
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->pickupTime.'</td> 
-                        <td></td>
+                        <td>';
+                if($userName==$request->userName) {
+                    $pluginContent=$pluginContent.
+                    '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                          class="requestCancel" id = "cancel'.$request->id.'" >
+                    <input name = "requestID" readonly type = "hidden" value = "'.$request->id.'" />
+                    <input type = "submit" value = "Cancel" />
+                    </form >';
+                    }
+                $pluginContent=$pluginContent.
+                        '</td>
                     </tr>';
             }
         }elseif ($waiting=="True"){
@@ -207,7 +257,17 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->dropoffLocation.'</td>
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
-                        <td></td>
+                        <td>';
+                if($userName==$request->userName) {
+                    $pluginContent=$pluginContent.
+                    '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                          class="requestCancel" id = "cancel\'.$request->id.\'" >
+                    <input name = "requestID" readonly type = "hidden" value = "\'.$request->id.\'" />
+                    <input type = "submit" value = "Cancel" />
+                    </form>';
+                    }
+                $pluginContent=$pluginContent.
+                        '</td>
                     </tr>';
             }
         }else{
@@ -219,7 +279,17 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
                         <td>'.$request->dropoffLocation.'</td>
                         <td>'.$request->numPeople.'</td>
                         <td>'.$request->timeOfCall.'</td>
-                        <td></td>
+                        <td>';
+                if($userName==$request->userName) {
+                    $pluginContent=$pluginContent.
+                    '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post"
+                          class="requestCancel" id = "cancel\'.$request->id.\'" >
+                    <input name = "requestID" readonly type = "hidden" value = "\'.$request->id.\'" />
+                    <input type = "submit" value = "Cancel" />
+                    </form >';
+                    }
+                $pluginContent=$pluginContent.
+                        '</td>
                     </tr>';
             }
         }
@@ -231,9 +301,6 @@ function queue_table($pending, $waiting, $active, $rider, $driver, $dispatcher){
     '</table>
     <br/>';
 
-//    global $wpdb;
-//    $results = $wpdb->get_results( "SELECT * FROM ride_requests" );
-//    $pluginContent=$pluginContent.var_dump($results);
     return $pluginContent;
 }
 
