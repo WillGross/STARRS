@@ -27,8 +27,9 @@ CREATE TABLE `vehicles`  (
   `name` char(3) NOT NULL default '', -- vehicle identifier
   `plateNum` int(10) NOT NULL DEFAULT 000000, -- vehicle license plate
   `mileage` int(7) NOT NULL,
-  `oilStatus` VARCHAR (3) NOT NULL DEFAULT '', -- values ok or add
-  `antifreezeStatus` VARCHAR (3) NOT NULL DEFAULT '', -- values ok or add
+  `oilStatus` ENUM('ok','low') NOT NULL DEFAULT 'ok',
+  `antifreezeStatus` ENUM('ok','low') NOT NULL DEFAULT 'ok',
+  `isDriving` ENUM('yes','no') NOT NULL DEFAULT 'no',
   `operationalStatus` VARCHAR (50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE (`name`),
@@ -39,9 +40,9 @@ CREATE TABLE `vehicles`  (
 
 LOCK TABLES `vehicles` WRITE ;
 INSERT INTO `vehicles` VALUES
-  (1,'tst',123456,22000,'ok','add','operational')
-  -- ,(2,'j01',PLATENUM,0,'ok','ok','operational'),
-  -- (3,'s01',PLATENUM,0,'ok','ok','operational')
+  (1,'tst',123456,22000,'ok','low','yes','operational')
+  -- ,(2,'j01',PLATENUM,0,'ok','ok','no','operational'),
+  -- (3,'s01',PLATENUM,0,'ok','ok','no','operational')
   ;
 UNLOCK TABLES;
 
@@ -88,7 +89,7 @@ CREATE TABLE `shifts` (
 	 `driver_ID` int(5) NOT NULL DEFAULT 0,
 	 `vehicle_ID` int(2) NOT NULL DEFAULT 0,
 	 `date` DATE NOT NULL,
-	 `dayOfWeek` VARCHAR(9),
+	 `dayOfWeek` ENUM('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'),
 	 `startTime` DATETIME NOT NULL,
 	 `endTime` DATETIME NOT NULL,
 	 PRIMARY KEY (`id`),
@@ -112,8 +113,8 @@ CREATE TABLE `shift_info` (
 	`mileageStart` int(7) NOT NULL,
 	`mileageFinish` int(7) NOT NUll,
 	`fillUpGallons` DOUBLE(5,3) NOT NULL DEFAULT 0.0,
-	`oilStatus` VARCHAR(3) NOT NULL DEFAULT '',
-	`antifreezeStatus` VARCHAR (3) NOT NULL DEFAULT '',
+	`oilStatus` ENUM('ok','low') NOT NULL DEFAULT 'ok',
+	`antifreezeStatus` ENUM('ok','low') NOT NULL DEFAULT 'ok',
 	`comments` VARCHAR(250) NOT NULL DEFAULT '',
 	FOREIGN KEY (`shift_ID`) REFERENCES `shifts`(`id`)
  );
@@ -125,6 +126,7 @@ CREATE TABLE `shift_info` (
  	(
  	`id` int(12) NOT NUll auto_increment,
  	`shift_ID` int(10) NOT NULL,
+ 	`userName` VARCHAR (10)NOT NULL,
  	`timeOfCall` DATETIME NOT NULL,
  	`pickupTime` DATETIME NOT NULL,
  	`dropoffTime` DATETIME NOT NULL,
@@ -132,13 +134,24 @@ CREATE TABLE `shift_info` (
  	`dropoffLocation` VARCHAR (100) NOT NULL,
  	`comments` VARCHAR(250) NOT NULL DEFAULT '',
   `numPeople` INT(2) NOT NULL,
- 	`rideStatus` VARCHAR(8) NOT NULL,
+ 	`rideStatus` ENUM('pending','accepted','enroute','complete','canceled') NOT NULL,
  	PRIMARY KEY (`id`),
  	FOREIGN KEY (`shift_ID`) REFERENCES `shifts`(`id`)
   );
  	
  	
- 	
+ 	-- Dumping TEST data for table 'ride_requests'
+
+LOCK TABLES `ride_requests` WRITE ;
+INSERT INTO `ride_requests` VALUES
+  (1,1,'wlgross',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','pending request 1 from wlgross', 2, 'pending'),
+  (2,1,'wlgross',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','accepted request 1 from wlgross', 2, 'accepted'),
+  (3,1,'wlgross',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','enroute request 1 from wlgross', 2, 'enroute'),
+  (4,1,'wlgross',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','completed request 1 from wlgross', 2, 'complete'),
+  (5,1,'wlgross',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','canceled request 1 from wlgross', 2, 'canceled'),
+  (6,1,'tbrownso',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP , CURRENT_TIMESTAMP ,'here','there','pending request 1 from tbrownso', 2, 'pending')
+  ;
+UNLOCK TABLES;
  	
  	
  	
