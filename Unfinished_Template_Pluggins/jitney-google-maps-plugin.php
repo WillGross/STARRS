@@ -52,9 +52,12 @@ function jitney_map( $args ) {
 	var latitude = <?php echo $vehicleLocations['latitude'] ?>;
 	var longitude = <?php echo $vehicleLocations['longitude'] ?>;
 	function updateMarkers(){
-		marker.setMap(null);
-		marker.setPosition({ lat: latitude, lng: longitude });
-		marker.setMap(map);
+		var i;
+		for (i = 0; i < markers.length; i++):
+			marker = markers[i];
+			marker.setMap(null);
+			marker.setPosition({ lat: latitude, lng: longitude });
+			marker.setMap(map);
 	}
 	</script>
 
