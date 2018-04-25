@@ -11,7 +11,7 @@
 add_shortcode( 'map', 'jitney_map' );
 function jitney_map( $args ) {
 	global $wpdb;
-	$vehicleLocations = $wpdb -> get_results('SELECT vehicle_ID, latitude, longitude from locations');
+	$vehicleLocations = $wpdb -> get_results('SELECT vehicle_ID, latitude, longitude from location');
 	$vehicleStatus = $wpdb -> get_results('SELECT id, isDriving from vehicles');
 	$args = shortcode_atts( array(
 		'lat'    => '44.556',
