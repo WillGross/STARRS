@@ -58,8 +58,8 @@ function jitney_map( $args ) {
 }
 
 //activates the google map api when wordpress loads header
-add_action( 'wp_head', 'mgms_enqueue_assets' );
-function mgms_enqueue_assets() {
+add_action( 'wp_head', 'jitney_enqueue_assets' );
+function jitney_enqueue_assets() {
 	wp_enqueue_script( 
 	  'google-maps', 
 	  '//maps.googleapis.com/maps/api/js?key=AIzaSyD7EpcuhwegwyYstrosisrWSMCu8vqiKCE&callback=initMap', 
