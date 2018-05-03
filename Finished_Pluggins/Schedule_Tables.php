@@ -1,6 +1,8 @@
 <?php
 /* 
 Plugin Name: Schedule Table
+Description: Display relevent schedule information - two views, one for general users and one for drivers
+Author: Jacob Tower
 */
 
 // called by shortcode - dynamically fills table elements from DB
@@ -58,6 +60,6 @@ function tableFormat($user){
 		return $myTable;
 }
 
-
-add_shortcode('Schedule', 'createTable');
+//shortcode to put inside WordPress page: [schedule] OR [schedule case = "driver"]
+add_shortcode('schedule', 'createTable');
 ?>
