@@ -38,17 +38,18 @@ function jitney_map( $args ) {
 	function initMarkers(){
 		var i = 0;
 		var drivingArray = new Array(<?php echo $vehicleStatus['isDriving'] ?>);
+		var vehicleIDArray = new Array(<?php echo $vehicleLocations['vehicle_ID'] ?>);
 		for (i = 0; i < ids.length; i++):
 			if drivingArray[i] == 'yes':
 				marker = new google.maps.Marker({
 					position: jitneyLocation,
-					map: map
+					map: map,
+					label: String(vehicleIDArray[i])
     				});
 				markers.push(marker);
 	}
 	
 	var cycle = setInterval(updateMarker, 5000);
-	//placeholder for actual latitude and longitude from php script
 	var latitude = <?php echo $vehicleLocations['latitude'] ?>;
 	var longitude = <?php echo $vehicleLocations['longitude'] ?>;
 	function updateMarkers(){
@@ -56,7 +57,7 @@ function jitney_map( $args ) {
 		for (i = 0; i < markers.length; i++):
 			marker = markers[i];
 			marker.setMap(null);
-			marker.setPosition({ lat: latitude, lng: longitude });
+			marker.setPosition({ lat: latitude[i], lng: longitude[i] });
 			marker.setMap(map);
 	}
 	</script>
