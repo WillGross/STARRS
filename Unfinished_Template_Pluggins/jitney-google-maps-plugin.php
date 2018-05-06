@@ -28,13 +28,14 @@ function jitney_map( $args ) {
 	var map;
 	var markers = new Array();
 	var ids = new Array(<?php echo $vehicleStatus['id'] ?>);
-	var center = { lat: <?php echo $args['lat'] ?>, lng: <?php echo $args['lng'] ?> }
+	var center = { lat: <?php echo $args['lat'] ?>, lng: <?php echo $args['lng'] ?> };
 	function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: center,
 			zoom: <?php echo $args['zoom'] ?>
 		});
 	}
+	
 	function initMarkers(){
 		var i = 0;
 		var drivingArray = new Array(<?php echo $vehicleStatus['isDriving'] ?>);
