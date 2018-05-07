@@ -1,6 +1,6 @@
 <?php
 /* 
-Plugin Name: edit_shifts
+Plugin Name: STARRS Edit Shifts Plugin
 Description: Adds two forms to a page to be used by security to create a new shift or remove an existing
 one through the use of dropdown menus.
 Author: Jacob Tower
@@ -48,7 +48,7 @@ function createForms(){
 		$wpdb->delete('ride_requests', array('shift_ID' => $_POST['formShift']));	//must delete child rows first
 		
 		$remove = array('id' => $_POST['formShift']);	//array of values to remove in column => value form
-		echo "rows deleted: " .  $wpdb->delete('shifts', $remove);	//remove selected row from DB
+		$wpdb->delete('shifts', $remove);	//remove selected row from DB
 	}
 }
 
