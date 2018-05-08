@@ -40,6 +40,7 @@ function createTable($atts){
 
 	$template .= "</table>";
 	
+	//use output buffers to store/return html code
 	ob_start();
 		echo $template;
 	$output = ob_get_clean();
