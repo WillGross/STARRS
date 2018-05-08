@@ -39,7 +39,11 @@ function createTable($atts){
 	}
 
 	$template .= "</table>";
-	echo $template;
+	
+	ob_start();
+		echo $template;
+	$output = ob_get_clean();
+	return $output;
 }
 
 //creates the table headers
