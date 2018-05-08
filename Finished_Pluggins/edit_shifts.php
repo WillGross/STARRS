@@ -1,6 +1,6 @@
 <?php
 /* 
-Plugin Name: edit_shifts
+Plugin Name: STARRS Edit Shifts Plugin
 Description: Adds two forms to a page to be used by security to create a new shift or remove an existing
 one through the use of dropdown menus.
 Author: Jacob Tower
