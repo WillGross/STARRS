@@ -47,7 +47,6 @@ function createForms(){
 	
 	//removes row when submit button on removeShift form is pressed 
 	if(isset($_POST['submitRemove'])){
-		global $wpdb;
 		$wpdb->delete('ride_requests', array('shift_ID' => $_POST['formShift']));	//must delete child rows first
 		$remove = array('id' => $_POST['formShift']);	//array of values to remove in column => value form
 		$wpdb->delete('shifts', $remove);	//remove selected row from DB
