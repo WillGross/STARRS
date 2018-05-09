@@ -12,9 +12,6 @@ Author: Jacob Tower
 function createForms(){
 	global $wpdb;
 	
-	
-	
-	
 	//add new row when submit button on createShift form is pressed
     if(isset($_POST['submitNew']) ){	
         //store information from each form
@@ -49,6 +46,7 @@ function createForms(){
 	
 	//use output buffer to store/return html
 	ob_start();
+		echo"</br>";
 		echo newForm();
 		echo removeForm();
 	$output = ob_get_clean();
@@ -68,7 +66,7 @@ function removeForm(){
 	foreach ($shifts as $row){	//populate options with each shift from database
 		$template.="<option value=$row->id>Shift: $row->id Driver: $row->driver_name Vehicle: $row->vehicle_name Date: $row->date Start Time: $row->startTime</option>";
 	}			
-  	$template.="</select><input type='submit' value='Remove Shift' name='submitRemove'/></form>";	//submit button
+  	$template.="</select></br><input type='submit' value='Remove Shift' name='submitRemove'/></form>";	//submit button
   	return $template;
 }
 
