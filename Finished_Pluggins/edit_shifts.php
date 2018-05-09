@@ -12,11 +12,6 @@ Author: Jacob Tower
 function createForms(){
 	global $wpdb;
 	
-// 	call form creation methods and display forms on screen
-// 	$newShift = newForm();
-// 	echo $newShift . "</br>";
-// 	$removeShift = removeForm();
-// 	echo $removeShift;	
 	
 	
 	
